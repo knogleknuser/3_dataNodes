@@ -27,20 +27,20 @@ public class Main {
         //Print
         //Front to back
         System.out.println( "Print from Head" );
-        NodeList.fromHead_print( node0 );
+        node0.print_towardsFromHead();
         //Back to Front
         System.out.println();
         System.out.println( "Print from Tail" );
-        NodeList.fromTail_print( node4 );
+        node4.print_towardsFromTail();
 
         //Front to back
         System.out.println();
         System.out.println( "Print from Head, with a random node as input" );
-        NodeList.fromHead_print( node3 );
+        node3.print_towardsFromHead();
         //Back to Front
         System.out.println();
         System.out.println( "Print from Tail, with a random node as input" );
-        NodeList.fromTail_print( node2 );
+        node2.print_towardsFromTail();
 
 
 
@@ -48,34 +48,11 @@ public class Main {
         //Get Head
         System.out.println();
         System.out.println( "Get Head" );
-        System.out.println( NodeList.fromNode_findHead( node2 ).data );
+        System.out.println( Node.findHead( node2 ).data );
         //Tail
         System.out.println();
         System.out.println( "Get Tail" );
-        System.out.println( NodeList.fromNode_findTail( node2 ).data );
-
-
-
-        //Get Head or Tail ArrayList
-        ArrayList< Node > headArrayList;
-        ArrayList< Node > tailArrayList;
-
-        //Get Head
-        System.out.println( "Get ArrayList From Head" );
-        headArrayList = NodeList.fromHead_ArrayList( node2 );
-        System.out.println( headArrayList );
-        for ( Node node : headArrayList ) {
-            System.out.println( node.data );
-        }
-        //Tail
-        System.out.println();
-        System.out.println( "Get ArrayList From Tail" );
-        tailArrayList = NodeList.fromTail_ArrayList( node2 );
-        System.out.println( tailArrayList );
-        for ( Node node : tailArrayList ) {
-            System.out.println( node.data );
-        }
-
+        System.out.println( Node.findTail( node2 ).data );
 
 
 
@@ -88,7 +65,7 @@ public class Main {
 
         System.out.println();
         System.out.println( "Print from Head NodeList" );
-        nodeList.fromHead_print();
+        nodeList.print_fromHead();
 
 
         Node nodeN1 = new Node( "-1" );
@@ -96,41 +73,18 @@ public class Main {
 
         System.out.println();
         System.out.println( "Print from Head NodeList new Start Node" );
-        nodeList.fromHead_print();
+        nodeList.print_fromHead();
 
         Node node5 = new Node( "5" );
         nodeList.insertNode_asTail( node5 );
 
         System.out.println();
         System.out.println( "Print from Head NodeList new Tail Node" );
-        nodeList.fromHead_print();
+        nodeList.print_fromHead();
 
 
 
-        //Get Head or Tail ArrayList with duplicate insertions
-        nodeList.insertNode_asHead( node3 );
-        nodeList.insertNode_asHead( node5 );
-        nodeList.insertNode_asHead( node0 );
-        nodeList.insertNode_asHead( nodeN1 );
 
-        //Get Head
-        System.out.println();
-        System.out.println( "Get ArrayList From Head with duplicate node insertions" );
-        headArrayList = nodeList.fromHead_ArrayList();
-
-        System.out.println( headArrayList );
-        for ( Node node : headArrayList ) {
-            System.out.println( node.data );
-        }
-        //Tail
-        System.out.println();
-        System.out.println( "Get ArrayList From Tail with duplicate node insertions" );
-        tailArrayList = nodeList.fromTail_ArrayList();
-
-        System.out.println( tailArrayList );
-        for ( Node node : tailArrayList ) {
-            System.out.println( node.data );
-        }
 
     } //Main
 
