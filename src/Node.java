@@ -418,6 +418,10 @@ public class Node {
 
     //FindAndReplace - Static - toFrom
     public static Node findAndReplace_toFromHead( Node nReplaceWithNetwork, Node nReplacedNetwork, String dataReplaceWith, String dataReplaced ) {
+        if ( dataReplaceWith.equals( dataReplaced ) ) {
+            return null;
+        }
+
         Node nReplaced = find_toFromHead( nReplacedNetwork, dataReplaced );
         if ( nReplaced == null ) {
             return null;
@@ -432,6 +436,10 @@ public class Node {
     }
 
     public static Node findAndReplace_toFromTail( Node nReplaceWithNetwork, Node nReplacedNetwork, String dataReplaceWith, String dataReplaced ) {
+        if ( dataReplaceWith.equals( dataReplaced ) ) {
+            return null;
+        }
+
         Node nReplaced = find_toFromTail( nReplacedNetwork, dataReplaced );
         if ( nReplaced == null ) {
             return null;
@@ -452,7 +460,9 @@ public class Node {
 
     //Replace - Static - toFrom
     public static Node replace( Node nReplaced, Node nReplaceWith ) {
-
+        if ( nReplaced.equals( nReplaceWith ) ) {
+            return null;
+        }
 
         if ( insertBefore( nReplaceWith, nReplaced ) == null ) {
             return null;
@@ -474,6 +484,7 @@ public class Node {
     public Node findAndInsertAfter_toFromTail( String dataInserted ) {
         return this.findAndInsertAfter_toFromTail( dataInserted, this.getData() );
     }
+
     public Node findAndInsertBefore_toFromHead( String dataInserted ) {
         return this.findAndInsertBefore_toFromHead( dataInserted, this.getData() );
     }
@@ -483,19 +494,20 @@ public class Node {
     }
 
     //FindAndInsert - This Node - Other Network - toFrom
-    public Node findAndInsertAfter_toFromHead( Node nInsertedNetwork, String dataInserted ) {
-        return this.findAndInsertAfter_toFromHead( nInsertedNetwork, dataInserted, this.getData() );
+    public Node findAndInsertAfter_toFromHead( Node nInsertedOriginNetwork, String dataInserted ) {
+        return this.findAndInsertAfter_toFromHead( nInsertedOriginNetwork, dataInserted, this.getData() );
     }
 
-    public Node findAndInsertAfter_toFromTail( Node nInsertedNetwork, String dataInserted ) {
-        return this.findAndInsertAfter_toFromTail( nInsertedNetwork, dataInserted, this.getData() );
-    }
-    public Node findAndInsertBefore_toFromHead( Node nInsertedNetwork, String dataInserted ) {
-        return this.findAndInsertBefore_toFromHead( nInsertedNetwork, dataInserted, this.getData() );
+    public Node findAndInsertAfter_toFromTail( Node nInsertedOriginNetwork, String dataInserted ) {
+        return this.findAndInsertAfter_toFromTail( nInsertedOriginNetwork, dataInserted, this.getData() );
     }
 
-    public Node findAndInsertBefore_toFromTail( Node nInsertedNetwork, String dataInserted ) {
-        return this.findAndInsertBefore_toFromTail( nInsertedNetwork, dataInserted, this.getData() );
+    public Node findAndInsertBefore_toFromHead( Node nInsertedOriginNetwork, String dataInserted ) {
+        return this.findAndInsertBefore_toFromHead( nInsertedOriginNetwork, dataInserted, this.getData() );
+    }
+
+    public Node findAndInsertBefore_toFromTail( Node nInsertedOriginNetwork, String dataInserted ) {
+        return this.findAndInsertBefore_toFromTail( nInsertedOriginNetwork, dataInserted, this.getData() );
     }
 
     //FindAndInsert - Same Network - toFrom
@@ -506,6 +518,7 @@ public class Node {
     public Node findAndInsertAfter_toFromTail( String dataInserted, String dataAfterThis ) {
         return this.findAndInsertAfter_toFromTail( this, dataInserted, dataAfterThis );
     }
+
     public Node findAndInsertBefore_toFromHead( String dataInserted, String dataBeforeThis ) {
         return this.findAndInsertBefore_toFromHead( this, dataInserted, dataBeforeThis );
     }
@@ -515,25 +528,30 @@ public class Node {
     }
 
     //FindAndInsert - Different Network - toFrom
-    public Node findAndInsertAfter_toFromHead( Node nInsertedNetwork, String dataInserted, String dataAfterThis ) {
-        return findAndInsertAfter_toFromHead( nInsertedNetwork, this, dataInserted, dataAfterThis );
+    public Node findAndInsertAfter_toFromHead( Node nInsertedOriginNetwork, String dataInserted, String dataAfterThis ) {
+        return findAndInsertAfter_toFromHead( nInsertedOriginNetwork, this, dataInserted, dataAfterThis );
     }
 
-    public Node findAndInsertAfter_toFromTail( Node nInsertedNetwork, String dataInserted, String dataAfterThis ) {
-        return findAndInsertAfter_toFromTail( nInsertedNetwork, this, dataInserted, dataAfterThis );
-    }
-    public Node findAndInsertBefore_toFromHead( Node nInsertedNetwork, String dataInserted, String dataBeforeThis ) {
-        return findAndInsertBefore_toFromHead( nInsertedNetwork, this, dataInserted, dataBeforeThis );
+    public Node findAndInsertAfter_toFromTail( Node nInsertedOriginNetwork, String dataInserted, String dataAfterThis ) {
+        return findAndInsertAfter_toFromTail( nInsertedOriginNetwork, this, dataInserted, dataAfterThis );
     }
 
-    public Node findAndInsertBefore_toFromTail( Node nInsertedNetwork, String dataInserted, String dataBeforeThis ) {
-        return findAndInsertBefore_toFromTail( nInsertedNetwork, this, dataInserted, dataBeforeThis );
+    public Node findAndInsertBefore_toFromHead( Node nInsertedOriginNetwork, String dataInserted, String dataBeforeThis ) {
+        return findAndInsertBefore_toFromHead( nInsertedOriginNetwork, this, dataInserted, dataBeforeThis );
     }
-    
+
+    public Node findAndInsertBefore_toFromTail( Node nInsertedOriginNetwork, String dataInserted, String dataBeforeThis ) {
+        return findAndInsertBefore_toFromTail( nInsertedOriginNetwork, this, dataInserted, dataBeforeThis );
+    }
+
 
     //FindAndInsert - static - toFrom
-    public static Node findAndInsertAfter_toFromHead( Node nInsertedNetwork, Node nAfterThisNetwork, String dataInserted, String dataAfterThis ) {
-        Node nInserted = find_toFromHead( nInsertedNetwork, dataInserted );
+    public static Node findAndInsertAfter_toFromHead( Node nInsertedOriginNetwork, Node nAfterThisNetwork, String dataInserted, String dataAfterThis ) {
+        if ( dataInserted.equals( dataAfterThis ) ) {
+            return null;
+        }
+
+        Node nInserted = find_toFromHead( nInsertedOriginNetwork, dataInserted );
         if ( nInserted == null ) {
             return null;
         }
@@ -546,8 +564,12 @@ public class Node {
         return insertAfter( nInserted, nAfterThis );
     }
 
-    public static Node findAndInsertBefore_toFromHead( Node nInsertedNetwork, Node nBeforeThisNetwork, String dataInserted, String dataBeforeThis ) {
-        Node nInserted = find_toFromHead( nInsertedNetwork, dataInserted );
+    public static Node findAndInsertBefore_toFromHead( Node nInsertedOriginNetwork, Node nBeforeThisNetwork, String dataInserted, String dataBeforeThis ) {
+        if ( dataInserted.equals( dataBeforeThis ) ) {
+            return null;
+        }
+
+        Node nInserted = find_toFromHead( nInsertedOriginNetwork, dataInserted );
         if ( nInserted == null ) {
             return null;
         }
@@ -559,8 +581,13 @@ public class Node {
 
         return insertBefore( nInserted, nBeforeThis );
     }
-    public static Node findAndInsertAfter_toFromTail( Node nInsertedNetwork, Node nAfterThisNetwork, String dataInserted, String dataAfterThis ) {
-        Node nInserted = find_toFromTail( nInsertedNetwork, dataInserted );
+
+    public static Node findAndInsertAfter_toFromTail( Node nInsertedOriginNetwork, Node nAfterThisNetwork, String dataInserted, String dataAfterThis ) {
+        if ( dataInserted.equals( dataAfterThis ) ) {
+            return null;
+        }
+
+        Node nInserted = find_toFromTail( nInsertedOriginNetwork, dataInserted );
         if ( nInserted == null ) {
             return null;
         }
@@ -573,8 +600,12 @@ public class Node {
         return insertAfter( nInserted, nAfterThis );
     }
 
-    public static Node findAndInsertBefore_toFromTail( Node nInsertedNetwork, Node nBeforeThisNetwork, String dataInserted, String dataBeforeThis ) {
-        Node nInserted = find_toFromTail( nInsertedNetwork, dataInserted );
+    public static Node findAndInsertBefore_toFromTail( Node nInsertedOriginNetwork, Node nBeforeThisNetwork, String dataInserted, String dataBeforeThis ) {
+        if ( dataInserted.equals( dataBeforeThis ) ) {
+            return null;
+        }
+
+        Node nInserted = find_toFromTail( nInsertedOriginNetwork, dataInserted );
         if ( nInserted == null ) {
             return null;
         }

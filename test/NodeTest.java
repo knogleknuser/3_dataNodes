@@ -1,19 +1,36 @@
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class NodeTest {
 
+    //Default Test List
     Node node0 = new Node( "0" );
     Node node1 = new Node( "1" );
     Node node2 = new Node( "2" );
     Node node3 = new Node( "3" );
     Node node4 = new Node( "4" );
 
+    //ArrayList
+    ArrayList< Node > NodeNs = new ArrayList<>();
+
+
+    //Second test list
+    Node nodeA = new Node( "A" );
+    Node nodeB = new Node( "B" );
+    Node nodeC = new Node( "C" );
+    Node nodeD = new Node( "D" );
+    Node nodeE = new Node( "E" );
+
+    //ArrayList
+    ArrayList< Node > NodeLs = new ArrayList<>();
+
     @BeforeEach
     void setUp() {
-        //Set up data structure
+        //Set up data structure default
         this.node0.next = this.node1;
         this.node1.previous = this.node0;
 
@@ -25,6 +42,33 @@ class NodeTest {
 
         this.node3.next = this.node4;
         this.node4.previous = this.node3;
+
+        //ArrayList
+        this.NodeNs.add( this.node0 );
+        this.NodeNs.add( this.node1 );
+        this.NodeNs.add( this.node2 );
+        this.NodeNs.add( this.node3 );
+        this.NodeNs.add( this.node4 );
+
+        //Set up data structure second
+        this.nodeA.next = this.nodeB;
+        this.nodeB.previous = this.nodeA;
+
+        this.nodeB.next = this.nodeC;
+        this.nodeC.previous = this.nodeB;
+
+        this.nodeC.next = this.nodeD;
+        this.nodeD.previous = this.nodeC;
+
+        this.nodeD.next = this.nodeE;
+        this.nodeE.previous = this.nodeD;
+
+        //ArrayList
+        this.NodeLs.add( this.nodeA );
+        this.NodeLs.add( this.nodeB );
+        this.NodeLs.add( this.nodeC );
+        this.NodeLs.add( this.nodeD );
+        this.NodeLs.add( this.nodeE );
 
 
         //Extra, optional, only 1
@@ -718,6 +762,8 @@ class NodeTest {
     @Test
     void findAndRemove_fromTowards_head() {
         assertNull( this.node0.findAndRemove_toFromHead( null ) );
+        assertEquals( this.node0, this.node0.findHead() );
+        assertEquals( this.node4, this.node0.findTail() );
 
         assertEquals( this.node1, this.node0.next );
         assertNull( this.node0.previous );
@@ -808,6 +854,8 @@ class NodeTest {
     @Test
     void findAndRemove_fromTowards_tail() {
         assertNull( this.node0.findAndRemove_toFromTail( null ) );
+        assertEquals( this.node0, this.node0.findHead() );
+        assertEquals( this.node4, this.node0.findTail() );
 
         assertEquals( this.node1, this.node0.next );
         assertNull( this.node0.previous );
@@ -957,11 +1005,11 @@ class NodeTest {
         Node node6 = new Node( "6" );
 
         System.out.println( "insert towards head" );
-        node2.print_towardsFromHead();
+        this.node2.print_towardsFromHead();
         this.node2.insert_towardsHead( node5 );
-        node2.print_towardsFromHead();
+        this.node2.print_towardsFromHead();
         this.node2.insert_towardsHead( node6 );
-        node2.print_towardsFromHead();
+        this.node2.print_towardsFromHead();
 
         assertEquals( node6.data, this.node2.previous.data );
         assertEquals( node5.data, this.node2.previous.previous.data );
@@ -995,6 +1043,7 @@ class NodeTest {
         assertEquals( 1, node6.strings_toFromHead().length );
         node6.print_towardsFromHead();
         System.out.println();
+
     }
 
     @Test
@@ -1036,6 +1085,437 @@ class NodeTest {
         assertEquals( 1, node6.strings_toFromHead().length );
         node6.print_towardsFromHead();
         System.out.println();
+
+
+    }
+
+    @Test
+    void insertNode_towardsHead_INSANE() {
+        System.out.println();
+        System.out.println( "--------------------Start of the INSANE Insertion Test, HEAD------------" );
+        this.node0.print_towardsFromHead();
+        System.out.println();
+
+        for ( int i = 0; i < this.NodeNs.size(); i++ ) {
+            for ( int j = 0; j < this.NodeNs.size(); j++ ) {
+                Node nodeI = this.NodeNs.get( i );
+                Node nodeJ = this.NodeNs.get( j );
+
+                nodeI.insert_towardsHead( nodeJ );
+                System.out.println( "i = " + i + " , j = " + j );
+                nodeI.print_towardsFromHead();
+                System.out.println();
+
+                if ( !nodeI.getData().equals( nodeJ.getData() ) ) {
+                    assertEquals( nodeI.getPrevious().getData(), nodeJ.getData() );
+                    assertEquals( nodeI.getData(), nodeJ.getNext().getData() );
+                }
+
+                assertNotNull( nodeI.find_toFromTail( nodeI.getData() ) );
+                assertNotNull( nodeI.find_toFromHead( nodeI.getData() ) );
+                assertNotNull( nodeI.find_toFromTail( nodeJ.getData() ) );
+                assertNotNull( nodeI.find_toFromHead( nodeJ.getData() ) );
+
+                assertNotNull( nodeJ.find_toFromTail( nodeJ.getData() ) );
+                assertNotNull( nodeJ.find_toFromHead( nodeJ.getData() ) );
+                assertNotNull( nodeJ.find_toFromTail( nodeI.getData() ) );
+                assertNotNull( nodeJ.find_toFromHead( nodeI.getData() ) );
+
+
+                assertEquals( nodeI.strings_toFromHead().length, this.NodeNs.size() );
+                assertEquals( nodeI.strings_toFromTail().length, this.NodeNs.size() );
+                assertEquals( nodeJ.strings_toFromHead().length, this.NodeNs.size() );
+                assertEquals( nodeJ.strings_toFromTail().length, this.NodeNs.size() );
+
+            }
+
+        }
+    }
+
+    @Test
+    void insertNode_towardsTail_INSANE() {
+        System.out.println();
+        System.out.println( "--------------------Start of the INSANE Insertion Test, TAIL------------" );
+        this.node0.print_towardsFromHead();
+        System.out.println();
+
+        for ( int i = 0; i < this.NodeNs.size(); i++ ) {
+            for ( int j = 0; j < this.NodeNs.size(); j++ ) {
+                Node nodeI = this.NodeNs.get( i );
+                Node nodeJ = this.NodeNs.get( j );
+
+                nodeI.insert_towardsTail( nodeJ );
+                System.out.println( "i = " + i + " , j = " + j );
+                nodeI.print_towardsFromHead();
+                System.out.println();
+
+                if ( !nodeI.getData().equals( nodeJ.getData() ) ) {
+                    assertEquals( nodeI.getNext().getData(), nodeJ.getData() );
+                    assertEquals( nodeI.getData(), nodeJ.getPrevious().getData() );
+                }
+
+                assertNotNull( nodeI.find_toFromTail( nodeI.getData() ) );
+                assertNotNull( nodeI.find_toFromHead( nodeI.getData() ) );
+                assertNotNull( nodeI.find_toFromTail( nodeJ.getData() ) );
+                assertNotNull( nodeI.find_toFromHead( nodeJ.getData() ) );
+
+                assertNotNull( nodeJ.find_toFromTail( nodeJ.getData() ) );
+                assertNotNull( nodeJ.find_toFromHead( nodeJ.getData() ) );
+                assertNotNull( nodeJ.find_toFromTail( nodeI.getData() ) );
+                assertNotNull( nodeJ.find_toFromHead( nodeI.getData() ) );
+
+
+                assertEquals( nodeI.strings_toFromHead().length, this.NodeNs.size() );
+                assertEquals( nodeI.strings_toFromTail().length, this.NodeNs.size() );
+                assertEquals( nodeJ.strings_toFromHead().length, this.NodeNs.size() );
+                assertEquals( nodeJ.strings_toFromTail().length, this.NodeNs.size() );
+
+
+            }
+
+        }
+    }
+
+    @Test
+    void insertNode_betweenLists_InsaneAfterHead() {
+        System.out.println();
+        System.out.println( "--------------------Start of the INSANE BETWEEN LISTS FIND AND INSERT Test, AFTER (Head)------------" );
+        this.node0.print_towardsFromHead();
+        System.out.println();
+
+        Node nodeL = NodeLs.get( 0 );
+        Node nodeF = new Node( "F");
+        nodeL.findTail().insert_towardsTail( nodeF );
+
+        int sizeIncrease = 0;
+
+        for ( int i = 0; i < this.NodeNs.size(); i++ ) {
+            for ( int j = 0; j < this.NodeLs.size(); j++ ) {
+                Node nodeI = this.NodeNs.get( i );
+                Node nodeJ = this.NodeLs.get( j );
+
+                String dataJ = this.NodeLs.get( j ).getData();
+
+                if ( i == 0 ) {
+                    nodeI.findAndInsertAfter_toFromHead( nodeF, dataJ );
+                } else {
+                    nodeI.findAndInsertAfter_toFromHead(  dataJ );
+                }
+                System.out.println( "i = " + i + " , j = " + this.NodeLs.get( j ).getData() );
+                this.node0.print_towardsFromHead();
+                nodeF.print_towardsFromHead();
+                System.out.println();
+
+                if ( !nodeI.getData().equals( dataJ ) ) {
+                    assertEquals( dataJ, nodeI.getNext().getData() );
+                    assertEquals( nodeI.getData(), nodeJ.getPrevious().getData() );
+                }
+
+                assertNotNull( nodeI.find_toFromTail( nodeI.getData() ) );
+                assertNotNull( nodeI.find_toFromHead( nodeI.getData() ) );
+                assertNotNull( nodeI.find_toFromTail( dataJ ) );
+                assertNotNull( nodeI.find_toFromHead( dataJ ) );
+
+                assertNotNull( nodeJ.find_toFromTail( dataJ ) );
+                assertNotNull( nodeJ.find_toFromHead( dataJ) );
+                assertNotNull( nodeJ.find_toFromTail( nodeI.getData() ) );
+                assertNotNull( nodeJ.find_toFromHead( nodeI.getData() ) );
+
+                if ( i == 0 ) {
+                    sizeIncrease++;
+                }
+                assertEquals( nodeI.strings_toFromHead().length, this.NodeNs.size()+sizeIncrease );
+                assertEquals( nodeI.strings_toFromTail().length, this.NodeNs.size()+sizeIncrease );
+                assertEquals( nodeJ.strings_toFromHead().length, this.NodeNs.size()+sizeIncrease );
+                assertEquals( nodeJ.strings_toFromTail().length, this.NodeNs.size()+sizeIncrease );
+
+                assertEquals( nodeF.strings_toFromHead().length, this.NodeLs.size()+1-sizeIncrease );
+                assertEquals( nodeF.strings_toFromTail().length, this.NodeLs.size()+1-sizeIncrease );
+
+
+            }
+
+        }
+    }
+
+    @Test
+    void insertNode_betweenLists_InsaneBeforeHead() {
+        System.out.println();
+        System.out.println( "--------------------Start of the INSANE BETWEEN LISTS FIND AND INSERT Test, BEFORE (Head)------------" );
+        this.node0.print_towardsFromHead();
+        System.out.println();
+
+        Node nodeL = NodeLs.get( 0 );
+        Node nodeF = new Node( "F");
+        nodeL.findTail().insert_towardsTail( nodeF );
+
+        int sizeIncrease = 0;
+
+        for ( int i = 0; i < this.NodeNs.size(); i++ ) {
+            for ( int j = 0; j < this.NodeLs.size(); j++ ) {
+                Node nodeI = this.NodeNs.get( i );
+                Node nodeJ = this.NodeLs.get( j );
+
+                String dataJ = this.NodeLs.get( j ).getData();
+
+                if ( i == 0 ) {
+                    nodeI.findAndInsertBefore_toFromHead(   nodeF, dataJ );
+                } else {
+                    nodeI.findAndInsertBefore_toFromHead(  dataJ );
+                }
+                System.out.println( "i = " + i + " , j = " + this.NodeLs.get( j ).getData() );
+                this.node0.print_towardsFromHead();
+                nodeF.print_towardsFromHead();
+                System.out.println();
+
+                if ( !nodeI.getData().equals( dataJ ) ) {
+                    assertEquals( dataJ, nodeI.getPrevious().getData() );
+                    assertEquals( nodeI.getData(), nodeJ.getNext().getData() );
+                }
+
+                assertNotNull( nodeI.find_toFromTail( nodeI.getData() ) );
+                assertNotNull( nodeI.find_toFromHead( nodeI.getData() ) );
+                assertNotNull( nodeI.find_toFromTail( dataJ ) );
+                assertNotNull( nodeI.find_toFromHead( dataJ ) );
+
+                assertNotNull( nodeJ.find_toFromTail( dataJ ) );
+                assertNotNull( nodeJ.find_toFromHead( dataJ) );
+                assertNotNull( nodeJ.find_toFromTail( nodeI.getData() ) );
+                assertNotNull( nodeJ.find_toFromHead( nodeI.getData() ) );
+
+                if ( i == 0 ) {
+                    sizeIncrease++;
+                }
+                assertEquals( nodeI.strings_toFromHead().length, this.NodeNs.size()+sizeIncrease );
+                assertEquals( nodeI.strings_toFromTail().length, this.NodeNs.size()+sizeIncrease );
+                assertEquals( nodeJ.strings_toFromHead().length, this.NodeNs.size()+sizeIncrease );
+                assertEquals( nodeJ.strings_toFromTail().length, this.NodeNs.size()+sizeIncrease );
+
+                assertEquals( nodeF.strings_toFromHead().length, this.NodeLs.size()+1-sizeIncrease );
+                assertEquals( nodeF.strings_toFromTail().length, this.NodeLs.size()+1-sizeIncrease );
+
+
+            }
+
+        }
+    }
+
+
+    @Test
+    void insertNode_betweenLists_InsaneAfterTail() {
+        System.out.println();
+        System.out.println( "--------------------Start of the INSANE BETWEEN LISTS FIND AND INSERT Test, AFTER (Tail)------------" );
+        this.node0.print_towardsFromHead();
+        System.out.println();
+
+        Node nodeL = NodeLs.get( 0 );
+        Node nodeF = new Node( "F");
+        nodeL.findTail().insert_towardsTail( nodeF );
+
+        int sizeIncrease = 0;
+
+        for ( int i = 0; i < this.NodeNs.size(); i++ ) {
+            for ( int j = 0; j < this.NodeLs.size(); j++ ) {
+                Node nodeI = this.NodeNs.get( i );
+                Node nodeJ = this.NodeLs.get( j );
+
+                String dataJ = this.NodeLs.get( j ).getData();
+
+                if ( i == 0 ) {
+                    nodeI.findAndInsertAfter_toFromTail( nodeF, dataJ );
+                } else {
+                    nodeI.findAndInsertAfter_toFromTail(  dataJ );
+                }
+                System.out.println( "i = " + i + " , j = " + this.NodeLs.get( j ).getData() );
+                this.node0.print_towardsFromHead();
+                nodeF.print_towardsFromHead();
+                System.out.println();
+
+                if ( !nodeI.getData().equals( dataJ ) ) {
+                    assertEquals( dataJ, nodeI.getNext().getData() );
+                    assertEquals( nodeI.getData(), nodeJ.getPrevious().getData() );
+                }
+
+                assertNotNull( nodeI.find_toFromTail( nodeI.getData() ) );
+                assertNotNull( nodeI.find_toFromHead( nodeI.getData() ) );
+                assertNotNull( nodeI.find_toFromTail( dataJ ) );
+                assertNotNull( nodeI.find_toFromHead( dataJ ) );
+
+                assertNotNull( nodeJ.find_toFromTail( dataJ ) );
+                assertNotNull( nodeJ.find_toFromHead( dataJ) );
+                assertNotNull( nodeJ.find_toFromTail( nodeI.getData() ) );
+                assertNotNull( nodeJ.find_toFromHead( nodeI.getData() ) );
+
+                if ( i == 0 ) {
+                    sizeIncrease++;
+                }
+                assertEquals( nodeI.strings_toFromHead().length, this.NodeNs.size()+sizeIncrease );
+                assertEquals( nodeI.strings_toFromTail().length, this.NodeNs.size()+sizeIncrease );
+                assertEquals( nodeJ.strings_toFromHead().length, this.NodeNs.size()+sizeIncrease );
+                assertEquals( nodeJ.strings_toFromTail().length, this.NodeNs.size()+sizeIncrease );
+
+                assertEquals( nodeF.strings_toFromHead().length, this.NodeLs.size()+1-sizeIncrease );
+                assertEquals( nodeF.strings_toFromTail().length, this.NodeLs.size()+1-sizeIncrease );
+
+
+            }
+
+        }
+    }
+
+    @Test
+    void insertNode_betweenLists_InsaneBeforeTail() {
+        System.out.println();
+        System.out.println( "--------------------Start of the INSANE BETWEEN LISTS FIND AND INSERT Test, BEFORE (Tail)------------" );
+        this.node0.print_towardsFromHead();
+        System.out.println();
+
+        Node nodeL = NodeLs.get( 0 );
+        Node nodeF = new Node( "F");
+        nodeL.findTail().insert_towardsTail( nodeF );
+
+        int sizeIncrease = 0;
+
+        for ( int i = 0; i < this.NodeNs.size(); i++ ) {
+            for ( int j = 0; j < this.NodeLs.size(); j++ ) {
+                Node nodeI = this.NodeNs.get( i );
+                Node nodeJ = this.NodeLs.get( j );
+
+                String dataJ = this.NodeLs.get( j ).getData();
+
+                if ( i == 0 ) {
+                    nodeI.findAndInsertBefore_toFromTail(   nodeF, dataJ );
+                } else {
+                    nodeI.findAndInsertBefore_toFromTail(  dataJ );
+                }
+                System.out.println( "i = " + i + " , j = " + this.NodeLs.get( j ).getData() );
+                this.node0.print_towardsFromHead();
+                nodeF.print_towardsFromHead();
+                System.out.println();
+
+                if ( !nodeI.getData().equals( dataJ ) ) {
+                    assertEquals( dataJ, nodeI.getPrevious().getData() );
+                    assertEquals( nodeI.getData(), nodeJ.getNext().getData() );
+                }
+
+                assertNotNull( nodeI.find_toFromTail( nodeI.getData() ) );
+                assertNotNull( nodeI.find_toFromHead( nodeI.getData() ) );
+                assertNotNull( nodeI.find_toFromTail( dataJ ) );
+                assertNotNull( nodeI.find_toFromHead( dataJ ) );
+
+                assertNotNull( nodeJ.find_toFromTail( dataJ ) );
+                assertNotNull( nodeJ.find_toFromHead( dataJ) );
+                assertNotNull( nodeJ.find_toFromTail( nodeI.getData() ) );
+                assertNotNull( nodeJ.find_toFromHead( nodeI.getData() ) );
+
+                if ( i == 0 ) {
+                    sizeIncrease++;
+                }
+                assertEquals( nodeI.strings_toFromHead().length, this.NodeNs.size()+sizeIncrease );
+                assertEquals( nodeI.strings_toFromTail().length, this.NodeNs.size()+sizeIncrease );
+                assertEquals( nodeJ.strings_toFromHead().length, this.NodeNs.size()+sizeIncrease );
+                assertEquals( nodeJ.strings_toFromTail().length, this.NodeNs.size()+sizeIncrease );
+
+                assertEquals( nodeF.strings_toFromHead().length, this.NodeLs.size()+1-sizeIncrease );
+                assertEquals( nodeF.strings_toFromTail().length, this.NodeLs.size()+1-sizeIncrease );
+
+
+            }
+
+        }
+    }
+    @Test
+    void replace_INSANE() {
+        System.out.println();
+        System.out.println( "--------------------Start of the INSANE Replace Test------------" );
+        this.node0.print_towardsFromHead();
+        System.out.println();
+
+        for ( int i = 0; i < this.NodeNs.size(); i++ ) {
+            for ( int j = 0; j < this.NodeNs.size(); j++ ) {
+                Node nodeI = this.NodeNs.get( i );
+                Node nodeIOld = new Node( nodeI.getData() );
+                nodeIOld.next = nodeI.getNext();
+                nodeIOld.previous = nodeI.getPrevious();
+
+                Node nodeJ = this.NodeNs.get( j );
+
+                nodeI.replace( nodeJ );
+                System.out.println( "i = " + i + " , j = " + j );
+                this.node4.print_towardsFromHead();
+                System.out.println();
+
+                if ( !this.NodeNs.get( i ).getData().equals( this.NodeNs.get( j ).getData() ) ) {
+                    assertNull( nodeI.getNext() );
+                    assertNull( nodeI.getPrevious() );
+
+                    if ( nodeIOld.getNext() != nodeJ ) {
+                        assertEquals( nodeIOld.getNext(), nodeJ.getNext() );
+                        if (  nodeIOld.getNext() != null) {
+                            assertEquals( nodeIOld.getNext().getPrevious(), nodeJ.getNext().getPrevious() );
+                        }
+                    }
+                    if ( nodeIOld.getPrevious() != nodeJ  ) {
+                        assertEquals( nodeIOld.getPrevious(), nodeJ.getPrevious() );
+                        if (  nodeIOld.getPrevious() != null) {
+                            assertEquals( nodeIOld.getPrevious().getNext(), nodeJ.getPrevious().getNext() );
+                        }
+                    }
+
+
+                }
+
+
+            }
+
+        }
+    }
+
+    @Test
+    void replace() {
+        System.out.println();
+        System.out.println( "--------------------Start of the Replace Test------------" );
+        this.node0.print_towardsFromHead();
+        System.out.println();
+
+        for ( int i = 0; i < this.NodeNs.size(); i++ ) {
+                int j = this.NodeLs.size()-1-i;
+                Node nodeI = this.NodeNs.get( i );
+                Node nodeIOld = new Node( nodeI.getData() );
+                nodeIOld.next = nodeI.getNext();
+                nodeIOld.previous = nodeI.getPrevious();
+
+                Node nodeJ = this.NodeLs.get( j );
+
+                nodeI.replace( nodeJ );
+                System.out.println( "i = " + i + " , j = " + this.NodeLs.get( j ).getData() );
+                nodeJ.print_towardsFromHead();
+                System.out.println();
+
+                if ( !this.NodeNs.get( i ).getData().equals( this.NodeLs.get( j ).getData() ) ) {
+                    assertNull( nodeI.getNext() );
+                    assertNull( nodeI.getPrevious() );
+
+                    if ( nodeIOld.getNext() != nodeJ ) {
+                        assertEquals( nodeIOld.getNext(), nodeJ.getNext() );
+                        if (  nodeIOld.getNext() != null) {
+                            assertEquals( nodeIOld.getNext().getPrevious(), nodeJ.getNext().getPrevious() );
+                        }
+                    }
+                    if ( nodeIOld.getPrevious() != nodeJ  ) {
+                        assertEquals( nodeIOld.getPrevious(), nodeJ.getPrevious() );
+                        if (  nodeIOld.getPrevious() != null) {
+                            assertEquals( nodeIOld.getPrevious().getNext(), nodeJ.getPrevious().getNext() );
+                        }
+                    }
+
+
+                }
+
+
+
+
+        }
     }
 
     @Test
