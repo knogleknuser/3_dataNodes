@@ -1,8 +1,6 @@
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.util.Arrays;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 class NodeTest {
@@ -102,11 +100,11 @@ class NodeTest {
     @Test
     void strings_towardsFromHead() {
         //Make the strings
-        String[] node0s = this.node0.strings_towardsFromHead();
-        String[] node1s = this.node1.strings_towardsFromHead();
-        String[] node2s = this.node2.strings_towardsFromHead();
-        String[] node3s = this.node3.strings_towardsFromHead();
-        String[] node4s = this.node4.strings_towardsFromHead();
+        String[] node0s = this.node0.strings_toFromHead();
+        String[] node1s = this.node1.strings_toFromHead();
+        String[] node2s = this.node2.strings_toFromHead();
+        String[] node3s = this.node3.strings_toFromHead();
+        String[] node4s = this.node4.strings_toFromHead();
 
         //Same Size
         assertEquals( node0s.length, node1s.length );
@@ -124,7 +122,7 @@ class NodeTest {
         }
 
         for ( int i = 0; i < node2s.length; i++ ) {
-            assertEquals( node2s[ i ], Node.strings_towardsFromHead( this.node2 )[ i ] );
+            assertEquals( node2s[ i ], Node.strings_toFromHead( this.node2 )[ i ] );
         }
 
         for ( int i = 0; i < node3s.length; i++ ) {
@@ -137,11 +135,11 @@ class NodeTest {
 
         //Repeat
         //Make the strings
-        node0s = this.node0.strings_towardsFromHead();
-        node1s = this.node1.strings_towardsFromHead();
-        node2s = this.node2.strings_towardsFromHead();
-        node3s = this.node3.strings_towardsFromHead();
-        node4s = this.node4.strings_towardsFromHead();
+        node0s = this.node0.strings_toFromHead();
+        node1s = this.node1.strings_toFromHead();
+        node2s = this.node2.strings_toFromHead();
+        node3s = this.node3.strings_toFromHead();
+        node4s = this.node4.strings_toFromHead();
 
         //Same Size
         assertEquals( node0s.length, node1s.length );
@@ -159,7 +157,7 @@ class NodeTest {
         }
 
         for ( int i = 0; i < node2s.length; i++ ) {
-            assertEquals( node2s[ i ], Node.strings_towardsFromHead( this.node2 )[ i ] );
+            assertEquals( node2s[ i ], Node.strings_toFromHead( this.node2 )[ i ] );
         }
 
         for ( int i = 0; i < node3s.length; i++ ) {
@@ -174,11 +172,11 @@ class NodeTest {
     @Test
     void strings_towardsFromTail() {
         //Make the strings
-        String[] node0s = this.node0.strings_towardsFromTail();
-        String[] node1s = this.node1.strings_towardsFromTail();
-        String[] node2s = this.node2.strings_towardsFromTail();
-        String[] node3s = this.node3.strings_towardsFromTail();
-        String[] node4s = this.node4.strings_towardsFromTail();
+        String[] node0s = this.node0.strings_toFromTail();
+        String[] node1s = this.node1.strings_toFromTail();
+        String[] node2s = this.node2.strings_toFromTail();
+        String[] node3s = this.node3.strings_toFromTail();
+        String[] node4s = this.node4.strings_toFromTail();
 
         //Same Size
         assertEquals( node0s.length, node1s.length );
@@ -196,7 +194,7 @@ class NodeTest {
         }
 
         for ( int i = 0; i < node2s.length; i++ ) {
-            assertEquals( node2s[ i ], Node.strings_towardsFromTail( this.node2 )[ i ] );
+            assertEquals( node2s[ i ], Node.strings_toFromTail( this.node2 )[ i ] );
         }
 
         for ( int i = 0; i < node3s.length; i++ ) {
@@ -209,11 +207,11 @@ class NodeTest {
 
         //Repeat
         //Make the strings
-        node0s = this.node0.strings_towardsFromTail();
-        node1s = this.node1.strings_towardsFromTail();
-        node2s = this.node2.strings_towardsFromTail();
-        node3s = this.node3.strings_towardsFromTail();
-        node4s = this.node4.strings_towardsFromTail();
+        node0s = this.node0.strings_toFromTail();
+        node1s = this.node1.strings_toFromTail();
+        node2s = this.node2.strings_toFromTail();
+        node3s = this.node3.strings_toFromTail();
+        node4s = this.node4.strings_toFromTail();
 
         //Same Size
         assertEquals( node0s.length, node1s.length );
@@ -231,7 +229,7 @@ class NodeTest {
         }
 
         for ( int i = 0; i < node2s.length; i++ ) {
-            assertEquals( node2s[ i ], Node.strings_towardsFromTail( this.node2 )[ i ] );
+            assertEquals( node2s[ i ], Node.strings_toFromTail( this.node2 )[ i ] );
         }
 
         for ( int i = 0; i < node3s.length; i++ ) {
@@ -246,11 +244,11 @@ class NodeTest {
     @Test
     void testStrings_towardsFromHead() {
         //Make the strings
-        String[] node0s = Node.strings_towardsFromHead( this.node0 );
-        String[] node1s = Node.strings_towardsFromHead( this.node1 );
-        String[] node2s = Node.strings_towardsFromHead( this.node2 );
-        String[] node3s = Node.strings_towardsFromHead( this.node3 );
-        String[] node4s = Node.strings_towardsFromHead( this.node4 );
+        String[] node0s = Node.strings_toFromHead( this.node0 );
+        String[] node1s = Node.strings_toFromHead( this.node1 );
+        String[] node2s = Node.strings_toFromHead( this.node2 );
+        String[] node3s = Node.strings_toFromHead( this.node3 );
+        String[] node4s = Node.strings_toFromHead( this.node4 );
 
         //Same Size
         assertEquals( node0s.length, node1s.length );
@@ -268,7 +266,7 @@ class NodeTest {
         }
 
         for ( int i = 0; i < node2s.length; i++ ) {
-            assertEquals( node2s[ i ], this.node2.strings_towardsFromHead()[ i ] );
+            assertEquals( node2s[ i ], this.node2.strings_toFromHead()[ i ] );
         }
 
         for ( int i = 0; i < node3s.length; i++ ) {
@@ -281,11 +279,11 @@ class NodeTest {
 
         //Repeat
         //Make the strings
-        node0s = Node.strings_towardsFromHead( this.node0 );
-        node1s = Node.strings_towardsFromHead( this.node1 );
-        node2s = Node.strings_towardsFromHead( this.node2 );
-        node3s = Node.strings_towardsFromHead( this.node3 );
-        node4s = Node.strings_towardsFromHead( this.node4 );
+        node0s = Node.strings_toFromHead( this.node0 );
+        node1s = Node.strings_toFromHead( this.node1 );
+        node2s = Node.strings_toFromHead( this.node2 );
+        node3s = Node.strings_toFromHead( this.node3 );
+        node4s = Node.strings_toFromHead( this.node4 );
 
         //Same Size
         assertEquals( node0s.length, node1s.length );
@@ -303,7 +301,7 @@ class NodeTest {
         }
 
         for ( int i = 0; i < node2s.length; i++ ) {
-            assertEquals( node2s[ i ], this.node2.strings_towardsFromHead()[ i ] );
+            assertEquals( node2s[ i ], this.node2.strings_toFromHead()[ i ] );
         }
 
         for ( int i = 0; i < node3s.length; i++ ) {
@@ -318,11 +316,11 @@ class NodeTest {
     @Test
     void testStrings_towardsFromTail() {
         //Make the strings
-        String[] node0s = Node.strings_towardsFromTail( this.node0 );
-        String[] node1s = Node.strings_towardsFromTail( this.node1 );
-        String[] node2s = Node.strings_towardsFromTail( this.node2 );
-        String[] node3s = Node.strings_towardsFromTail( this.node3 );
-        String[] node4s = Node.strings_towardsFromTail( this.node4 );
+        String[] node0s = Node.strings_toFromTail( this.node0 );
+        String[] node1s = Node.strings_toFromTail( this.node1 );
+        String[] node2s = Node.strings_toFromTail( this.node2 );
+        String[] node3s = Node.strings_toFromTail( this.node3 );
+        String[] node4s = Node.strings_toFromTail( this.node4 );
 
         //Same Size
         assertEquals( node0s.length, node1s.length );
@@ -340,7 +338,7 @@ class NodeTest {
         }
 
         for ( int i = 0; i < node2s.length; i++ ) {
-            assertEquals( node2s[ i ], this.node2.strings_towardsFromTail()[ i ] );
+            assertEquals( node2s[ i ], this.node2.strings_toFromTail()[ i ] );
         }
 
         for ( int i = 0; i < node3s.length; i++ ) {
@@ -353,11 +351,11 @@ class NodeTest {
 
         //Repeat
         //Make the strings
-        node0s = Node.strings_towardsFromTail( this.node0 );
-        node1s = Node.strings_towardsFromTail( this.node1 );
-        node2s = Node.strings_towardsFromTail( this.node2 );
-        node3s = Node.strings_towardsFromTail( this.node3 );
-        node4s = Node.strings_towardsFromTail( this.node4 );
+        node0s = Node.strings_toFromTail( this.node0 );
+        node1s = Node.strings_toFromTail( this.node1 );
+        node2s = Node.strings_toFromTail( this.node2 );
+        node3s = Node.strings_toFromTail( this.node3 );
+        node4s = Node.strings_toFromTail( this.node4 );
 
         //Same Size
         assertEquals( node0s.length, node1s.length );
@@ -375,7 +373,7 @@ class NodeTest {
         }
 
         for ( int i = 0; i < node2s.length; i++ ) {
-            assertEquals( node2s[ i ], this.node2.strings_towardsFromTail()[ i ] );
+            assertEquals( node2s[ i ], this.node2.strings_toFromTail()[ i ] );
         }
 
         for ( int i = 0; i < node3s.length; i++ ) {
@@ -576,150 +574,150 @@ class NodeTest {
     @Test
     void find_fromTowards_head() {
         for ( int i = 0; i < 5; i++ ) {
-            assertEquals( String.valueOf( i ), this.node0.find_fromTowards_head( String.valueOf( i ) ).data );
+            assertEquals( String.valueOf( i ), this.node0.find_toFromHead( String.valueOf( i ) ).data );
         }
         for ( int i = 0; i < 5; i++ ) {
-            assertEquals( String.valueOf( i ), this.node1.find_fromTowards_head( String.valueOf( i ) ).data );
+            assertEquals( String.valueOf( i ), this.node1.find_toFromHead( String.valueOf( i ) ).data );
         }
         for ( int i = 0; i < 5; i++ ) {
-            assertEquals( String.valueOf( i ), this.node2.find_fromTowards_head( String.valueOf( i ) ).data );
+            assertEquals( String.valueOf( i ), this.node2.find_toFromHead( String.valueOf( i ) ).data );
         }
         for ( int i = 0; i < 5; i++ ) {
-            assertEquals( String.valueOf( i ), this.node3.find_fromTowards_head( String.valueOf( i ) ).data );
+            assertEquals( String.valueOf( i ), this.node3.find_toFromHead( String.valueOf( i ) ).data );
         }
         for ( int i = 0; i < 5; i++ ) {
-            assertEquals( String.valueOf( i ), this.node4.find_fromTowards_head( String.valueOf( i ) ).data );
+            assertEquals( String.valueOf( i ), this.node4.find_toFromHead( String.valueOf( i ) ).data );
         }
 
         //Repeat
         for ( int i = 0; i < 5; i++ ) {
-            assertEquals( String.valueOf( i ), this.node0.find_fromTowards_head( String.valueOf( i ) ).data );
+            assertEquals( String.valueOf( i ), this.node0.find_toFromHead( String.valueOf( i ) ).data );
         }
         for ( int i = 0; i < 5; i++ ) {
-            assertEquals( String.valueOf( i ), this.node1.find_fromTowards_head( String.valueOf( i ) ).data );
+            assertEquals( String.valueOf( i ), this.node1.find_toFromHead( String.valueOf( i ) ).data );
         }
         for ( int i = 0; i < 5; i++ ) {
-            assertEquals( String.valueOf( i ), this.node2.find_fromTowards_head( String.valueOf( i ) ).data );
+            assertEquals( String.valueOf( i ), this.node2.find_toFromHead( String.valueOf( i ) ).data );
         }
         for ( int i = 0; i < 5; i++ ) {
-            assertEquals( String.valueOf( i ), this.node3.find_fromTowards_head( String.valueOf( i ) ).data );
+            assertEquals( String.valueOf( i ), this.node3.find_toFromHead( String.valueOf( i ) ).data );
         }
         for ( int i = 0; i < 5; i++ ) {
-            assertEquals( String.valueOf( i ), this.node4.find_fromTowards_head( String.valueOf( i ) ).data );
+            assertEquals( String.valueOf( i ), this.node4.find_toFromHead( String.valueOf( i ) ).data );
         }
     }
 
     @Test
     void find_fromTowards_tail() {
         for ( int i = 0; i < 5; i++ ) {
-            assertEquals( String.valueOf( i ), this.node0.find_fromTowards_tail( String.valueOf( i ) ).data );
+            assertEquals( String.valueOf( i ), this.node0.find_toFromTail( String.valueOf( i ) ).data );
         }
         for ( int i = 0; i < 5; i++ ) {
-            assertEquals( String.valueOf( i ), this.node1.find_fromTowards_tail( String.valueOf( i ) ).data );
+            assertEquals( String.valueOf( i ), this.node1.find_toFromTail( String.valueOf( i ) ).data );
         }
         for ( int i = 0; i < 5; i++ ) {
-            assertEquals( String.valueOf( i ), this.node2.find_fromTowards_tail( String.valueOf( i ) ).data );
+            assertEquals( String.valueOf( i ), this.node2.find_toFromTail( String.valueOf( i ) ).data );
         }
         for ( int i = 0; i < 5; i++ ) {
-            assertEquals( String.valueOf( i ), this.node3.find_fromTowards_tail( String.valueOf( i ) ).data );
+            assertEquals( String.valueOf( i ), this.node3.find_toFromTail( String.valueOf( i ) ).data );
         }
         for ( int i = 0; i < 5; i++ ) {
-            assertEquals( String.valueOf( i ), this.node4.find_fromTowards_tail( String.valueOf( i ) ).data );
+            assertEquals( String.valueOf( i ), this.node4.find_toFromTail( String.valueOf( i ) ).data );
         }
 
         //Repeat
         for ( int i = 0; i < 5; i++ ) {
-            assertEquals( String.valueOf( i ), this.node0.find_fromTowards_tail( String.valueOf( i ) ).data );
+            assertEquals( String.valueOf( i ), this.node0.find_toFromTail( String.valueOf( i ) ).data );
         }
         for ( int i = 0; i < 5; i++ ) {
-            assertEquals( String.valueOf( i ), this.node1.find_fromTowards_tail( String.valueOf( i ) ).data );
+            assertEquals( String.valueOf( i ), this.node1.find_toFromTail( String.valueOf( i ) ).data );
         }
         for ( int i = 0; i < 5; i++ ) {
-            assertEquals( String.valueOf( i ), this.node2.find_fromTowards_tail( String.valueOf( i ) ).data );
+            assertEquals( String.valueOf( i ), this.node2.find_toFromTail( String.valueOf( i ) ).data );
         }
         for ( int i = 0; i < 5; i++ ) {
-            assertEquals( String.valueOf( i ), this.node3.find_fromTowards_tail( String.valueOf( i ) ).data );
+            assertEquals( String.valueOf( i ), this.node3.find_toFromTail( String.valueOf( i ) ).data );
         }
         for ( int i = 0; i < 5; i++ ) {
-            assertEquals( String.valueOf( i ), this.node4.find_fromTowards_tail( String.valueOf( i ) ).data );
+            assertEquals( String.valueOf( i ), this.node4.find_toFromTail( String.valueOf( i ) ).data );
         }
     }
 
     @Test
     void testFind_fromTowards_head() {
         for ( int i = 0; i < 5; i++ ) {
-            assertEquals( String.valueOf( i ), Node.find_fromTowards_head( this.node0, String.valueOf( i ) ).data );
+            assertEquals( String.valueOf( i ), Node.find_toFromHead( this.node0, String.valueOf( i ) ).data );
         }
         for ( int i = 0; i < 5; i++ ) {
-            assertEquals( String.valueOf( i ), Node.find_fromTowards_head( this.node1, String.valueOf( i ) ).data );
+            assertEquals( String.valueOf( i ), Node.find_toFromHead( this.node1, String.valueOf( i ) ).data );
         }
         for ( int i = 0; i < 5; i++ ) {
-            assertEquals( String.valueOf( i ), Node.find_fromTowards_head( this.node2, String.valueOf( i ) ).data );
+            assertEquals( String.valueOf( i ), Node.find_toFromHead( this.node2, String.valueOf( i ) ).data );
         }
         for ( int i = 0; i < 5; i++ ) {
-            assertEquals( String.valueOf( i ), Node.find_fromTowards_head( this.node3, String.valueOf( i ) ).data );
+            assertEquals( String.valueOf( i ), Node.find_toFromHead( this.node3, String.valueOf( i ) ).data );
         }
         for ( int i = 0; i < 5; i++ ) {
-            assertEquals( String.valueOf( i ), Node.find_fromTowards_head( this.node4, String.valueOf( i ) ).data );
+            assertEquals( String.valueOf( i ), Node.find_toFromHead( this.node4, String.valueOf( i ) ).data );
         }
 
         //Repeat
         for ( int i = 0; i < 5; i++ ) {
-            assertEquals( String.valueOf( i ), Node.find_fromTowards_head( this.node0, String.valueOf( i ) ).data );
+            assertEquals( String.valueOf( i ), Node.find_toFromHead( this.node0, String.valueOf( i ) ).data );
         }
         for ( int i = 0; i < 5; i++ ) {
-            assertEquals( String.valueOf( i ), Node.find_fromTowards_head( this.node1, String.valueOf( i ) ).data );
+            assertEquals( String.valueOf( i ), Node.find_toFromHead( this.node1, String.valueOf( i ) ).data );
         }
         for ( int i = 0; i < 5; i++ ) {
-            assertEquals( String.valueOf( i ), Node.find_fromTowards_head( this.node2, String.valueOf( i ) ).data );
+            assertEquals( String.valueOf( i ), Node.find_toFromHead( this.node2, String.valueOf( i ) ).data );
         }
         for ( int i = 0; i < 5; i++ ) {
-            assertEquals( String.valueOf( i ), Node.find_fromTowards_head( this.node3, String.valueOf( i ) ).data );
+            assertEquals( String.valueOf( i ), Node.find_toFromHead( this.node3, String.valueOf( i ) ).data );
         }
         for ( int i = 0; i < 5; i++ ) {
-            assertEquals( String.valueOf( i ), Node.find_fromTowards_head( this.node4, String.valueOf( i ) ).data );
+            assertEquals( String.valueOf( i ), Node.find_toFromHead( this.node4, String.valueOf( i ) ).data );
         }
     }
 
     @Test
     void testFind_fromTowards_tail() {
         for ( int i = 0; i < 5; i++ ) {
-            assertEquals( String.valueOf( i ), Node.find_fromTowards_tail( this.node0, String.valueOf( i ) ).data );
+            assertEquals( String.valueOf( i ), Node.find_toFromTail( this.node0, String.valueOf( i ) ).data );
         }
         for ( int i = 0; i < 5; i++ ) {
-            assertEquals( String.valueOf( i ), Node.find_fromTowards_tail( this.node1, String.valueOf( i ) ).data );
+            assertEquals( String.valueOf( i ), Node.find_toFromTail( this.node1, String.valueOf( i ) ).data );
         }
         for ( int i = 0; i < 5; i++ ) {
-            assertEquals( String.valueOf( i ), Node.find_fromTowards_tail( this.node2, String.valueOf( i ) ).data );
+            assertEquals( String.valueOf( i ), Node.find_toFromTail( this.node2, String.valueOf( i ) ).data );
         }
         for ( int i = 0; i < 5; i++ ) {
-            assertEquals( String.valueOf( i ), Node.find_fromTowards_tail( this.node3, String.valueOf( i ) ).data );
+            assertEquals( String.valueOf( i ), Node.find_toFromTail( this.node3, String.valueOf( i ) ).data );
         }
         for ( int i = 0; i < 5; i++ ) {
-            assertEquals( String.valueOf( i ), Node.find_fromTowards_tail( this.node4, String.valueOf( i ) ).data );
+            assertEquals( String.valueOf( i ), Node.find_toFromTail( this.node4, String.valueOf( i ) ).data );
         }
 
         //Repeat
         for ( int i = 0; i < 5; i++ ) {
-            assertEquals( String.valueOf( i ), Node.find_fromTowards_tail( this.node0, String.valueOf( i ) ).data );
+            assertEquals( String.valueOf( i ), Node.find_toFromTail( this.node0, String.valueOf( i ) ).data );
         }
         for ( int i = 0; i < 5; i++ ) {
-            assertEquals( String.valueOf( i ), Node.find_fromTowards_tail( this.node1, String.valueOf( i ) ).data );
+            assertEquals( String.valueOf( i ), Node.find_toFromTail( this.node1, String.valueOf( i ) ).data );
         }
         for ( int i = 0; i < 5; i++ ) {
-            assertEquals( String.valueOf( i ), Node.find_fromTowards_tail( this.node2, String.valueOf( i ) ).data );
+            assertEquals( String.valueOf( i ), Node.find_toFromTail( this.node2, String.valueOf( i ) ).data );
         }
         for ( int i = 0; i < 5; i++ ) {
-            assertEquals( String.valueOf( i ), Node.find_fromTowards_tail( this.node3, String.valueOf( i ) ).data );
+            assertEquals( String.valueOf( i ), Node.find_toFromTail( this.node3, String.valueOf( i ) ).data );
         }
         for ( int i = 0; i < 5; i++ ) {
-            assertEquals( String.valueOf( i ), Node.find_fromTowards_tail( this.node4, String.valueOf( i ) ).data );
+            assertEquals( String.valueOf( i ), Node.find_toFromTail( this.node4, String.valueOf( i ) ).data );
         }
     }
 
     @Test
     void findAndRemove_fromTowards_head() {
-        assertNull( this.node0.findAndRemove_fromTowards_head( null ) );
+        assertNull( this.node0.findAndRemove_toFromHead( null ) );
 
         assertEquals( this.node1, this.node0.next );
         assertNull( this.node0.previous );
@@ -727,9 +725,9 @@ class NodeTest {
         assertNotNull( this.node1.previous );
         assertNotNull( this.node1.next );
 
-        assertEquals( "0", this.node2.findAndRemove_fromTowards_head( "0" ).data );
-        assertEquals( "0", this.node0.findAndRemove_fromTowards_head( "0" ).data );
-        assertEquals( "0", this.node0.findAndRemove_fromTowards_head( "0" ).data );
+        assertEquals( "0", this.node2.findAndRemove_toFromHead( "0" ).data );
+        assertEquals( "0", this.node0.findAndRemove_toFromHead( "0" ).data );
+        assertEquals( "0", this.node0.findAndRemove_toFromHead( "0" ).data );
 
         assertNull( this.node0.previous );
         assertNull( this.node0.next );
@@ -737,13 +735,13 @@ class NodeTest {
         assertNull( this.node1.previous );
         assertNotNull( this.node1.next );
 
-        assertNull( this.node1.find_fromTowards_head( "0" ) );
-        assertNull( this.node2.find_fromTowards_head( "0" ) );
-        assertNull( this.node3.find_fromTowards_head( "0" ) );
-        assertNull( this.node4.find_fromTowards_head( "0" ) );
+        assertNull( this.node1.find_toFromHead( "0" ) );
+        assertNull( this.node2.find_toFromHead( "0" ) );
+        assertNull( this.node3.find_toFromHead( "0" ) );
+        assertNull( this.node4.find_toFromHead( "0" ) );
 
         for ( int i = 0; i < 5; i++ ) {
-            assertNull( this.node0.find_fromTowards_head( String.valueOf( i + 1 ) ) );
+            assertNull( this.node0.find_toFromHead( String.valueOf( i + 1 ) ) );
         }
 
         //Repeat with Tail
@@ -753,9 +751,9 @@ class NodeTest {
         assertNotNull( this.node3.previous );
         assertNotNull( this.node3.next );
 
-        assertEquals( "4", this.node1.findAndRemove_fromTowards_head( "4" ).data );
-        assertEquals( "4", this.node4.findAndRemove_fromTowards_head( "4" ).data );
-        assertEquals( "4", this.node4.findAndRemove_fromTowards_head( "4" ).data );
+        assertEquals( "4", this.node1.findAndRemove_toFromHead( "4" ).data );
+        assertEquals( "4", this.node4.findAndRemove_toFromHead( "4" ).data );
+        assertEquals( "4", this.node4.findAndRemove_toFromHead( "4" ).data );
 
         assertNull( this.node4.previous );
         assertNull( this.node4.next );
@@ -763,13 +761,13 @@ class NodeTest {
         assertNotNull( this.node3.previous );
         assertNull( this.node3.next );
 
-        assertNull( this.node0.find_fromTowards_head( "4" ) );
-        assertNull( this.node1.find_fromTowards_head( "4" ) );
-        assertNull( this.node2.find_fromTowards_head( "4" ) );
-        assertNull( this.node3.find_fromTowards_head( "4" ) );
+        assertNull( this.node0.find_toFromHead( "4" ) );
+        assertNull( this.node1.find_toFromHead( "4" ) );
+        assertNull( this.node2.find_toFromHead( "4" ) );
+        assertNull( this.node3.find_toFromHead( "4" ) );
 
         for ( int i = 0; i < 5; i++ ) {
-            assertNull( this.node4.find_fromTowards_head( String.valueOf( i - 1 ) ) );
+            assertNull( this.node4.find_toFromHead( String.valueOf( i - 1 ) ) );
         }
 
         //Repeat with Middle
@@ -782,9 +780,9 @@ class NodeTest {
         assertEquals( this.node2, this.node1.next );
         assertEquals( this.node2, this.node3.previous );
 
-        assertEquals( "2", this.node3.findAndRemove_fromTowards_head( "2" ).data );
-        assertEquals( "2", this.node2.findAndRemove_fromTowards_head( "2" ).data );
-        assertEquals( "2", this.node2.findAndRemove_fromTowards_head( "2" ).data );
+        assertEquals( "2", this.node3.findAndRemove_toFromHead( "2" ).data );
+        assertEquals( "2", this.node2.findAndRemove_toFromHead( "2" ).data );
+        assertEquals( "2", this.node2.findAndRemove_toFromHead( "2" ).data );
 
         assertNull( this.node2.previous );
         assertNull( this.node2.next );
@@ -795,21 +793,21 @@ class NodeTest {
         assertNull( this.node1.previous );
         assertNull( this.node3.next );
 
-        assertNull( this.node0.find_fromTowards_head( "2" ) );
-        assertNull( this.node1.find_fromTowards_head( "2" ) );
+        assertNull( this.node0.find_toFromHead( "2" ) );
+        assertNull( this.node1.find_toFromHead( "2" ) );
 
-        assertNull( this.node3.find_fromTowards_head( "2" ) );
-        assertNull( this.node4.find_fromTowards_head( "2" ) );
+        assertNull( this.node3.find_toFromHead( "2" ) );
+        assertNull( this.node4.find_toFromHead( "2" ) );
 
-        assertNull( this.node2.find_fromTowards_head( String.valueOf( 0 ) ) );
-        assertNull( this.node2.find_fromTowards_head( String.valueOf( 1 ) ) );
-        assertNull( this.node2.find_fromTowards_head( String.valueOf( 3 ) ) );
-        assertNull( this.node2.find_fromTowards_head( String.valueOf( 4 ) ) );
+        assertNull( this.node2.find_toFromHead( String.valueOf( 0 ) ) );
+        assertNull( this.node2.find_toFromHead( String.valueOf( 1 ) ) );
+        assertNull( this.node2.find_toFromHead( String.valueOf( 3 ) ) );
+        assertNull( this.node2.find_toFromHead( String.valueOf( 4 ) ) );
     }
 
     @Test
     void findAndRemove_fromTowards_tail() {
-        assertNull( this.node0.findAndRemove_fromTowards_tail( null ) );
+        assertNull( this.node0.findAndRemove_toFromTail( null ) );
 
         assertEquals( this.node1, this.node0.next );
         assertNull( this.node0.previous );
@@ -817,9 +815,9 @@ class NodeTest {
         assertNotNull( this.node1.previous );
         assertNotNull( this.node1.next );
 
-        assertEquals( "0", this.node2.findAndRemove_fromTowards_tail( "0" ).data );
-        assertEquals( "0", this.node0.findAndRemove_fromTowards_tail( "0" ).data );
-        assertEquals( "0", this.node0.findAndRemove_fromTowards_tail( "0" ).data );
+        assertEquals( "0", this.node2.findAndRemove_toFromTail( "0" ).data );
+        assertEquals( "0", this.node0.findAndRemove_toFromTail( "0" ).data );
+        assertEquals( "0", this.node0.findAndRemove_toFromTail( "0" ).data );
 
         assertNull( this.node0.previous );
         assertNull( this.node0.next );
@@ -827,13 +825,13 @@ class NodeTest {
         assertNull( this.node1.previous );
         assertNotNull( this.node1.next );
 
-        assertNull( this.node1.findAndRemove_fromTowards_tail( "0" ) );
-        assertNull( this.node2.findAndRemove_fromTowards_tail( "0" ) );
-        assertNull( this.node3.findAndRemove_fromTowards_tail( "0" ) );
-        assertNull( this.node4.findAndRemove_fromTowards_tail( "0" ) );
+        assertNull( this.node1.findAndRemove_toFromTail( "0" ) );
+        assertNull( this.node2.findAndRemove_toFromTail( "0" ) );
+        assertNull( this.node3.findAndRemove_toFromTail( "0" ) );
+        assertNull( this.node4.findAndRemove_toFromTail( "0" ) );
 
         for ( int i = 0; i < 5; i++ ) {
-            assertNull( this.node0.findAndRemove_fromTowards_tail( String.valueOf( i + 1 ) ) );
+            assertNull( this.node0.findAndRemove_toFromTail( String.valueOf( i + 1 ) ) );
         }
 
         //Repeat with Tail
@@ -843,9 +841,9 @@ class NodeTest {
         assertNotNull( this.node3.previous );
         assertNotNull( this.node3.next );
 
-        assertEquals( "4", this.node1.findAndRemove_fromTowards_tail( "4" ).data );
-        assertEquals( "4", this.node4.findAndRemove_fromTowards_tail( "4" ).data );
-        assertEquals( "4", this.node4.findAndRemove_fromTowards_tail( "4" ).data );
+        assertEquals( "4", this.node1.findAndRemove_toFromTail( "4" ).data );
+        assertEquals( "4", this.node4.findAndRemove_toFromTail( "4" ).data );
+        assertEquals( "4", this.node4.findAndRemove_toFromTail( "4" ).data );
 
         assertNull( this.node4.previous );
         assertNull( this.node4.next );
@@ -853,13 +851,13 @@ class NodeTest {
         assertNotNull( this.node3.previous );
         assertNull( this.node3.next );
 
-        assertNull( this.node0.findAndRemove_fromTowards_tail( "4" ) );
-        assertNull( this.node1.findAndRemove_fromTowards_tail( "4" ) );
-        assertNull( this.node2.findAndRemove_fromTowards_tail( "4" ) );
-        assertNull( this.node3.findAndRemove_fromTowards_tail( "4" ) );
+        assertNull( this.node0.findAndRemove_toFromTail( "4" ) );
+        assertNull( this.node1.findAndRemove_toFromTail( "4" ) );
+        assertNull( this.node2.findAndRemove_toFromTail( "4" ) );
+        assertNull( this.node3.findAndRemove_toFromTail( "4" ) );
 
         for ( int i = 0; i < 5; i++ ) {
-            assertNull( this.node4.findAndRemove_fromTowards_tail( String.valueOf( i - 1 ) ) );
+            assertNull( this.node4.findAndRemove_toFromTail( String.valueOf( i - 1 ) ) );
         }
 
         //Repeat with Middle
@@ -872,9 +870,9 @@ class NodeTest {
         assertEquals( this.node2, this.node1.next );
         assertEquals( this.node2, this.node3.previous );
 
-        assertEquals( "2", this.node3.findAndRemove_fromTowards_tail( "2" ).data );
-        assertEquals( "2", this.node2.findAndRemove_fromTowards_tail( "2" ).data );
-        assertEquals( "2", this.node2.findAndRemove_fromTowards_tail( "2" ).data );
+        assertEquals( "2", this.node3.findAndRemove_toFromTail( "2" ).data );
+        assertEquals( "2", this.node2.findAndRemove_toFromTail( "2" ).data );
+        assertEquals( "2", this.node2.findAndRemove_toFromTail( "2" ).data );
 
         assertNull( this.node2.previous );
         assertNull( this.node2.next );
@@ -885,16 +883,16 @@ class NodeTest {
         assertNull( this.node1.previous );
         assertNull( this.node3.next );
 
-        assertNull( this.node0.findAndRemove_fromTowards_tail( "2" ) );
-        assertNull( this.node1.findAndRemove_fromTowards_tail( "2" ) );
+        assertNull( this.node0.findAndRemove_toFromTail( "2" ) );
+        assertNull( this.node1.findAndRemove_toFromTail( "2" ) );
 
-        assertNull( this.node3.findAndRemove_fromTowards_tail( "2" ) );
-        assertNull( this.node4.findAndRemove_fromTowards_tail( "2" ) );
+        assertNull( this.node3.findAndRemove_toFromTail( "2" ) );
+        assertNull( this.node4.findAndRemove_toFromTail( "2" ) );
 
-        assertNull( this.node2.findAndRemove_fromTowards_tail( String.valueOf( 0 ) ) );
-        assertNull( this.node2.findAndRemove_fromTowards_tail( String.valueOf( 1 ) ) );
-        assertNull( this.node2.findAndRemove_fromTowards_tail( String.valueOf( 3 ) ) );
-        assertNull( this.node2.findAndRemove_fromTowards_tail( String.valueOf( 4 ) ) );
+        assertNull( this.node2.findAndRemove_toFromTail( String.valueOf( 0 ) ) );
+        assertNull( this.node2.findAndRemove_toFromTail( String.valueOf( 1 ) ) );
+        assertNull( this.node2.findAndRemove_toFromTail( String.valueOf( 3 ) ) );
+        assertNull( this.node2.findAndRemove_toFromTail( String.valueOf( 4 ) ) );
     }
 
     @Test
@@ -960,9 +958,9 @@ class NodeTest {
 
         System.out.println( "insert towards head" );
         node2.print_towardsFromHead();
-        this.node2.insertNode_towardsHead( node5 );
+        this.node2.insert_towardsHead( node5 );
         node2.print_towardsFromHead();
-        this.node2.insertNode_towardsHead( node6 );
+        this.node2.insert_towardsHead( node6 );
         node2.print_towardsFromHead();
 
         assertEquals( node6.data, this.node2.previous.data );
@@ -971,30 +969,30 @@ class NodeTest {
         assertEquals( this.node2.data, node6.next.data );
         assertEquals( this.node2.data, node5.next.next.data );
 
-        node5.insertNode_towardsHead( this.node2 );
+        node5.insert_towardsHead( this.node2 );
         node6.print_towardsFromHead();
-        node5.insertNode_towardsHead( this.node2 );
+        node5.insert_towardsHead( this.node2 );
         node6.print_towardsFromHead();
-        node5.insertNode_towardsHead( this.node2 );
+        node5.insert_towardsHead( this.node2 );
         node6.print_towardsFromHead();
 
         assertEquals( this.node2.data, node5.previous.data );
         assertEquals( node5.data, this.node2.next.data );
 
 
-        String[] node2s = this.node2.strings_towardsFromHead();
-        String[] node6s = node6.strings_towardsFromHead();
+        String[] node2s = this.node2.strings_toFromHead();
+        String[] node6s = node6.strings_toFromHead();
 
         for ( int i = 0; i < node6s.length; i++ ) {
             assertEquals( node2s[ i ], node6s[ i ] );
         }
 
         node6.print_towardsFromHead();
-        assertEquals( 7, node5.strings_towardsFromHead().length );
-        node6.removeNode();
+        assertEquals( 7, node5.strings_toFromHead().length );
+        node6.remove();
         node5.print_towardsFromHead();
-        assertEquals( 6, node5.strings_towardsFromHead().length );
-        assertEquals( 1, node6.strings_towardsFromHead().length );
+        assertEquals( 6, node5.strings_toFromHead().length );
+        assertEquals( 1, node6.strings_toFromHead().length );
         node6.print_towardsFromHead();
         System.out.println();
     }
@@ -1007,35 +1005,35 @@ class NodeTest {
         System.out.println( "insert towards tail" );
         this.node2.print_towardsFromHead();
 
-        this.node2.insertNode_towardsTail( node5 );
+        this.node2.insert_towardsTail( node5 );
         this.node2.print_towardsFromHead();
-        this.node2.insertNode_towardsTail( node6 );
+        this.node2.insert_towardsTail( node6 );
         this.node2.print_towardsFromHead();
 
         assertEquals( node6.data, this.node2.next.data );
         assertEquals( node5.data, this.node2.next.next.data );
 
-        node5.insertNode_towardsTail( this.node2 );
+        node5.insert_towardsTail( this.node2 );
         this.node2.print_towardsFromHead();
-        node5.insertNode_towardsTail( this.node2 );
+        node5.insert_towardsTail( this.node2 );
         this.node2.print_towardsFromHead();
 
         assertEquals( this.node2.data, node5.next.data );
         assertEquals( this.node2.data, node6.next.next.data );
 
-        String[] node2s = this.node2.strings_towardsFromTail();
-        String[] node6s = node6.strings_towardsFromTail();
+        String[] node2s = this.node2.strings_toFromTail();
+        String[] node6s = node6.strings_toFromTail();
 
         for ( int i = 0; i < node6s.length; i++ ) {
             assertEquals( node2s[ i ], node6s[ i ] );
         }
 
         node6.print_towardsFromHead();
-        assertEquals( 7, node5.strings_towardsFromHead().length );
-        node6.removeNode();
+        assertEquals( 7, node5.strings_toFromHead().length );
+        node6.remove();
         node5.print_towardsFromHead();
-        assertEquals( 6, node5.strings_towardsFromHead().length );
-        assertEquals( 1, node6.strings_towardsFromHead().length );
+        assertEquals( 6, node5.strings_toFromHead().length );
+        assertEquals( 1, node6.strings_toFromHead().length );
         node6.print_towardsFromHead();
         System.out.println();
     }

@@ -1,5 +1,3 @@
-import java.util.ArrayList;
-
 public class NodeList {
     private Node tail = null;
     private Node head = null;
@@ -8,19 +6,19 @@ public class NodeList {
     }
 
     public NodeList( Node someNode ) {
-        this.setNodeNetwork( someNode );
+        this.setNodeNetwork_fromNode( someNode );
     }
 
     //Set NodeNetwork
     public boolean setNodeNetwork_fromHead() {
-        return this.setNodeNetwork( this.head );
+        return this.setNodeNetwork_fromNode( this.head );
     }
 
     public boolean setNodeNetwork_fromTail() {
-        return this.setNodeNetwork( this.tail );
+        return this.setNodeNetwork_fromNode( this.tail );
     }
 
-    public boolean setNodeNetwork( Node someNode ) {
+    public boolean setNodeNetwork_fromNode( Node someNode ) {
         if ( someNode == null ) {
             return false;
         }
@@ -31,10 +29,10 @@ public class NodeList {
 
 
     //Getters
-    public Node getHead() {
+    public Node calcHead() {
         if ( this.head == null ) {
             if ( this.tail != null ) {
-                this.head = Node.findHead( this.getTail() );
+                this.head = Node.findHead( this.calcTail() );
                 return this.head;
             }
             return null;
@@ -68,10 +66,10 @@ public class NodeList {
         return this.head;
     }
 
-    public Node getTail() {
+    public Node calcTail() {
         if ( this.tail == null ) {
             if ( this.head != null ) {
-                this.tail = Node.findTail( this.getHead() );
+                this.tail = Node.findTail( this.calcHead() );
                 return this.tail;
             }
             return null;
@@ -105,88 +103,88 @@ public class NodeList {
     }
     //Print
     public void print_fromHead() {
-        Node.print_towardsFromHead( this.getHead() );
+        Node.print_towardsFromHead( this.calcHead() );
     }
 
     public void print_fromTail() {
-        Node.print_towardsFromTail( this.getTail() );
+        Node.print_towardsFromTail( this.calcTail() );
     }
 
     //Strings - Simple Standalone
     public String[] strings_fromHead() {
-        return Node.strings_towardsFromHead( this.getHead() );
+        return Node.strings_toFromHead( this.calcHead() );
     }
 
     public String[] strings_fromTail() {
-        return Node.strings_towardsFromTail( this.getTail() );
+        return Node.strings_toFromTail( this.calcTail() );
     }
 
     //Strings
     public String[] strings_fromHead( StringBuilder stringBuilder ) {
-        return Node.strings_towardsFromHead( this.getHead(), stringBuilder );
+        return Node.strings_toFromHead( this.calcHead(), stringBuilder );
     }
 
     public String[] strings_fromTail( StringBuilder stringBuilder ) {
-        return Node.strings_towardsFromTail( this.getTail(), stringBuilder );
+        return Node.strings_toFromTail( this.calcTail(), stringBuilder );
     }
 
     //Stringbuilder - Simple Standalone
-    public StringBuilder stringbuilder_fromHead() {
-        return Node.stringbuilder_fromHead( this.getHead() );
+    public StringBuilder sb_fromHead() {
+        return Node.sb_toFromHead( this.calcHead() );
     }
 
-    public StringBuilder stringbuilder_fromTail() {
-        return Node.stringbuilder_fromTail( this.getTail() );
+    public StringBuilder sb_fromTail() {
+        return Node.sb_toFromTail( this.calcTail() );
     }
 
     //Stringbuilder
-    public StringBuilder stringbuilder_fromHead( StringBuilder stringBuilder ) {
-        return Node.stringbuilder_fromHead( this.getHead(), stringBuilder );
+    public StringBuilder sb_fromHead( StringBuilder stringBuilder ) {
+        return Node.sb_toFromHead( this.calcHead(), stringBuilder );
     }
 
-    public StringBuilder stringbuilder_fromTail( StringBuilder stringBuilder ) {
-        return Node.stringbuilder_fromTail( this.getTail(), stringBuilder );
+    public StringBuilder sb_fromTail( StringBuilder stringBuilder ) {
+        return Node.sb_toFromTail( this.calcTail(), stringBuilder );
     }
 
 
     //Find and Remove
     public Node findAndRemove_fromHead( String data ) {
         Node nodeToRemove = this.find_fromHead( data );
-        return this.removeNode(nodeToRemove);
+        return this.remove(nodeToRemove);
     }
 
     public Node findAndRemove_fromTail( String data ) {
         Node nodeToRemove = this.find_fromTail( data );
-        return this.removeNode(nodeToRemove);
+        return this.remove(nodeToRemove);
     }
 
     //Find
     public Node find_fromHead( String data ) {
-        return Node.find_fromTowards_head( this.getHead(), data );
+        return Node.find_toFromHead( this.calcHead(), data );
     }
 
     public Node find_fromTail( String data ) {
-        return Node.find_fromTowards_tail( this.getTail(), data );
+        return Node.find_toFromTail( this.calcTail(), data );
     }
 
     //Remove
-    public Node removeNode_head() {
-        return this.removeNode( this.getHead() );
+    public Node removeHead() {
+        return this.remove( this.calcHead() );
     }
 
-    public Node removeNode_tail() {
-        return this.removeNode( this.getTail() );
+    public Node removeTail() {
+        return this.remove( this.calcTail() );
     }
 
-    public Node removeNode( Node nodeToRemove ) {
+    public Node remove( Node nodeToRemove ) {
         //Is Null
         if ( nodeToRemove == null ) {
             return null;
         }
 
         //Update Head and Tails
-        this.getHead();
-        this.getTail();
+        this.calcHead();
+        this.calcTail();
 
         //List Specific
         //Is only node in list
@@ -208,7 +206,7 @@ public class NodeList {
             if ( this.head.next != null ) {
                 if ( nodeToRemove.equals( this.head ) ) {
                     this.head = this.head.next;
-                    return Node.helper_removeNode_head( nodeToRemove );
+                    return Node.helper_remove_head( nodeToRemove );
                 }
             }
         }
@@ -218,49 +216,49 @@ public class NodeList {
             if ( this.tail.previous != null ) {
                 if ( nodeToRemove.equals( this.tail ) ) {
                     this.tail = this.tail.previous;
-                    return Node.helper_removeNode_tail( nodeToRemove );
+                    return Node.helper_remove_tail( nodeToRemove );
                 }
             }
         }
 
         //General Removal, middle, head or tail on a different list, ect.
-        return Node.removeNode( nodeToRemove );
+        return nodeToRemove.remove();
 
 
     }
 
 
     //Insert
-    public Node insertNode_asHead( Node n ) {
+    public Node insertHead( Node n ) {
         if ( n == null ) {
             return null;
         }
 
-        if ( this.listHas_zeroNodes() ) {
+        if ( this.hasZeroNodes() ) {
             this.helper_emptyList_make_headAndTail_outOfThisNode( n );
 
             return this.head;
         }
 
-        n = this.insertNode_beforeThisNode( n, this.head );
+        n = this.insertBefore( n, this.head );
 
         this.head = n;
 
         return n;
     }
 
-    public Node insertNode_asTail( Node n ) {
+    public Node insertTail( Node n ) {
         if ( n == null ) {
             return null;
         }
 
-        if ( this.listHas_zeroNodes() ) {
+        if ( this.hasZeroNodes() ) {
             this.helper_emptyList_make_headAndTail_outOfThisNode( n );
 
             return this.tail;
         }
 
-        n = this.insertNode_afterThisNode( n, this.tail );
+        n = this.insertAfter( n, this.tail );
 
         this.tail = n;
 
@@ -271,7 +269,7 @@ public class NodeList {
         //BEFORE USING THIS;
         //-Must have checked the list is empty
 
-        n = this.removeNode( n );
+        n = this.remove( n );
         n.next = null;
         n.previous = null;
 
@@ -284,34 +282,34 @@ public class NodeList {
         this.tail.previous = null;
     }
 
-    public Node insertNode_beforeThisNode( Node inserted, Node beforeThis ) {
+    public Node insertBefore( Node inserted, Node beforeThis ) {
         try {
-            if ( beforeThis.equals( this.getHead() ) ) {
+            if ( beforeThis.equals( this.calcHead() ) ) {
                 this.head = inserted;
             }
         } catch ( Exception ignored ) {
         }
 
-        return Node.insertNode_beforeThisNode( inserted, beforeThis );
+        return Node.insertBefore( inserted, beforeThis );
 
     }
 
-    public Node insertNode_afterThisNode( Node inserted, Node afterThis ) {
+    public Node insertAfter( Node inserted, Node afterThis ) {
         try {
-            if ( afterThis.equals( this.getTail() ) ) {
+            if ( afterThis.equals( this.calcTail() ) ) {
                 this.tail = inserted;
             }
         } catch ( Exception ignored ) {
         }
 
-        return Node.insertNode_afterThisNode( inserted, afterThis );
+        return Node.insertAfter( inserted, afterThis );
 
     }
 
 
     //Boooooooooooooooooooooooooooooooo
-    public boolean listHas_oneNode() {
-        if ( this.listHas_zeroNodes() ) {
+    public boolean hasOneNode() { //List Has
+        if ( this.hasZeroNodes() ) {
             return false;
         }
         if ( this.head.equals( this.tail ) ) {
@@ -320,38 +318,15 @@ public class NodeList {
         return false;
     }
 
-    public boolean listHas_zeroNodes() {
+    public boolean hasZeroNodes() { //List Has
         //Update heads and Tails
-        this.getHead();
-        this.getTail();
+        this.calcHead();
+        this.calcTail();
 
         if ( this.head == null && this.tail == null ) {
             return true;
         }
         return false;
-    }
-
-    public static boolean nodesHave_sameNetwork( Node node1, Node node2 ) {
-
-        try {
-            boolean resTemp = Node.findHead( node1 ).equals( Node.findHead( node2 ) );
-            if ( !resTemp ) {
-                return false;
-            }
-        } catch ( Exception e ) {
-            return false;
-        }
-
-        try {
-            boolean resTemp = Node.findTail( node1 ).equals( Node.findTail( node2 ) );
-            if ( !resTemp ) {
-                return false;
-            }
-        } catch ( Exception e ) {
-            return false;
-        }
-
-        return true;
     }
 
 

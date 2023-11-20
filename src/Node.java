@@ -14,130 +14,178 @@ public class Node {
 
     //Getters
     public Node getNext() {
-//        if ( this.next == null ) {
-//            return null;
-//        }
-
         return this.next;
     }
 
     public Node getPrevious() {
-//        if ( this.previous == null ) {
-//            return null;
-//        }
-
         return this.previous;
     }
 
     public String getData() {
-//        if ( this.data == null ) {
-//            return null;
-//        }
-
         return this.data;
     }
 
+
     //Print towardsFromComplete
     public void print_towardsFromHead() {
-        System.out.println( Arrays.toString( this.strings_towardsFromHead() ) );
+        System.out.println( Arrays.toString( this.strings_toFromHead() ) );
     }
 
     public void print_towardsFromTail() {
-        System.out.println( Arrays.toString( this.strings_towardsFromTail() ) );
+        System.out.println( Arrays.toString( this.strings_toFromTail() ) );
     }
 
     //Print towardsFromComplete - Static
     public static void print_towardsFromHead( Node n ) {
-        System.out.println( Arrays.toString( strings_towardsFromHead( n ) ) );
+        System.out.println( Arrays.toString( strings_toFromHead( n ) ) );
     }
 
     public static void print_towardsFromTail( Node n ) {
-        System.out.println( Arrays.toString( strings_towardsFromTail( n ) ) );
-    }
-
-    //String[] - towardsFromComplete - Simple Standalone
-    public String[] strings_towardsFromHead() {
-        return stringBuilderToStrings( this.stringbuilder_fromHead() );
-    }
-
-    public String[] strings_towardsFromTail() {
-        return stringBuilderToStrings( this.stringbuilder_fromTail() );
-
+        System.out.println( Arrays.toString( strings_toFromTail( n ) ) );
     }
 
 
-    //String[] - towardsFromComplete
-    public String[] strings_towardsFromHead( StringBuilder stringBuilder ) {
-        return stringBuilderToStrings( this.stringbuilder_fromHead( stringBuilder ) );
+    //String[] - toFromComplete - Simple Standalone
+    public String[] strings_toFromHead() {
+        return sbToStrings( this.sb_toFromHead() );
     }
 
-    public String[] strings_towardsFromTail( StringBuilder stringBuilder ) {
-        return stringBuilderToStrings( this.stringbuilder_fromTail( stringBuilder ) );
+    public String[] strings_toFromTail() {
+        return sbToStrings( this.sb_toFromTail() );
 
     }
 
-    //String[] - towardsFromComplete - Static - Simple Standalone
-    public static String[] strings_towardsFromHead( Node n ) {
-        return stringBuilderToStrings( stringbuilder_fromHead( n ) );
+
+    //String[] - toFromComplete
+    public String[] strings_toFromHead( StringBuilder stringBuilder ) {
+        return sbToStrings( this.sb_toFromHead( stringBuilder ) );
     }
 
-    public static String[] strings_towardsFromTail( Node n ) {
-        return stringBuilderToStrings( stringbuilder_fromTail( n ) );
+    public String[] strings_toFromTail( StringBuilder stringBuilder ) {
+        return sbToStrings( this.sb_toFromTail( stringBuilder ) );
+
     }
 
-    //String[] - towardsFromComplete - Static
-
-    public static String[] strings_towardsFromHead( Node n, StringBuilder stringBuilder ) {
-        return stringBuilderToStrings( stringbuilder_fromHead( n, stringBuilder ) );
+    //String[] - toFromComplete - Static - Simple Standalone
+    public static String[] strings_toFromHead( Node n ) {
+        return sbToStrings( sb_toFromHead( n ) );
     }
 
-    public static String[] strings_towardsFromTail( Node n, StringBuilder stringBuilder ) {
-        return stringBuilderToStrings( stringbuilder_fromTail( n, stringBuilder ) );
+    public static String[] strings_toFromTail( Node n ) {
+        return sbToStrings( sb_toFromTail( n ) );
+    }
+
+    //String[] - toFromComplete - Static
+
+    public static String[] strings_toFromHead( Node n, StringBuilder stringBuilder ) {
+        return sbToStrings( sb_toFromHead( n, stringBuilder ) );
+    }
+
+    public static String[] strings_toFromTail( Node n, StringBuilder stringBuilder ) {
+        return sbToStrings( sb_toFromTail( n, stringBuilder ) );
     }
 
     //Helper-------------------------------------------------------------------------------------------------------
-    public static String[] stringBuilderToStrings( StringBuilder stringBuilder ) {
+    public static String[] sbToStrings( StringBuilder stringBuilder ) {
         return stringBuilder.toString().split( stringBuilderDivider );
     }
 
-    public static StringBuilder stringsToStringBuilder( String[] strings ) {
+    public static StringBuilder stringsToSb( String[] strings ) {
         return new StringBuilder( String.join( stringBuilderDivider, strings ) );
     }
 
-    //Stringbuilder  - towardsFromComplete - Simple Standalone
-    public StringBuilder stringbuilder_fromHead() {
-        return stringbuilder_fromHead( this );
+
+    //Stringbuilder  - toFromComplete - Simple Standalone
+    public StringBuilder sb_toFromHead() {
+        return sb_toFromHead( this );
     }
 
-    public StringBuilder stringbuilder_fromTail() {
-        return stringbuilder_fromTail( this );
+    public StringBuilder sb_toFromTail() {
+        return sb_toFromTail( this );
     }
 
-    //Stringbuilder  - towardsFromComplete
-    public StringBuilder stringbuilder_fromHead( StringBuilder stringBuilder ) {
-        return stringbuilder_fromHead( this, stringBuilder );
+    //Stringbuilder  - toFromComplete
+    public StringBuilder sb_toFromHead( StringBuilder stringBuilder ) {
+        return sb_toFromHead( this, stringBuilder );
     }
 
-    public StringBuilder stringbuilder_fromTail( StringBuilder stringBuilder ) {
-        return stringbuilder_fromTail( this, stringBuilder );
+    public StringBuilder sb_toFromTail( StringBuilder stringBuilder ) {
+        return sb_toFromTail( this, stringBuilder );
     }
 
-    //Stringbuilder  - towardsFromComplete - Static - Simple Standalone
-    public static StringBuilder stringbuilder_fromHead( Node n ) {
-        return stringbuilder_fromHead( n, new StringBuilder() );
+    //Stringbuilder  - toFromComplete - Static - Simple Standalone
+    public static StringBuilder sb_toFromHead( Node n ) {
+        return sb_toFromHead( n, new StringBuilder() );
     }
 
-    public static StringBuilder stringbuilder_fromTail( Node n ) {
-        return stringbuilder_fromTail( n, new StringBuilder() );
+    public static StringBuilder sb_toFromTail( Node n ) {
+        return sb_toFromTail( n, new StringBuilder() );
     }
 
-    //Stringbuilder - towardsFromComplete - Static
-    public static StringBuilder stringbuilder_fromHead( Node n, StringBuilder stringBuilder ) {
+
+    //Stringbuilder - from - Simple Standalone
+    public StringBuilder sb_toHead_reverse() {
+        return sb_toHead_reverse( this );
+    }
+
+    public StringBuilder sb_toTail_reverse() {
+        return sb_toTail_reverse( this );
+    }
+
+    //towards
+    public StringBuilder sb_toHead() {
+        return sb_toHead_reverse( this );
+    }
+
+    public StringBuilder sb_toTail() {
+        return sb_toTail_reverse( this );
+    }
+
+    //Stringbuilder - from
+    public StringBuilder sb_toHead_reverse( StringBuilder stringBuilder ) {
+        return sb_toHead_reverse( this, stringBuilder );
+    }
+
+    public StringBuilder sb_toTail_reverse( StringBuilder stringBuilder ) {
+        return sb_toTail_reverse( this, stringBuilder );
+    }
+
+    //towards
+    public StringBuilder sb_toHead( StringBuilder stringBuilder ) {
+        return sb_toHead_reverse( this, stringBuilder );
+    }
+
+    public StringBuilder sb_toTail( StringBuilder stringBuilder ) {
+        return sb_toTail_reverse( this, stringBuilder );
+    }
+
+
+    //Stringbuilder - from - Static - Simple Standalone
+    public static StringBuilder sb_toHead_reverse( Node n ) {
+        return sb_toHead_reverse( n, new StringBuilder() );
+    }
+
+    public static StringBuilder sb_toTail_reverse( Node n ) {
+        return sb_toTail_reverse( n, new StringBuilder() );
+    }
+
+    //towards
+    public static StringBuilder sb_toHead( Node n ) {
+        return sb_toHead( n, new StringBuilder() );
+    }
+
+    public static StringBuilder sb_toTail( Node n ) {
+        return sb_toTail( n, new StringBuilder() );
+    }
+
+
+    //Stringbuilder - toFromComplete - Static
+    public static StringBuilder sb_toFromHead( Node n, StringBuilder stringBuilder ) {
         if ( n == null || stringBuilder == null ) {
             return stringBuilder;
         }
 
-        stringbuilder_towardsReverseHead( n, stringBuilder );
+        sb_toHead_reverse( n, stringBuilder );
 
         //We need to remove node n, since it will be added again
         //We know node n is the last "something" + divider password
@@ -146,24 +194,22 @@ public class Node {
 //            stringBuilder.delete( lastIndex + 1, stringBuilder.length() );
 
         if ( n.next != null ) {
-            if ( n.next.previous != n  ) {
+            if ( n.next.previous != n ) {
                 n.next = null;
             } else {
-                stringbuilder_towardsTail( n.getNext(), stringBuilder );
+                sb_toTail( n.getNext(), stringBuilder );
             }
         }
         return stringBuilder;
     }
 
-    public static StringBuilder stringbuilder_fromTail( Node n, StringBuilder stringBuilder ) {
+    public static StringBuilder sb_toFromTail( Node n, StringBuilder stringBuilder ) {
         if ( n == null || stringBuilder == null ) {
             return stringBuilder;
         }
 
 
-
-
-        stringbuilder_towardsReverseTail( n, stringBuilder );
+        sb_toTail_reverse( n, stringBuilder );
 
         //We need to remove node n, since it will be added again
         //We know node n is the last "something" + divider password
@@ -173,10 +219,10 @@ public class Node {
 
 
         if ( n.previous != null ) {
-            if ( n.previous.next != n  ) {
+            if ( n.previous.next != n ) {
                 n.previous = null;
             } else {
-                stringbuilder_towardsHead( n.getPrevious(), stringBuilder );
+                sb_toHead( n.getPrevious(), stringBuilder );
             }
         }
 
@@ -184,69 +230,14 @@ public class Node {
 
     }
 
-
-    //Stringbuilder - from - Simple Standalone
-    public StringBuilder stringbuilder_towardsReverseHead() {
-        return stringbuilder_towardsReverseHead( this );
-    }
-
-    public StringBuilder stringbuilder_towardsReverseTail() {
-        return stringbuilder_towardsReverseTail( this );
-    }
-
-    //towards
-    public StringBuilder stringbuilder_towardsHead() {
-        return stringbuilder_towardsReverseHead( this );
-    }
-
-    public StringBuilder stringbuilder_towardsTail() {
-        return stringbuilder_towardsReverseTail( this );
-    }
-
-    //Stringbuilder - from
-    public StringBuilder stringbuilder_towardsReverseHead( StringBuilder stringBuilder ) {
-        return stringbuilder_towardsReverseHead( this, stringBuilder );
-    }
-
-    public StringBuilder stringbuilder_towardsReverseTail( StringBuilder stringBuilder ) {
-        return stringbuilder_towardsReverseTail( this, stringBuilder );
-    }
-
-    //towards
-    public StringBuilder stringbuilder_towardsHead( StringBuilder stringBuilder ) {
-        return stringbuilder_towardsReverseHead( this, stringBuilder );
-    }
-
-    public StringBuilder stringbuilder_towardsTail( StringBuilder stringBuilder ) {
-        return stringbuilder_towardsReverseTail( this, stringBuilder );
-    }
-
-
-    //Stringbuilder - from - Static - Simple Standalone
-    public static StringBuilder stringbuilder_towardsReverseHead( Node n ) {
-        return stringbuilder_towardsReverseHead( n, new StringBuilder() );
-    }
-
-    public static StringBuilder stringbuilder_towardsReverseTail( Node n ) {
-        return stringbuilder_towardsReverseTail( n, new StringBuilder() );
-    }
-
-    //towards
-    public static StringBuilder stringbuilder_towardsHead( Node n ) {
-        return stringbuilder_towardsHead( n, new StringBuilder() );
-    }
-
-    public static StringBuilder stringbuilder_towardsTail( Node n ) {
-        return stringbuilder_towardsTail( n, new StringBuilder() );
-    }
 
     //Stringbuilder - from  - Static
-    public static StringBuilder stringbuilder_towardsReverseHead( Node n, StringBuilder stringBuilder ) {
+    public static StringBuilder sb_toHead_reverse( Node n, StringBuilder stringBuilder ) {
         if ( n == null || stringBuilder == null ) {
             return stringBuilder;
         }
 
-        StringBuilder stringBuilder1 = new StringBuilder(stringBuilder);
+        StringBuilder stringBuilder1 = new StringBuilder( stringBuilder );
 
         Node node = n;
 
@@ -261,7 +252,7 @@ public class Node {
                 //If the last node isn't actually the last node, then we might have started a loop, fix it!
                 if ( node.next != lastNode ) {
                     lastNode.previous = null;
-                    stringBuilder.replace(0, stringBuilder.length(), String.valueOf( stringbuilder_towardsReverseHead( n, stringBuilder1 ) ) );
+                    stringBuilder.replace( 0, stringBuilder.length(), String.valueOf( sb_toHead_reverse( n, stringBuilder1 ) ) );
                     return stringBuilder;
                 }
 
@@ -269,7 +260,7 @@ public class Node {
                 if ( node == n ) {
                     n.previous.next = null;
                     n.previous = null;
-                    stringBuilder.replace(0, stringBuilder.length(), String.valueOf( stringbuilder_towardsReverseHead( n, stringBuilder1 ) ) );
+                    stringBuilder.replace( 0, stringBuilder.length(), String.valueOf( sb_toHead_reverse( n, stringBuilder1 ) ) );
                     return stringBuilder;
                 }
             }
@@ -277,12 +268,12 @@ public class Node {
         return stringBuilder;
     }
 
-    public static StringBuilder stringbuilder_towardsReverseTail( Node n, StringBuilder stringBuilder ) {
+    public static StringBuilder sb_toTail_reverse( Node n, StringBuilder stringBuilder ) {
         if ( n == null || stringBuilder == null ) {
             return stringBuilder;
         }
 
-        StringBuilder stringBuilder1 = new StringBuilder(stringBuilder);
+        StringBuilder stringBuilder1 = new StringBuilder( stringBuilder );
 
         Node node = n;
 
@@ -297,7 +288,7 @@ public class Node {
                 //If the last node isn't actually the last node, then we might have started a loop, fix it!
                 if ( node.previous != lastNode ) {
                     lastNode.next = null;
-                    stringBuilder.replace(0, stringBuilder.length(), String.valueOf( stringbuilder_towardsReverseTail( n, stringBuilder1 ) ) );
+                    stringBuilder.replace( 0, stringBuilder.length(), String.valueOf( sb_toTail_reverse( n, stringBuilder1 ) ) );
                     return stringBuilder;
                 }
 
@@ -305,7 +296,7 @@ public class Node {
                 if ( node == n ) {
                     lastNode.next.previous = null;
                     lastNode.next = null;
-                    stringBuilder.replace(0, stringBuilder.length(), String.valueOf( stringbuilder_towardsReverseTail( n, stringBuilder1 ) ) );
+                    stringBuilder.replace( 0, stringBuilder.length(), String.valueOf( sb_toTail_reverse( n, stringBuilder1 ) ) );
                     return stringBuilder;
                 }
             }
@@ -315,12 +306,12 @@ public class Node {
     }
 
     //towards
-    public static StringBuilder stringbuilder_towardsHead( Node n, StringBuilder stringBuilder ) {
+    public static StringBuilder sb_toHead( Node n, StringBuilder stringBuilder ) {
         if ( n == null || stringBuilder == null ) {
             return stringBuilder;
         }
 
-        StringBuilder stringBuilder1 = new StringBuilder(stringBuilder);
+        StringBuilder stringBuilder1 = new StringBuilder( stringBuilder );
 
         Node node = n;
 
@@ -334,7 +325,7 @@ public class Node {
                 //If the last node isn't actually the last node, then we might have started a loop, fix it!
                 if ( node.next != lastNode ) {
                     lastNode.previous = null;
-                    stringBuilder.replace(0, stringBuilder.length(), String.valueOf( stringbuilder_towardsHead( n, stringBuilder1 ) ) );
+                    stringBuilder.replace( 0, stringBuilder.length(), String.valueOf( sb_toHead( n, stringBuilder1 ) ) );
                     return stringBuilder;
                 }
 
@@ -342,7 +333,7 @@ public class Node {
                 if ( node == n ) {
                     n.previous.next = null;
                     n.previous = null;
-                    stringBuilder.replace(0, stringBuilder.length(), String.valueOf( stringbuilder_towardsHead( n, stringBuilder1 ) ) );
+                    stringBuilder.replace( 0, stringBuilder.length(), String.valueOf( sb_toHead( n, stringBuilder1 ) ) );
                     return stringBuilder;
                 }
             }
@@ -350,12 +341,12 @@ public class Node {
         return stringBuilder;
     }
 
-    public static StringBuilder stringbuilder_towardsTail( Node n, StringBuilder stringBuilder ) {
+    public static StringBuilder sb_toTail( Node n, StringBuilder stringBuilder ) {
         if ( n == null || stringBuilder == null ) {
             return stringBuilder;
         }
 
-        StringBuilder stringBuilder1 = new StringBuilder(stringBuilder);
+        StringBuilder stringBuilder1 = new StringBuilder( stringBuilder );
 
         Node node = n;
 
@@ -369,7 +360,7 @@ public class Node {
                 //If the last node isn't actually the last node, then we might have started a loop, fix it!
                 if ( node.previous != lastNode ) {
                     lastNode.next = null;
-                    stringBuilder.replace(0, stringBuilder.length(), String.valueOf( stringbuilder_towardsTail( n, stringBuilder1 ) ) );
+                    stringBuilder.replace( 0, stringBuilder.length(), String.valueOf( sb_toTail( n, stringBuilder1 ) ) );
                     return stringBuilder;
                 }
 
@@ -377,7 +368,7 @@ public class Node {
                 if ( node == n ) {
                     lastNode.next.previous = null;
                     lastNode.next = null;
-                    stringBuilder.replace(0, stringBuilder.length(), String.valueOf( stringbuilder_towardsTail( n, stringBuilder1 ) ) );
+                    stringBuilder.replace( 0, stringBuilder.length(), String.valueOf( sb_toTail( n, stringBuilder1 ) ) );
                     return stringBuilder;
                 }
             }
@@ -385,6 +376,239 @@ public class Node {
 
         return stringBuilder;
     }
+
+
+    //Hybrids!-------------------------------------------------------------
+
+    //FindAndReplace - This Node - Same Network - toFrom
+    public Node findAndReplace_toFromHead( String dataReplaceWith ) {
+        return this.findAndReplace_toFromHead( dataReplaceWith, this.getData() );
+    }
+
+    public Node findAndReplace_toFromTail( String dataReplaceWith ) {
+        return this.findAndReplace_toFromTail( dataReplaceWith, this.getData() );
+    }
+
+    //FindAndReplace - This Node - Other Network - toFrom
+    public Node findAndReplace_toFromHead( Node nReplaceWithNetwork, String dataReplaceWith ) {
+        return this.findAndReplace_toFromHead( nReplaceWithNetwork, dataReplaceWith, this.getData() );
+    }
+
+    public Node findAndReplace_toFromTail( Node nReplaceWithNetwork, String dataReplaceWith ) {
+        return this.findAndReplace_toFromTail( nReplaceWithNetwork, dataReplaceWith, this.getData() );
+    }
+
+    //FindAndReplace - Same Network - toFrom
+    public Node findAndReplace_toFromHead( String dataReplaceWith, String dataReplaced ) {
+        return this.findAndReplace_toFromHead( this, dataReplaceWith, dataReplaced );
+    }
+
+    public Node findAndReplace_toFromTail( String dataReplaceWith, String dataReplaced ) {
+        return this.findAndReplace_toFromTail( this, dataReplaceWith, dataReplaced );
+    }
+
+    //FindAndReplace - Different Network - toFrom
+    public Node findAndReplace_toFromHead( Node nReplaceWithNetwork, String dataReplaceWith, String dataReplaced ) {
+        return findAndReplace_toFromHead( nReplaceWithNetwork, this, dataReplaceWith, dataReplaced );
+    }
+
+    public Node findAndReplace_toFromTail( Node nReplaceWithNetwork, String dataReplaceWith, String dataReplaced ) {
+        return findAndReplace_toFromTail( nReplaceWithNetwork, this, dataReplaceWith, dataReplaced );
+    }
+
+    //FindAndReplace - Static - toFrom
+    public static Node findAndReplace_toFromHead( Node nReplaceWithNetwork, Node nReplacedNetwork, String dataReplaceWith, String dataReplaced ) {
+        Node nReplaced = find_toFromHead( nReplacedNetwork, dataReplaced );
+        if ( nReplaced == null ) {
+            return null;
+        }
+
+        Node nReplaceWith = find_toFromHead( nReplaceWithNetwork, dataReplaceWith );
+        if ( nReplaceWith == null ) {
+            return null;
+        }
+
+        return replace( nReplaced, nReplaceWith );
+    }
+
+    public static Node findAndReplace_toFromTail( Node nReplaceWithNetwork, Node nReplacedNetwork, String dataReplaceWith, String dataReplaced ) {
+        Node nReplaced = find_toFromTail( nReplacedNetwork, dataReplaced );
+        if ( nReplaced == null ) {
+            return null;
+        }
+
+        Node nReplaceWith = find_toFromTail( nReplaceWithNetwork, dataReplaceWith );
+        if ( nReplaceWith == null ) {
+            return null;
+        }
+
+        return replace( nReplaced, nReplaceWith );
+    }
+
+    //Replace - toFrom
+    public Node replace( Node nReplaceWith ) {
+        return replace( this, nReplaceWith );
+    }
+
+    //Replace - Static - toFrom
+    public static Node replace( Node nReplaced, Node nReplaceWith ) {
+
+
+        if ( insertBefore( nReplaceWith, nReplaced ) == null ) {
+            return null;
+        }
+
+        if ( remove( nReplaced ) == null ) {
+            return null;
+        }
+
+        return nReplaceWith;
+    }
+
+
+    //findAndInsert - This Node - Same Network - toFrom
+    public Node findAndInsertAfter_toFromHead( String dataInserted ) {
+        return this.findAndInsertAfter_toFromHead( dataInserted, this.getData() );
+    }
+
+    public Node findAndInsertAfter_toFromTail( String dataInserted ) {
+        return this.findAndInsertAfter_toFromTail( dataInserted, this.getData() );
+    }
+    public Node findAndInsertBefore_toFromHead( String dataInserted ) {
+        return this.findAndInsertBefore_toFromHead( dataInserted, this.getData() );
+    }
+
+    public Node findAndInsertBefore_toFromTail( String dataInserted ) {
+        return this.findAndInsertBefore_toFromTail( dataInserted, this.getData() );
+    }
+
+    //FindAndInsert - This Node - Other Network - toFrom
+    public Node findAndInsertAfter_toFromHead( Node nInsertedNetwork, String dataInserted ) {
+        return this.findAndInsertAfter_toFromHead( nInsertedNetwork, dataInserted, this.getData() );
+    }
+
+    public Node findAndInsertAfter_toFromTail( Node nInsertedNetwork, String dataInserted ) {
+        return this.findAndInsertAfter_toFromTail( nInsertedNetwork, dataInserted, this.getData() );
+    }
+    public Node findAndInsertBefore_toFromHead( Node nInsertedNetwork, String dataInserted ) {
+        return this.findAndInsertBefore_toFromHead( nInsertedNetwork, dataInserted, this.getData() );
+    }
+
+    public Node findAndInsertBefore_toFromTail( Node nInsertedNetwork, String dataInserted ) {
+        return this.findAndInsertBefore_toFromTail( nInsertedNetwork, dataInserted, this.getData() );
+    }
+
+    //FindAndInsert - Same Network - toFrom
+    public Node findAndInsertAfter_toFromHead( String dataInserted, String dataAfterThis ) {
+        return this.findAndInsertAfter_toFromHead( this, dataInserted, dataAfterThis );
+    }
+
+    public Node findAndInsertAfter_toFromTail( String dataInserted, String dataAfterThis ) {
+        return this.findAndInsertAfter_toFromTail( this, dataInserted, dataAfterThis );
+    }
+    public Node findAndInsertBefore_toFromHead( String dataInserted, String dataBeforeThis ) {
+        return this.findAndInsertBefore_toFromHead( this, dataInserted, dataBeforeThis );
+    }
+
+    public Node findAndInsertBefore_toFromTail( String dataInserted, String dataBeforeThis ) {
+        return this.findAndInsertBefore_toFromTail( this, dataInserted, dataBeforeThis );
+    }
+
+    //FindAndInsert - Different Network - toFrom
+    public Node findAndInsertAfter_toFromHead( Node nInsertedNetwork, String dataInserted, String dataAfterThis ) {
+        return findAndInsertAfter_toFromHead( nInsertedNetwork, this, dataInserted, dataAfterThis );
+    }
+
+    public Node findAndInsertAfter_toFromTail( Node nInsertedNetwork, String dataInserted, String dataAfterThis ) {
+        return findAndInsertAfter_toFromTail( nInsertedNetwork, this, dataInserted, dataAfterThis );
+    }
+    public Node findAndInsertBefore_toFromHead( Node nInsertedNetwork, String dataInserted, String dataBeforeThis ) {
+        return findAndInsertBefore_toFromHead( nInsertedNetwork, this, dataInserted, dataBeforeThis );
+    }
+
+    public Node findAndInsertBefore_toFromTail( Node nInsertedNetwork, String dataInserted, String dataBeforeThis ) {
+        return findAndInsertBefore_toFromTail( nInsertedNetwork, this, dataInserted, dataBeforeThis );
+    }
+    
+
+    //FindAndInsert - static - toFrom
+    public static Node findAndInsertAfter_toFromHead( Node nInsertedNetwork, Node nAfterThisNetwork, String dataInserted, String dataAfterThis ) {
+        Node nInserted = find_toFromHead( nInsertedNetwork, dataInserted );
+        if ( nInserted == null ) {
+            return null;
+        }
+
+        Node nAfterThis = find_toFromHead( nAfterThisNetwork, dataAfterThis );
+        if ( nAfterThis == null ) {
+            return null;
+        }
+
+        return insertAfter( nInserted, nAfterThis );
+    }
+
+    public static Node findAndInsertBefore_toFromHead( Node nInsertedNetwork, Node nBeforeThisNetwork, String dataInserted, String dataBeforeThis ) {
+        Node nInserted = find_toFromHead( nInsertedNetwork, dataInserted );
+        if ( nInserted == null ) {
+            return null;
+        }
+
+        Node nBeforeThis = find_toFromHead( nBeforeThisNetwork, dataBeforeThis );
+        if ( nBeforeThis == null ) {
+            return null;
+        }
+
+        return insertBefore( nInserted, nBeforeThis );
+    }
+    public static Node findAndInsertAfter_toFromTail( Node nInsertedNetwork, Node nAfterThisNetwork, String dataInserted, String dataAfterThis ) {
+        Node nInserted = find_toFromTail( nInsertedNetwork, dataInserted );
+        if ( nInserted == null ) {
+            return null;
+        }
+
+        Node nAfterThis = find_toFromTail( nAfterThisNetwork, dataAfterThis );
+        if ( nAfterThis == null ) {
+            return null;
+        }
+
+        return insertAfter( nInserted, nAfterThis );
+    }
+
+    public static Node findAndInsertBefore_toFromTail( Node nInsertedNetwork, Node nBeforeThisNetwork, String dataInserted, String dataBeforeThis ) {
+        Node nInserted = find_toFromTail( nInsertedNetwork, dataInserted );
+        if ( nInserted == null ) {
+            return null;
+        }
+
+        Node nBeforeThis = find_toFromTail( nBeforeThisNetwork, dataBeforeThis );
+        if ( nBeforeThis == null ) {
+            return null;
+        }
+
+        return insertBefore( nInserted, nBeforeThis );
+    }
+
+    //FindAndRemove - toFrom
+    public Node findAndRemove_toFromHead( String data ) {
+        return findAndRemove_toFromHead( this, data );
+    }
+
+    public Node findAndRemove_toFromTail( String data ) {
+        return findAndRemove_toFromTail( this, data );
+    }
+
+    //FindAndRemove - static - toFrom
+    public static Node findAndRemove_toFromHead( Node n, String data ) {
+        Node nodeToRemove = find_toFromHead( n, data );
+
+        return remove( nodeToRemove );
+    }
+
+    public static Node findAndRemove_toFromTail( Node n, String data ) {
+        Node nodeToRemove = find_toFromTail( n, data );
+
+        return remove( nodeToRemove );
+    }
+
 
     //Find
     public Node findHead() {
@@ -463,24 +687,24 @@ public class Node {
         return lastNode;
     }
 
-    //Find - fromTowards
-    public Node find_fromTowards_head( String data ) {
-        return find_fromTowards_head( this, data );
+    //Find - toFrom
+    public Node find_toFromHead( String data ) {
+        return find_toFromHead( this, data );
     }
 
-    public Node find_fromTowards_tail( String data ) {
-        return find_fromTowards_tail( this, data );
+    public Node find_toFromTail( String data ) {
+        return find_toFromTail( this, data );
     }
 
-    //Find - fromTowards - Static
-    public static Node find_fromTowards_head( Node n, String data ) {
+    //Find - toFrom - Static
+    public static Node find_toFromHead( Node n, String data ) {
         if ( n == null || data == null ) {
             return null;
         }
 
         Node node = n;
 
-        Node res = find_towards_head( node, data );
+        Node res = find_toHead( node, data );
         if ( res != null ) {
             return res;
         }
@@ -494,17 +718,17 @@ public class Node {
         }
 
         //If we don't find it here, it doesn't exist
-        return find_towards_tail( node, data );
+        return find_toTail( node, data );
     }
 
-    public static Node find_fromTowards_tail( Node n, String data ) {
+    public static Node find_toFromTail( Node n, String data ) {
         if ( n == null || data == null ) {
             return null;
         }
 
         Node node = n;
 
-        Node res = find_towards_tail( node, data );
+        Node res = find_toTail( node, data );
         if ( res != null ) {
             return res;
         }
@@ -519,17 +743,17 @@ public class Node {
         }
 
         //If we don't find it here, it doesn't exist
-        return find_towards_head( node, data );
+        return find_toHead( node, data );
     }
 
     //Helper - find - towards - Static
-    private static Node find_towards_head( Node n, String data ) {
+    private static Node find_toHead( Node n, String data ) {
         //Check if data or node is null before using
 
         Node node = n;
 
         while ( node != null ) {
-            if ( node.data.matches( data ) ) {
+            if ( node.data.equals( data ) ) {
                 return node;
             }
             Node lastNode = node;
@@ -539,53 +763,27 @@ public class Node {
                 //If the last node isn't actually the last node, then we might have started a loop, fix it!
                 if ( node.next != lastNode ) {
                     lastNode.previous = null;
-                    return find_fromTowards_head( n, data );
+                    return find_toFromHead( n, data );
                 }
 
                 //If we get the starter node again we have a closed loop
                 if ( node == n ) {
                     n.previous.next = null;
                     n.previous = null;
-                    return find_towards_head( n, data );
+                    return find_toHead( n, data );
                 }
             }
         }
         return null;
     }
 
-    //FindAndRemove - fromTowards
-    public Node findAndRemove_fromTowards_head( String data ) {
-        Node nodeToRemove = this.find_fromTowards_head( data );
-
-        return removeNode( nodeToRemove );
-    }
-
-    public Node findAndRemove_fromTowards_tail( String data ) {
-        Node nodeToRemove = this.find_fromTowards_tail( data );
-
-        return removeNode( nodeToRemove );
-    }
-
-    //FindAndRemove - static - fromTowards
-    public static Node findAndRemove_fromTowards_head( Node n, String data ) {
-        Node nodeToRemove = find_fromTowards_head( n, data );
-
-        return removeNode( nodeToRemove );
-    }
-
-    public static Node findAndRemove_fromTowards_tail( Node n, String data ) {
-        Node nodeToRemove = find_fromTowards_tail( n, data );
-
-        return removeNode( nodeToRemove );
-    }
-
-    private static Node find_towards_tail( Node n, String data ) {
+    private static Node find_toTail( Node n, String data ) {
         //Check if data or node is null before using
 
         Node node = n;
 
         while ( node != null ) {
-            if ( node.data.matches( data ) ) {
+            if ( node.data.equals( data ) ) {
                 return node;
             }
             Node lastNode = node;
@@ -595,61 +793,63 @@ public class Node {
                 //If the last node isn't actually the last node, then we might have started a loop, fix it!
                 if ( node.previous != lastNode ) {
                     lastNode.next = null;
-                    return find_towards_tail( n, data );
+                    return find_toTail( n, data );
                 }
 
                 //If we get the starter node again we have a closed loop
                 if ( node == n ) {
                     n.next.previous = null;
                     n.next = null;
-                    return find_towards_tail( n, data );
+                    return find_toTail( n, data );
                 }
             }
         }
         return null;
     }
 
-    //RemoveFrom
-    public Node removeNode_fromHead() {
-        return removeNode_towardsHead( this );
+
+    //Remove head/tail
+    public Node removeHead() {
+        return remove_towardsHead( this );
     }
 
-    public Node removeNode_fromTail() {
-        return removeNode_towardsTail( this );
+    public Node removeTail() {
+        return remove_towardsTail( this );
     }
 
-    //RemoveFrom - Static
-    public static Node removeNode_fromHead( Node masterNode ) {
+    //Remove head/tail - Static
+    public static Node removeHead( Node masterNode ) {
         if ( masterNode == null ) {
             return null;
         }
 
         Node head = findHead( masterNode );
 
-        return removeNode( head );
+        return remove( head );
     }
 
-    public static Node removeNode_fromTail( Node masterNode ) {
+    public static Node removeTail( Node masterNode ) {
         if ( masterNode == null ) {
             return null;
         }
 
         Node tail = findTail( masterNode );
 
-        return removeNode( tail );
+        return remove( tail );
     }
+
 
     //RemoveTowards
-    public Node removeNode_towardsHead() {
-        return removeNode_towardsHead( this );
+    public Node remove_towardsHead() {
+        return remove_towardsHead( this );
     }
 
-    public Node removeNode_towardsTail() {
-        return removeNode_towardsTail( this );
+    public Node remove_towardsTail() {
+        return remove_towardsTail( this );
     }
 
     //RemoveTowards - Static
-    public static Node removeNode_towardsHead( Node masterNode ) {
+    public static Node remove_towardsHead( Node masterNode ) {
         if ( masterNode == null ) {
             return null;
         }
@@ -657,10 +857,10 @@ public class Node {
         if ( masterNode.previous == null ) {
             return null;
         }
-        return removeNode( masterNode.previous );
+        return remove( masterNode.previous );
     }
 
-    public static Node removeNode_towardsTail( Node masterNode ) {
+    public static Node remove_towardsTail( Node masterNode ) {
         if ( masterNode == null ) {
             return null;
         }
@@ -668,16 +868,17 @@ public class Node {
         if ( masterNode.next == null ) {
             return null;
         }
-        return removeNode( masterNode.next );
+        return remove( masterNode.next );
     }
 
+
     //Remove
-    public Node removeNode() {
-        return removeNode( this );
+    public Node remove() {
+        return remove( this );
     }
 
     //Remove - Static
-    public static Node removeNode( Node nodeToRemove ) {
+    public static Node remove( Node nodeToRemove ) {
         //Is Null
         if ( nodeToRemove == null ) {
             return null;
@@ -701,7 +902,7 @@ public class Node {
 
 //              nodeToRemove.previous = null;     //Already the case
 
-                return helper_removeNode_head( nodeToRemove );
+                return helper_remove_head( nodeToRemove );
             }
         }
 
@@ -710,7 +911,7 @@ public class Node {
         if ( nodeToRemove.next == null ) {
 
 //                nodeToRemove.next = null;    //Already the case
-            return helper_removeNode_tail( nodeToRemove );
+            return helper_remove_tail( nodeToRemove );
         }
         //}
 
@@ -724,7 +925,8 @@ public class Node {
         return nodeToRemove;
     }
 
-    protected static Node helper_removeNode_head( Node headToRemove ) {
+    //Helpers
+    protected static Node helper_remove_head( Node headToRemove ) {
 
         //Check if node is null before using this method.
         //Also check if it is actually a head/tail node with a next/previous
@@ -736,7 +938,7 @@ public class Node {
         return headToRemove;
     }
 
-    protected static Node helper_removeNode_tail( Node tailToRemove ) {
+    protected static Node helper_remove_tail( Node tailToRemove ) {
 
         //Check if node is null before using this method.
         //Also check if it is actually a head/tail node with a next/previous
@@ -748,17 +950,19 @@ public class Node {
         return tailToRemove;
     }
 
+
     //Insert
-    public Node insertNode_towardsHead( Node inserted ) {
-        return insertNode_beforeThisNode( inserted, this );
+    public Node insert_towardsHead( Node inserted ) {
+        return insertBefore( inserted, this );
     }
 
-    public Node insertNode_towardsTail( Node inserted ) {
-        return insertNode_afterThisNode( inserted, this );
+    public Node insert_towardsTail( Node inserted ) {
+        return insertAfter( inserted, this );
     }
 
-    //Insert - Static
-    public static Node insertNode_beforeThisNode( Node inserted, Node beforeThis ) {
+
+    //Insert beforeAfter - Static
+    public static Node insertBefore( Node inserted, Node beforeThis ) {
         if ( beforeThis == null || inserted == null ) {
             return null;
         }
@@ -767,7 +971,7 @@ public class Node {
             return inserted;
         }
 
-        inserted = removeNode( inserted );
+        inserted = remove( inserted );
 
         //Is inserted before the head node
         if ( beforeThis.previous == null ) {
@@ -790,7 +994,7 @@ public class Node {
         return inserted;
     }
 
-    public static Node insertNode_afterThisNode( Node inserted, Node afterThis ) {
+    public static Node insertAfter( Node inserted, Node afterThis ) {
         if ( afterThis == null || inserted == null ) {
             return null;
         }
@@ -799,7 +1003,7 @@ public class Node {
             return inserted;
         }
 
-        inserted = removeNode( inserted );
+        inserted = remove( inserted );
 
         //Is inserted after the tail node
         if ( afterThis.next == null ) {
@@ -820,6 +1024,31 @@ public class Node {
         inserted.previous = afterThis;
 
         return inserted;
+    }
+
+
+    //Boolean Checks----------------------------------------------------------------------------
+    public static boolean haveSameNetwork( Node node1, Node node2 ) { //Nodes Have
+
+        try {
+            boolean resTemp = findHead( node1 ).equals( findHead( node2 ) );
+            if ( !resTemp ) {
+                return false;
+            }
+        } catch ( Exception e ) {
+            return false;
+        }
+
+        try {
+            boolean resTemp = findTail( node1 ).equals( findTail( node2 ) );
+            if ( !resTemp ) {
+                return false;
+            }
+        } catch ( Exception e ) {
+            return false;
+        }
+
+        return true;
     }
 
 } //Class
