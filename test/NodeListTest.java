@@ -39,9 +39,9 @@ class NodeListTest {
     void isEmpty() {
         assertTrue( this.tomNodeList.hasZeroNodes() );
 
-        assertNull( this.tomNodeList.calcHead() );
+        assertNull( this.tomNodeList.getAndCalcHead() );
 
-        assertNull( this.tomNodeList.calcTail() );
+        assertNull( this.tomNodeList.getAndCalcTail() );
 
     }
 
@@ -51,9 +51,9 @@ class NodeListTest {
 
         assertFalse( this.tomNodeList.hasZeroNodes() );
 
-        assertEquals( this.node0.data, this.tomNodeList.calcHead().data );
+        assertEquals( this.node0.data, this.tomNodeList.getAndCalcHead().data );
 
-        assertEquals( this.node0.data, this.tomNodeList.calcTail().data );
+        assertEquals( this.node0.data, this.tomNodeList.getAndCalcTail().data );
     }
 
     @Test
@@ -62,19 +62,19 @@ class NodeListTest {
 
         assertFalse( this.tomNodeList.hasZeroNodes() );
 
-        assertEquals( this.node0.data, this.tomNodeList.calcHead().data );
+        assertEquals( this.node0.data, this.tomNodeList.getAndCalcHead().data );
 
-        assertEquals( this.node0.data, this.tomNodeList.calcTail().data );
+        assertEquals( this.node0.data, this.tomNodeList.getAndCalcTail().data );
     }
 
     @Test
     void testFyldtListe() {
         //Get Head or Tail
         //Get Head
-        assertEquals( this.node0.data, this.fyldtNodeList.calcHead().data );
+        assertEquals( this.node0.data, this.fyldtNodeList.getAndCalcHead().data );
 
         //Tail
-        assertEquals( this.node4.data, this.fyldtNodeList.calcTail().data );
+        assertEquals( this.node4.data, this.fyldtNodeList.getAndCalcTail().data );
 
 
     }
@@ -99,7 +99,7 @@ class NodeListTest {
             assertEquals( stringsFromHead[ i ], listsStringsFromHead[ i ] );
         }
 
-        assertTrue( Node.haveSameNetwork( this.fyldtNodeList.calcHead(), this.node4 ) );
+        assertTrue( Node.haveSameNetwork( this.fyldtNodeList.getAndCalcHead(), this.node4 ) );
     }
 
 
@@ -121,7 +121,7 @@ class NodeListTest {
             assertEquals( stringsFromTail[ i ], listsStringsFromTail[ i ] );
         }
 
-        assertTrue( Node.haveSameNetwork( this.fyldtNodeList.calcHead(), this.node4 ) );
+        assertTrue( Node.haveSameNetwork( this.fyldtNodeList.getAndCalcHead(), this.node4 ) );
 
     }
 
@@ -129,7 +129,7 @@ class NodeListTest {
     void insertFromHead() {
         this.fyldtNodeList.insertHead( this.node2 );
 
-        assertEquals( this.node2.data, this.fyldtNodeList.calcHead().data );
+        assertEquals( this.node2.data, this.fyldtNodeList.getAndCalcHead().data );
 
         //Get Head or Tail Array
         //Get Head
@@ -152,14 +152,14 @@ class NodeListTest {
             assertEquals( stringsFromHead[ i ], listsStringsFromHead[ i ] );
         }
 
-        assertTrue( Node.haveSameNetwork( this.fyldtNodeList.calcHead(), this.node4 ) );
+        assertTrue( Node.haveSameNetwork( this.fyldtNodeList.getAndCalcHead(), this.node4 ) );
 
         assertEquals( this.node3.data, this.fyldtNodeList.insertHead( this.node3 ).data );
-        assertEquals( this.fyldtNodeList.calcHead().data, this.fyldtNodeList.insertHead( this.node3 ).data );
-        assertEquals( this.node3.data, this.fyldtNodeList.calcHead().data );
+        assertEquals( this.fyldtNodeList.getAndCalcHead().data, this.fyldtNodeList.insertHead( this.node3 ).data );
+        assertEquals( this.node3.data, this.fyldtNodeList.getAndCalcHead().data );
 
         //Is Tail unchanged?
-        assertEquals( this.node4.data, this.fyldtNodeList.calcTail().data );
+        assertEquals( this.node4.data, this.fyldtNodeList.getAndCalcTail().data );
 
 
     }
@@ -168,7 +168,7 @@ class NodeListTest {
     void testInsertFromTail() {
         this.fyldtNodeList.insertTail( this.node2 );
 
-        assertEquals( this.node2.data, this.fyldtNodeList.calcTail().data );
+        assertEquals( this.node2.data, this.fyldtNodeList.getAndCalcTail().data );
 
         //Tail
         String[] stringsFromTail = new String[ 5 ];
@@ -186,15 +186,15 @@ class NodeListTest {
             assertEquals( stringsFromTail[ i ], listsStringsFromTail[ i ] );
         }
 
-        assertTrue( Node.haveSameNetwork( this.fyldtNodeList.calcHead(), this.node4 ) );
+        assertTrue( Node.haveSameNetwork( this.fyldtNodeList.getAndCalcHead(), this.node4 ) );
 
 
         assertEquals( this.node3.data, this.fyldtNodeList.insertTail( this.node3 ).data );
-        assertEquals( this.fyldtNodeList.calcTail().data, this.fyldtNodeList.insertTail( this.node3 ).data );
-        assertEquals( this.node3.data, this.fyldtNodeList.calcTail().data );
+        assertEquals( this.fyldtNodeList.getAndCalcTail().data, this.fyldtNodeList.insertTail( this.node3 ).data );
+        assertEquals( this.node3.data, this.fyldtNodeList.getAndCalcTail().data );
 
         //Is head unchanged?
-        assertEquals( this.node0.data, this.fyldtNodeList.calcHead().data );
+        assertEquals( this.node0.data, this.fyldtNodeList.getAndCalcHead().data );
 
     }
 
@@ -298,30 +298,30 @@ class NodeListTest {
 
     @Test
     void testGetHeadAndRemoveIt() {
-        Node headRes = this.fyldtNodeList.calcHead();
-        assertEquals( "0", this.fyldtNodeList.calcHead().data );
+        Node headRes = this.fyldtNodeList.getAndCalcHead();
+        assertEquals( "0", this.fyldtNodeList.getAndCalcHead().data );
 
-        Node newHeadRes = this.fyldtNodeList.calcHead().next;
+        Node newHeadRes = this.fyldtNodeList.getAndCalcHead().next;
         assertEquals( headRes.data, this.fyldtNodeList.removeHead().data );
-        assertEquals( newHeadRes.data, this.fyldtNodeList.calcHead().data );
+        assertEquals( newHeadRes.data, this.fyldtNodeList.getAndCalcHead().data );
 
         assertNotEquals( headRes.data, this.fyldtNodeList.removeHead().data );
-        assertNotEquals( newHeadRes.data, this.fyldtNodeList.calcHead().data );
+        assertNotEquals( newHeadRes.data, this.fyldtNodeList.getAndCalcHead().data );
 
         assertNull( this.tomNodeList.removeHead() );
     }
 
     @Test
     void testGetTailAndRemoveIt() {
-        Node tailRes = this.fyldtNodeList.calcTail();
-        assertEquals( "4", this.fyldtNodeList.calcTail().data );
+        Node tailRes = this.fyldtNodeList.getAndCalcTail();
+        assertEquals( "4", this.fyldtNodeList.getAndCalcTail().data );
 
-        Node newTailRes = this.fyldtNodeList.calcTail().previous;
+        Node newTailRes = this.fyldtNodeList.getAndCalcTail().previous;
         assertEquals( tailRes.data, this.fyldtNodeList.removeTail().data );
-        assertEquals( newTailRes.data, this.fyldtNodeList.calcTail().data );
+        assertEquals( newTailRes.data, this.fyldtNodeList.getAndCalcTail().data );
 
         assertNotEquals( tailRes.data, this.fyldtNodeList.removeTail().data );
-        assertNotEquals( newTailRes.data, this.fyldtNodeList.calcTail().data );
+        assertNotEquals( newTailRes.data, this.fyldtNodeList.getAndCalcTail().data );
 
         assertNull( this.tomNodeList.removeTail() );
     }
@@ -366,10 +366,10 @@ class NodeListTest {
         this.fyldtNodeList.print_fromTail();
 
         assertEquals( this.node0.data, this.fyldtNodeList.findAndRemove_fromHead( "0" ).data );
-        assertEquals( this.node1.data, this.fyldtNodeList.calcHead().data );
+        assertEquals( this.node1.data, this.fyldtNodeList.getAndCalcHead().data );
 
         assertEquals( this.node4.data, this.fyldtNodeList.findAndRemove_fromHead( "4" ).data );
-        assertEquals( this.node3.data, this.fyldtNodeList.calcTail().data );
+        assertEquals( this.node3.data, this.fyldtNodeList.getAndCalcTail().data );
 
         System.out.println();
         System.out.println( "Reduced List printed from head, only 1 and 3 left" );
@@ -390,8 +390,8 @@ class NodeListTest {
         assertTrue( this.fyldtNodeList.hasZeroNodes() );
 
         this.fyldtNodeList.insertHead( this.node2 );
-        assertEquals( this.fyldtNodeList.calcHead().data, this.node2.data );
-        assertEquals( this.fyldtNodeList.calcTail().data, this.node2.data );
+        assertEquals( this.fyldtNodeList.getAndCalcHead().data, this.node2.data );
+        assertEquals( this.fyldtNodeList.getAndCalcTail().data, this.node2.data );
 
         System.out.println();
         System.out.println( "Reduced List reinserted node 2, from head" );
@@ -416,10 +416,10 @@ class NodeListTest {
         this.fyldtNodeList.print_fromTail();
 
         assertEquals( this.node0.data, this.fyldtNodeList.findAndRemove_fromTail( "0" ).data );
-        assertEquals( this.node1.data, this.fyldtNodeList.calcHead().data );
+        assertEquals( this.node1.data, this.fyldtNodeList.getAndCalcHead().data );
 
         assertEquals( this.node4.data, this.fyldtNodeList.findAndRemove_fromTail( "4" ).data );
-        assertEquals( this.node3.data, this.fyldtNodeList.calcTail().data );
+        assertEquals( this.node3.data, this.fyldtNodeList.getAndCalcTail().data );
 
         System.out.println();
         System.out.println( "Reduced List printed from head, only 1 and 3 left" );
@@ -441,8 +441,8 @@ class NodeListTest {
         assertTrue( this.fyldtNodeList.hasZeroNodes() );
 
         this.fyldtNodeList.insertTail( this.node2 );
-        assertEquals( this.fyldtNodeList.calcHead().data, this.node2.data );
-        assertEquals( this.fyldtNodeList.calcTail().data, this.node2.data );
+        assertEquals( this.fyldtNodeList.getAndCalcHead().data, this.node2.data );
+        assertEquals( this.fyldtNodeList.getAndCalcTail().data, this.node2.data );
 
         System.out.println();
         System.out.println( "Reduced List reinserted node 2, from head" );
@@ -567,14 +567,14 @@ class NodeListTest {
 
         this.fyldtNodeList.insertBefore( this.node3, this.node0 );
         this.fyldtNodeList.insertAfter( this.node2, this.node4 );
-        assertEquals( this.fyldtNodeList.calcHead(), this.tomNodeList.calcHead() );
-        assertEquals( this.fyldtNodeList.calcTail(), this.tomNodeList.calcTail() );
+        assertEquals( this.fyldtNodeList.getAndCalcHead(), this.tomNodeList.getAndCalcHead() );
+        assertEquals( this.fyldtNodeList.getAndCalcTail(), this.tomNodeList.getAndCalcTail() );
         assertEquals( 5, this.fyldtNodeList.strings_fromTail().length );
 
         this.tomNodeList.insertHead( this.node3 );
         this.tomNodeList.insertTail( this.node2 );
-        assertEquals( this.fyldtNodeList.calcHead(), this.tomNodeList.calcHead() );
-        assertEquals( this.fyldtNodeList.calcTail(), this.tomNodeList.calcTail() );
+        assertEquals( this.fyldtNodeList.getAndCalcHead(), this.tomNodeList.getAndCalcHead() );
+        assertEquals( this.fyldtNodeList.getAndCalcTail(), this.tomNodeList.getAndCalcTail() );
         assertEquals( 5, this.fyldtNodeList.strings_fromHead().length );
     }
 }

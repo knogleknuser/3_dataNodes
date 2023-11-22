@@ -29,10 +29,10 @@ public class NodeList {
 
 
     //Getters
-    public Node calcHead() {
+    public Node getAndCalcHead() {
         if ( this.head == null ) {
             if ( this.tail != null ) {
-                this.head = Node.findHead( this.calcTail() );
+                this.head = Node.findHead( this.getAndCalcTail() );
                 return this.head;
             }
             return null;
@@ -66,10 +66,10 @@ public class NodeList {
         return this.head;
     }
 
-    public Node calcTail() {
+    public Node getAndCalcTail() {
         if ( this.tail == null ) {
             if ( this.head != null ) {
-                this.tail = Node.findTail( this.calcHead() );
+                this.tail = Node.findTail( this.getAndCalcHead() );
                 return this.tail;
             }
             return null;
@@ -103,47 +103,47 @@ public class NodeList {
     }
     //Print
     public void print_fromHead() {
-        Node.print_toFromHead( this.calcHead() );
+        Node.print_toFromHead( this.getAndCalcHead() );
     }
 
     public void print_fromTail() {
-        Node.print_toFromTail( this.calcTail() );
+        Node.print_toFromTail( this.getAndCalcTail() );
     }
 
     //Strings - Simple Standalone
     public String[] strings_fromHead() {
-        return Node.strings_toFromHead( this.calcHead() );
+        return Node.strings_toFromHead( this.getAndCalcHead() );
     }
 
     public String[] strings_fromTail() {
-        return Node.strings_toFromTail( this.calcTail() );
+        return Node.strings_toFromTail( this.getAndCalcTail() );
     }
 
     //Strings
     public String[] strings_fromHead( StringBuilder stringBuilder ) {
-        return Node.strings_toFromHead( this.calcHead(), stringBuilder );
+        return Node.strings_toFromHead( this.getAndCalcHead(), stringBuilder );
     }
 
     public String[] strings_fromTail( StringBuilder stringBuilder ) {
-        return Node.strings_toFromTail( this.calcTail(), stringBuilder );
+        return Node.strings_toFromTail( this.getAndCalcTail(), stringBuilder );
     }
 
     //Stringbuilder - Simple Standalone
     public StringBuilder sb_fromHead() {
-        return Node.sb_toFromHead( this.calcHead() );
+        return Node.sb_toFromHead( this.getAndCalcHead() );
     }
 
     public StringBuilder sb_fromTail() {
-        return Node.sb_toFromTail( this.calcTail() );
+        return Node.sb_toFromTail( this.getAndCalcTail() );
     }
 
     //Stringbuilder
     public StringBuilder sb_fromHead( StringBuilder stringBuilder ) {
-        return Node.sb_toFromHead( this.calcHead(), stringBuilder );
+        return Node.sb_toFromHead( this.getAndCalcHead(), stringBuilder );
     }
 
     public StringBuilder sb_fromTail( StringBuilder stringBuilder ) {
-        return Node.sb_toFromTail( this.calcTail(), stringBuilder );
+        return Node.sb_toFromTail( this.getAndCalcTail(), stringBuilder );
     }
 
 
@@ -160,20 +160,20 @@ public class NodeList {
 
     //Find
     public Node find_fromHead( String data ) {
-        return Node.find_toFromHead( this.calcHead(), data );
+        return Node.find_toFromHead( this.getAndCalcHead(), data );
     }
 
     public Node find_fromTail( String data ) {
-        return Node.find_toFromTail( this.calcTail(), data );
+        return Node.find_toFromTail( this.getAndCalcTail(), data );
     }
 
     //Remove
     public Node removeHead() {
-        return this.remove( this.calcHead() );
+        return this.remove( this.getAndCalcHead() );
     }
 
     public Node removeTail() {
-        return this.remove( this.calcTail() );
+        return this.remove( this.getAndCalcTail() );
     }
 
     public Node remove( Node nodeToRemove ) {
@@ -183,8 +183,8 @@ public class NodeList {
         }
 
         //Update Head and Tails
-        this.calcHead();
-        this.calcTail();
+        this.getAndCalcHead();
+        this.getAndCalcTail();
 
         //List Specific
         //Is only node in list
@@ -284,7 +284,7 @@ public class NodeList {
 
     public Node insertBefore( Node inserted, Node beforeThis ) {
         try {
-            if ( beforeThis.equals( this.calcHead() ) ) {
+            if ( beforeThis.equals( this.getAndCalcHead() ) ) {
                 this.head = inserted;
             }
         } catch ( Exception ignored ) {
@@ -296,7 +296,7 @@ public class NodeList {
 
     public Node insertAfter( Node inserted, Node afterThis ) {
         try {
-            if ( afterThis.equals( this.calcTail() ) ) {
+            if ( afterThis.equals( this.getAndCalcTail() ) ) {
                 this.tail = inserted;
             }
         } catch ( Exception ignored ) {
@@ -320,8 +320,8 @@ public class NodeList {
 
     public boolean hasZeroNodes() { //List Has
         //Update heads and Tails
-        this.calcHead();
-        this.calcTail();
+        this.getAndCalcHead();
+        this.getAndCalcTail();
 
         if ( this.head == null && this.tail == null ) {
             return true;
