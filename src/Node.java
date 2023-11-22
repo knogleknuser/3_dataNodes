@@ -35,7 +35,6 @@ public class Node {
     }
 
 
-
     //Print towardsFromComplete
     public void print_toFromHead() {
         System.out.println( Arrays.toString( this.strings_toFromHead() ) );
@@ -390,6 +389,53 @@ public class Node {
 
     //Hybrids!-------------------------------------------------------------
 
+    //FindAndReplace - This Node - Same Network - toFrom - String
+    public Node findAndReplace_toFromHead_newNode( String dataReplaceWith ) {
+        return this.findAndReplace_toFromHead_newNode( dataReplaceWith, this.getData() );
+    }
+
+    public Node findAndReplace_toFromTail_newNode( String dataReplaceWith ) {
+        return this.findAndReplace_toFromTail_newNode( dataReplaceWith, this.getData() );
+    }
+
+
+    //FindAndReplace - Same Network - toFrom - String
+    public Node findAndReplace_toFromHead_newNode( String dataReplaceWith, String dataReplaced ) {
+        return findAndReplace_toFromHead_newNode( this, dataReplaceWith, dataReplaced );
+    }
+
+    public Node findAndReplace_toFromTail_newNode( String dataReplaceWith, String dataReplaced ) {
+        return findAndReplace_toFromTail_newNode( this, dataReplaceWith, dataReplaced );
+    }
+
+
+    //FindAndReplace - Static - toFrom - String
+    public static Node findAndReplace_toFromHead_newNode( Node nReplacedNetwork, String dataReplaceWith, String dataReplaced ) {
+        if ( dataReplaceWith.equals( dataReplaced ) ) {
+            return null;
+        }
+
+        Node nReplaced = find_toFromHead( nReplacedNetwork, dataReplaced );
+        if ( nReplaced == null ) {
+            return null;
+        }
+
+        return replace( nReplaced, new Node( dataReplaceWith ) );
+    }
+
+    public static Node findAndReplace_toFromTail_newNode( Node nReplacedNetwork, String dataReplaceWith, String dataReplaced ) {
+        if ( dataReplaceWith.equals( dataReplaced ) ) {
+            return null;
+        }
+
+        Node nReplaced = find_toFromTail( nReplacedNetwork, dataReplaced );
+        if ( nReplaced == null ) {
+            return null;
+        }
+
+        return replace( nReplaced, new Node( dataReplaceWith ) );
+    }
+
     //FindAndReplace - This Node - Same Network - toFrom
     public Node findAndReplace_toFromHead( String dataReplaceWith ) {
         return this.findAndReplace_toFromHead( dataReplaceWith, this.getData() );
@@ -425,6 +471,7 @@ public class Node {
     public Node findAndReplace_toFromTail( Node nReplaceWithNetwork, String dataReplaceWith, String dataReplaced ) {
         return findAndReplace_toFromTail( nReplaceWithNetwork, this, dataReplaceWith, dataReplaced );
     }
+
 
     //FindAndReplace - Static - toFrom
     public static Node findAndReplace_toFromHead( Node nReplaceWithNetwork, Node nReplacedNetwork, String dataReplaceWith, String dataReplaced ) {
@@ -464,6 +511,17 @@ public class Node {
     }
 
     //Replace - toFrom
+    public Node replace( String sReplaceWith ) {
+        return replace( this, sReplaceWith );
+    }
+
+    //Replace - Static - toFrom
+
+    public static Node replace( Node nReplaced, String sReplaceWith ) {
+        return replace( nReplaced, new Node( sReplaceWith ) );
+    }
+
+    //Replace - toFrom
     public Node replace( Node nReplaceWith ) {
         return replace( this, nReplaceWith );
     }
@@ -483,6 +541,95 @@ public class Node {
         }
 
         return nReplaceWith;
+    }
+
+
+    //findAndInsert - This Node - Same Network - toFrom - String
+    public Node findAndInsertAfter_toFromHead_newNode( String dataInserted ) {
+        return this.findAndInsertAfter_toFromHead_newNode( dataInserted, this.getData() );
+    }
+
+    public Node findAndInsertAfter_toFromTail_newNode( String dataInserted ) {
+        return this.findAndInsertAfter_toFromTail_newNode( dataInserted, this.getData() );
+    }
+
+    public Node findAndInsertBefore_toFromHead_newNode( String dataInserted ) {
+        return this.findAndInsertBefore_toFromHead_newNode( dataInserted, this.getData() );
+    }
+
+    public Node findAndInsertBefore_toFromTail_newNode( String dataInserted ) {
+        return this.findAndInsertBefore_toFromTail_newNode( dataInserted, this.getData() );
+    }
+
+    //FindAndInsert - Same Network - toFrom - String
+    public Node findAndInsertAfter_toFromHead_newNode( String dataInserted, String dataAfterThis ) {
+        return findAndInsertAfter_toFromHead_newNode( this, dataInserted, dataAfterThis );
+    }
+
+    public Node findAndInsertAfter_toFromTail_newNode( String dataInserted, String dataAfterThis ) {
+        return findAndInsertAfter_toFromTail_newNode( this, dataInserted, dataAfterThis );
+    }
+
+    public Node findAndInsertBefore_toFromHead_newNode( String dataInserted, String dataBeforeThis ) {
+        return findAndInsertBefore_toFromHead_newNode( this, dataInserted, dataBeforeThis );
+    }
+
+    public Node findAndInsertBefore_toFromTail_newNode( String dataInserted, String dataBeforeThis ) {
+        return findAndInsertBefore_toFromTail_newNode( this, dataInserted, dataBeforeThis );
+    }
+
+
+    //FindAndInsert - static - toFrom - String
+    public static Node findAndInsertAfter_toFromHead_newNode( Node nAfterThisNetwork, String dataInserted, String dataAfterThis ) {
+        if ( dataInserted.equals( dataAfterThis ) ) {
+            return null;
+        }
+
+        Node nAfterThis = find_toFromHead( nAfterThisNetwork, dataAfterThis );
+        if ( nAfterThis == null ) {
+            return null;
+        }
+
+        return insertAfter( dataInserted, nAfterThis );
+    }
+
+    public static Node findAndInsertBefore_toFromHead_newNode( Node nBeforeThisNetwork, String dataInserted, String dataBeforeThis ) {
+        if ( dataInserted.equals( dataBeforeThis ) ) {
+            return null;
+        }
+
+        Node nBeforeThis = find_toFromHead( nBeforeThisNetwork, dataBeforeThis );
+        if ( nBeforeThis == null ) {
+            return null;
+        }
+
+        return insertBefore( dataInserted, nBeforeThis );
+    }
+
+    public static Node findAndInsertAfter_toFromTail_newNode( Node nAfterThisNetwork, String dataInserted, String dataAfterThis ) {
+        if ( dataInserted.equals( dataAfterThis ) ) {
+            return null;
+        }
+
+        Node nAfterThis = find_toFromTail( nAfterThisNetwork, dataAfterThis );
+        if ( nAfterThis == null ) {
+            return null;
+        }
+
+        return insertAfter( dataInserted, nAfterThis );
+    }
+
+    public static Node findAndInsertBefore_toFromTail_newNode( Node nBeforeThisNetwork, String dataInserted, String dataBeforeThis ) {
+        if ( dataInserted.equals( dataBeforeThis ) ) {
+            return null;
+        }
+
+        Node nBeforeThis = find_toFromTail( nBeforeThisNetwork, dataBeforeThis );
+        if ( nBeforeThis == null ) {
+            return null;
+        }
+
+        return insertBefore( dataInserted, nBeforeThis );
     }
 
 
@@ -991,6 +1138,13 @@ public class Node {
         return tailToRemove;
     }
 
+    public Node insert_towardsHead( String insertedString ) {
+        return insertBefore( insertedString, this );
+    }
+
+    public Node insert_towardsTail( String insertedString ) {
+        return insertAfter( insertedString, this );
+    }
 
     //Insert
     public Node insert_towardsHead( Node inserted ) {
@@ -1001,6 +1155,14 @@ public class Node {
         return insertAfter( inserted, this );
     }
 
+    //Insert beforeAfter - Static - String
+    public static Node insertBefore( String insertedString, Node beforeThis ) {
+        return insertBefore( new Node( insertedString ), beforeThis );
+    }
+
+    public static Node insertAfter( String insertedString, Node afterThis ) {
+        return insertBefore( new Node( insertedString ), afterThis );
+    }
 
     //Insert beforeAfter - Static
     public static Node insertBefore( Node inserted, Node beforeThis ) {
