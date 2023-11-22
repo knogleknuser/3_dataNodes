@@ -25,6 +25,16 @@ public class Node {
         return this.data;
     }
 
+    //Extra getters
+    public Node getFistTowardsHead() {
+        return this.previous;
+    }
+
+    public Node getFistTowardsTail() {
+        return this.next;
+    }
+
+
 
     //Print towardsFromComplete
     public void print_toFromHead() {
