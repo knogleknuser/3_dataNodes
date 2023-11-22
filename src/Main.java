@@ -25,20 +25,20 @@ public class Main {
         //Print
         //Front to back
         System.out.println( "Print from Head" );
-        node0.print_towardsFromHead();
+        node0.print_toFromHead();
         //Back to Front
         System.out.println();
         System.out.println( "Print from Tail" );
-        node4.print_towardsFromTail();
+        node4.print_toFromTail();
 
         //Front to back
         System.out.println();
         System.out.println( "Print from Head, with a random node as input" );
-        node3.print_towardsFromHead();
+        node3.print_toFromHead();
         //Back to Front
         System.out.println();
         System.out.println( "Print from Tail, with a random node as input" );
-        node2.print_towardsFromTail();
+        node2.print_toFromTail();
 
 
 

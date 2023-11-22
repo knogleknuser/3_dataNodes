@@ -83,62 +83,62 @@ class NodeTest {
 
     @Test
     void print_towardsFromHead() {
-        this.node0.print_towardsFromHead();
-        this.node1.print_towardsFromHead();
-        this.node2.print_towardsFromHead();
-        this.node3.print_towardsFromHead();
-        this.node4.print_towardsFromHead();
+        this.node0.print_toFromHead();
+        this.node1.print_toFromHead();
+        this.node2.print_toFromHead();
+        this.node3.print_toFromHead();
+        this.node4.print_toFromHead();
 
-        this.node0.print_towardsFromHead();
-        this.node1.print_towardsFromHead();
-        this.node2.print_towardsFromHead();
-        this.node3.print_towardsFromHead();
-        this.node4.print_towardsFromHead();
+        this.node0.print_toFromHead();
+        this.node1.print_toFromHead();
+        this.node2.print_toFromHead();
+        this.node3.print_toFromHead();
+        this.node4.print_toFromHead();
     }
 
     @Test
     void print_towardsFromTail() {
-        this.node0.print_towardsFromTail();
-        this.node1.print_towardsFromTail();
-        this.node2.print_towardsFromTail();
-        this.node3.print_towardsFromTail();
-        this.node4.print_towardsFromTail();
+        this.node0.print_toFromTail();
+        this.node1.print_toFromTail();
+        this.node2.print_toFromTail();
+        this.node3.print_toFromTail();
+        this.node4.print_toFromTail();
 
-        this.node0.print_towardsFromTail();
-        this.node1.print_towardsFromTail();
-        this.node2.print_towardsFromTail();
-        this.node3.print_towardsFromTail();
-        this.node4.print_towardsFromTail();
+        this.node0.print_toFromTail();
+        this.node1.print_toFromTail();
+        this.node2.print_toFromTail();
+        this.node3.print_toFromTail();
+        this.node4.print_toFromTail();
     }
 
     @Test
     void testPrint_towardsFromHead() {
-        Node.print_towardsFromHead( this.node0 );
-        Node.print_towardsFromHead( this.node1 );
-        Node.print_towardsFromHead( this.node2 );
-        Node.print_towardsFromHead( this.node3 );
-        Node.print_towardsFromHead( this.node4 );
+        Node.print_toFromHead( this.node0 );
+        Node.print_toFromHead( this.node1 );
+        Node.print_toFromHead( this.node2 );
+        Node.print_toFromHead( this.node3 );
+        Node.print_toFromHead( this.node4 );
 
-        Node.print_towardsFromHead( this.node0 );
-        Node.print_towardsFromHead( this.node1 );
-        Node.print_towardsFromHead( this.node2 );
-        Node.print_towardsFromHead( this.node3 );
-        Node.print_towardsFromHead( this.node4 );
+        Node.print_toFromHead( this.node0 );
+        Node.print_toFromHead( this.node1 );
+        Node.print_toFromHead( this.node2 );
+        Node.print_toFromHead( this.node3 );
+        Node.print_toFromHead( this.node4 );
     }
 
     @Test
     void testPrint_towardsFromTail() {
-        Node.print_towardsFromTail( this.node0 );
-        Node.print_towardsFromTail( this.node1 );
-        Node.print_towardsFromTail( this.node2 );
-        Node.print_towardsFromTail( this.node3 );
-        Node.print_towardsFromTail( this.node4 );
+        Node.print_toFromTail( this.node0 );
+        Node.print_toFromTail( this.node1 );
+        Node.print_toFromTail( this.node2 );
+        Node.print_toFromTail( this.node3 );
+        Node.print_toFromTail( this.node4 );
 
-        Node.print_towardsFromTail( this.node0 );
-        Node.print_towardsFromTail( this.node1 );
-        Node.print_towardsFromTail( this.node2 );
-        Node.print_towardsFromTail( this.node3 );
-        Node.print_towardsFromTail( this.node4 );
+        Node.print_toFromTail( this.node0 );
+        Node.print_toFromTail( this.node1 );
+        Node.print_toFromTail( this.node2 );
+        Node.print_toFromTail( this.node3 );
+        Node.print_toFromTail( this.node4 );
     }
 
     @Test
@@ -1005,11 +1005,11 @@ class NodeTest {
         Node node6 = new Node( "6" );
 
         System.out.println( "insert towards head" );
-        this.node2.print_towardsFromHead();
+        this.node2.print_toFromHead();
         this.node2.insert_towardsHead( node5 );
-        this.node2.print_towardsFromHead();
+        this.node2.print_toFromHead();
         this.node2.insert_towardsHead( node6 );
-        this.node2.print_towardsFromHead();
+        this.node2.print_toFromHead();
 
         assertEquals( node6.data, this.node2.previous.data );
         assertEquals( node5.data, this.node2.previous.previous.data );
@@ -1018,11 +1018,11 @@ class NodeTest {
         assertEquals( this.node2.data, node5.next.next.data );
 
         node5.insert_towardsHead( this.node2 );
-        node6.print_towardsFromHead();
+        node6.print_toFromHead();
         node5.insert_towardsHead( this.node2 );
-        node6.print_towardsFromHead();
+        node6.print_toFromHead();
         node5.insert_towardsHead( this.node2 );
-        node6.print_towardsFromHead();
+        node6.print_toFromHead();
 
         assertEquals( this.node2.data, node5.previous.data );
         assertEquals( node5.data, this.node2.next.data );
@@ -1035,13 +1035,13 @@ class NodeTest {
             assertEquals( node2s[ i ], node6s[ i ] );
         }
 
-        node6.print_towardsFromHead();
+        node6.print_toFromHead();
         assertEquals( 7, node5.strings_toFromHead().length );
         node6.remove();
-        node5.print_towardsFromHead();
+        node5.print_toFromHead();
         assertEquals( 6, node5.strings_toFromHead().length );
         assertEquals( 1, node6.strings_toFromHead().length );
-        node6.print_towardsFromHead();
+        node6.print_toFromHead();
         System.out.println();
 
     }
@@ -1052,20 +1052,20 @@ class NodeTest {
         Node node6 = new Node( "6" );
 
         System.out.println( "insert towards tail" );
-        this.node2.print_towardsFromHead();
+        this.node2.print_toFromHead();
 
         this.node2.insert_towardsTail( node5 );
-        this.node2.print_towardsFromHead();
+        this.node2.print_toFromHead();
         this.node2.insert_towardsTail( node6 );
-        this.node2.print_towardsFromHead();
+        this.node2.print_toFromHead();
 
         assertEquals( node6.data, this.node2.next.data );
         assertEquals( node5.data, this.node2.next.next.data );
 
         node5.insert_towardsTail( this.node2 );
-        this.node2.print_towardsFromHead();
+        this.node2.print_toFromHead();
         node5.insert_towardsTail( this.node2 );
-        this.node2.print_towardsFromHead();
+        this.node2.print_toFromHead();
 
         assertEquals( this.node2.data, node5.next.data );
         assertEquals( this.node2.data, node6.next.next.data );
@@ -1077,13 +1077,13 @@ class NodeTest {
             assertEquals( node2s[ i ], node6s[ i ] );
         }
 
-        node6.print_towardsFromHead();
+        node6.print_toFromHead();
         assertEquals( 7, node5.strings_toFromHead().length );
         node6.remove();
-        node5.print_towardsFromHead();
+        node5.print_toFromHead();
         assertEquals( 6, node5.strings_toFromHead().length );
         assertEquals( 1, node6.strings_toFromHead().length );
-        node6.print_towardsFromHead();
+        node6.print_toFromHead();
         System.out.println();
 
 
@@ -1093,7 +1093,7 @@ class NodeTest {
     void insertNode_towardsHead_INSANE() {
         System.out.println();
         System.out.println( "--------------------Start of the INSANE Insertion Test, HEAD------------" );
-        this.node0.print_towardsFromHead();
+        this.node0.print_toFromHead();
         System.out.println();
 
         for ( int i = 0; i < this.NodeNs.size(); i++ ) {
@@ -1103,7 +1103,7 @@ class NodeTest {
 
                 nodeI.insert_towardsHead( nodeJ );
                 System.out.println( "i = " + i + " , j = " + j );
-                nodeI.print_towardsFromHead();
+                nodeI.print_toFromHead();
                 System.out.println();
 
                 if ( !nodeI.getData().equals( nodeJ.getData() ) ) {
@@ -1136,7 +1136,7 @@ class NodeTest {
     void insertNode_towardsTail_INSANE() {
         System.out.println();
         System.out.println( "--------------------Start of the INSANE Insertion Test, TAIL------------" );
-        this.node0.print_towardsFromHead();
+        this.node0.print_toFromHead();
         System.out.println();
 
         for ( int i = 0; i < this.NodeNs.size(); i++ ) {
@@ -1146,7 +1146,7 @@ class NodeTest {
 
                 nodeI.insert_towardsTail( nodeJ );
                 System.out.println( "i = " + i + " , j = " + j );
-                nodeI.print_towardsFromHead();
+                nodeI.print_toFromHead();
                 System.out.println();
 
                 if ( !nodeI.getData().equals( nodeJ.getData() ) ) {
@@ -1180,7 +1180,7 @@ class NodeTest {
     void insertNode_betweenLists_InsaneAfterHead() {
         System.out.println();
         System.out.println( "--------------------Start of the INSANE BETWEEN LISTS FIND AND INSERT Test, AFTER (Head)------------" );
-        this.node0.print_towardsFromHead();
+        this.node0.print_toFromHead();
         System.out.println();
 
         Node nodeL = NodeLs.get( 0 );
@@ -1202,8 +1202,8 @@ class NodeTest {
                     nodeI.findAndInsertAfter_toFromHead(  dataJ );
                 }
                 System.out.println( "i = " + i + " , j = " + this.NodeLs.get( j ).getData() );
-                this.node0.print_towardsFromHead();
-                nodeF.print_towardsFromHead();
+                this.node0.print_toFromHead();
+                nodeF.print_toFromHead();
                 System.out.println();
 
                 if ( !nodeI.getData().equals( dataJ ) ) {
@@ -1242,7 +1242,7 @@ class NodeTest {
     void insertNode_betweenLists_InsaneBeforeHead() {
         System.out.println();
         System.out.println( "--------------------Start of the INSANE BETWEEN LISTS FIND AND INSERT Test, BEFORE (Head)------------" );
-        this.node0.print_towardsFromHead();
+        this.node0.print_toFromHead();
         System.out.println();
 
         Node nodeL = NodeLs.get( 0 );
@@ -1264,8 +1264,8 @@ class NodeTest {
                     nodeI.findAndInsertBefore_toFromHead(  dataJ );
                 }
                 System.out.println( "i = " + i + " , j = " + this.NodeLs.get( j ).getData() );
-                this.node0.print_towardsFromHead();
-                nodeF.print_towardsFromHead();
+                this.node0.print_toFromHead();
+                nodeF.print_toFromHead();
                 System.out.println();
 
                 if ( !nodeI.getData().equals( dataJ ) ) {
@@ -1305,7 +1305,7 @@ class NodeTest {
     void insertNode_betweenLists_InsaneAfterTail() {
         System.out.println();
         System.out.println( "--------------------Start of the INSANE BETWEEN LISTS FIND AND INSERT Test, AFTER (Tail)------------" );
-        this.node0.print_towardsFromHead();
+        this.node0.print_toFromHead();
         System.out.println();
 
         Node nodeL = NodeLs.get( 0 );
@@ -1327,8 +1327,8 @@ class NodeTest {
                     nodeI.findAndInsertAfter_toFromTail(  dataJ );
                 }
                 System.out.println( "i = " + i + " , j = " + this.NodeLs.get( j ).getData() );
-                this.node0.print_towardsFromHead();
-                nodeF.print_towardsFromHead();
+                this.node0.print_toFromHead();
+                nodeF.print_toFromHead();
                 System.out.println();
 
                 if ( !nodeI.getData().equals( dataJ ) ) {
@@ -1367,7 +1367,7 @@ class NodeTest {
     void insertNode_betweenLists_InsaneBeforeTail() {
         System.out.println();
         System.out.println( "--------------------Start of the INSANE BETWEEN LISTS FIND AND INSERT Test, BEFORE (Tail)------------" );
-        this.node0.print_towardsFromHead();
+        this.node0.print_toFromHead();
         System.out.println();
 
         Node nodeL = NodeLs.get( 0 );
@@ -1389,8 +1389,8 @@ class NodeTest {
                     nodeI.findAndInsertBefore_toFromTail(  dataJ );
                 }
                 System.out.println( "i = " + i + " , j = " + this.NodeLs.get( j ).getData() );
-                this.node0.print_towardsFromHead();
-                nodeF.print_towardsFromHead();
+                this.node0.print_toFromHead();
+                nodeF.print_toFromHead();
                 System.out.println();
 
                 if ( !nodeI.getData().equals( dataJ ) ) {
@@ -1428,7 +1428,7 @@ class NodeTest {
     void replace_INSANE() {
         System.out.println();
         System.out.println( "--------------------Start of the INSANE Replace Test------------" );
-        this.node0.print_towardsFromHead();
+        this.node0.print_toFromHead();
         System.out.println();
 
         for ( int i = 0; i < this.NodeNs.size(); i++ ) {
@@ -1442,7 +1442,7 @@ class NodeTest {
 
                 nodeI.replace( nodeJ );
                 System.out.println( "i = " + i + " , j = " + j );
-                this.node4.print_towardsFromHead();
+                this.node4.print_toFromHead();
                 System.out.println();
 
                 if ( !this.NodeNs.get( i ).getData().equals( this.NodeNs.get( j ).getData() ) ) {
@@ -1475,7 +1475,7 @@ class NodeTest {
     void replace() {
         System.out.println();
         System.out.println( "--------------------Start of the Replace Test------------" );
-        this.node0.print_towardsFromHead();
+        this.node0.print_toFromHead();
         System.out.println();
 
         for ( int i = 0; i < this.NodeNs.size(); i++ ) {
@@ -1489,7 +1489,7 @@ class NodeTest {
 
                 nodeI.replace( nodeJ );
                 System.out.println( "i = " + i + " , j = " + this.NodeLs.get( j ).getData() );
-                nodeJ.print_towardsFromHead();
+                nodeJ.print_toFromHead();
                 System.out.println();
 
                 if ( !this.NodeNs.get( i ).getData().equals( this.NodeLs.get( j ).getData() ) ) {

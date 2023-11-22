@@ -27,20 +27,20 @@ public class Node {
 
 
     //Print towardsFromComplete
-    public void print_towardsFromHead() {
+    public void print_toFromHead() {
         System.out.println( Arrays.toString( this.strings_toFromHead() ) );
     }
 
-    public void print_towardsFromTail() {
+    public void print_toFromTail() {
         System.out.println( Arrays.toString( this.strings_toFromTail() ) );
     }
 
     //Print towardsFromComplete - Static
-    public static void print_towardsFromHead( Node n ) {
+    public static void print_toFromHead( Node n ) {
         System.out.println( Arrays.toString( strings_toFromHead( n ) ) );
     }
 
-    public static void print_towardsFromTail( Node n ) {
+    public static void print_toFromTail( Node n ) {
         System.out.println( Arrays.toString( strings_toFromTail( n ) ) );
     }
 

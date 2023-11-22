@@ -103,11 +103,11 @@ public class NodeList {
     }
     //Print
     public void print_fromHead() {
-        Node.print_towardsFromHead( this.calcHead() );
+        Node.print_toFromHead( this.calcHead() );
     }
 
     public void print_fromTail() {
-        Node.print_towardsFromTail( this.calcTail() );
+        Node.print_toFromTail( this.calcTail() );
     }
 
     //Strings - Simple Standalone
