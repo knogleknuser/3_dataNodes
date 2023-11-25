@@ -46,6 +46,7 @@ public class NodeList {
                 }
             }
             this.head = Node.findHead( this.head );
+            this.tail = Node.findTail( this.head ); //This part only runs if the tail isn't actually a tail, so we need to fix the tail too
             return this.head;
         }
 
@@ -83,6 +84,7 @@ public class NodeList {
                 }
             }
             this.tail = Node.findTail( this.tail );
+            this.head = Node.findHead( this.tail );  //This part only runs if the head isn't actually a head, so we need to fix the head too
             return this.tail;
         }
 
@@ -101,6 +103,7 @@ public class NodeList {
 
         return this.tail;
     }
+
     //Print
     public void print_fromHead() {
         Node.print_toFromHead( this.getAndCalcHead() );
@@ -112,11 +115,11 @@ public class NodeList {
 
     //Strings - Simple Standalone
     public String[] strings_fromHead() {
-        return Node.strings_toFromHead( this.getAndCalcHead() );
+        return Node.strings_toFromHead( this.getAndCalcHead(), new StringBuilder() );
     }
 
     public String[] strings_fromTail() {
-        return Node.strings_toFromTail( this.getAndCalcTail() );
+        return Node.strings_toFromTail( this.getAndCalcTail(), new StringBuilder() );
     }
 
     //Strings
@@ -130,11 +133,11 @@ public class NodeList {
 
     //Stringbuilder - Simple Standalone
     public StringBuilder sb_fromHead() {
-        return Node.sb_toFromHead( this.getAndCalcHead() );
+        return Node.sb_toFromHead( this.getAndCalcHead(), new StringBuilder() );
     }
 
     public StringBuilder sb_fromTail() {
-        return Node.sb_toFromTail( this.getAndCalcTail() );
+        return Node.sb_toFromTail( this.getAndCalcTail(), new StringBuilder() );
     }
 
     //Stringbuilder
@@ -150,21 +153,27 @@ public class NodeList {
     //Find and Remove
     public Node findAndRemove_fromHead( String data ) {
         Node nodeToRemove = this.find_fromHead( data );
-        return this.remove(nodeToRemove);
+        return this.remove( nodeToRemove );
     }
 
     public Node findAndRemove_fromTail( String data ) {
         Node nodeToRemove = this.find_fromTail( data );
-        return this.remove(nodeToRemove);
+        return this.remove( nodeToRemove );
     }
 
     //Find
     public Node find_fromHead( String data ) {
-        return Node.find_toFromHead( this.getAndCalcHead(), data );
+        if ( this.getAndCalcHead() == null || data == null ) {
+            return null;
+        }
+        return Node.find_toTail( this.head, data );
     }
 
     public Node find_fromTail( String data ) {
-        return Node.find_toFromTail( this.getAndCalcTail(), data );
+        if ( this.getAndCalcTail() == null || data == null ) {
+            return null;
+        }
+        return Node.find_toHead( this.tail, data );
     }
 
     //Remove
