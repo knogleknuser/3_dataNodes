@@ -1,5 +1,6 @@
 public class Main {
     public static void main( String[] args ) {
+
         //Make some nodes
         Node node0 = new Node( "0" );
         Node node1 = new Node( "1" );

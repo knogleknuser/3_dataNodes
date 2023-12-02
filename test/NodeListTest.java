@@ -474,7 +474,7 @@ class NodeListTest {
         System.out.println( "-----------REPLACE DATA FROM HEAD-----------------" );
         this.fyldtNodeList.print_fromHead();
         for ( int i = 0; i < this.fyldtNodeList.strings_fromHead().length; i++ ) {
-            assertEquals( "2", this.fyldtNodeList.findAndReplace_fromHead(  "2",String.valueOf( i ) ) );
+            assertEquals( "2", this.fyldtNodeList.findAndReplace_fromHead( "2", String.valueOf( i ) ) );
         }
         for ( int i = 0; i < this.fyldtNodeList.strings_fromHead().length; i++ ) {
             assertEquals( "2", this.fyldtNodeList.strings_fromHead()[ i ] );
@@ -488,11 +488,20 @@ class NodeListTest {
         System.out.println( "-----------REPLACE DATA FROM TAIL-----------------" );
         this.fyldtNodeList.print_fromHead();
         for ( int i = 0; i < this.fyldtNodeList.strings_fromTail().length; i++ ) {
-            assertEquals( "2", this.fyldtNodeList.findAndReplace_fromTail( "2",String.valueOf( i )  ) );
+            assertEquals( "2", this.fyldtNodeList.findAndReplace_fromTail( "2", String.valueOf( i ) ) );
         }
         for ( int i = 0; i < this.fyldtNodeList.strings_fromTail().length; i++ ) {
             assertEquals( "2", this.fyldtNodeList.strings_fromTail()[ i ] );
         }
         this.fyldtNodeList.print_fromHead();
+    }
+
+    @Test
+    void testNetworkSize() {
+        System.out.println();
+        System.out.println( "-----------NETWORK SIZE-----------------" );
+        this.tomNodeList.print_fromHead();
+        assertEquals( 5, this.fyldtNodeList.networkSize() );
+        assertEquals( 0, this.tomNodeList.networkSize() );
     }
 }

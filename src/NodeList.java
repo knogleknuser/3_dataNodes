@@ -19,6 +19,7 @@ public class NodeList {
         return this.tail.data;
     }
 
+    //CONSTURCTORSSSSSSS         sssssssssssssssssssssss
     public NodeList() {
     }
 
@@ -33,6 +34,18 @@ public class NodeList {
     public NodeList( String[] someStrings ) {
         this.setNodeNetwork( someStrings );
     }
+
+
+
+
+
+
+
+
+
+
+
+
 
     //Set NodeNetwork
     public boolean setNodeNetwork_fromHead() {
@@ -73,6 +86,24 @@ public class NodeList {
         this.tail = Node.findTail( this.head );
         return true;
     }
+
+
+
+
+
+
+    //Network Size
+    public int networkSize(){
+        int networkSizeRaw = Node.networkSize( this.getAndCalcHead() );
+        if ( networkSizeRaw == -1 ) {
+            return 0;
+        }
+        return networkSizeRaw;
+    }
+
+
+
+
 
 
     //Calcs
@@ -152,12 +183,12 @@ public class NodeList {
     }
 
     //Print
-    public void print_fromHead() {
-        Node.print_toFromHead( this.getAndCalcHead() );
+    public String print_fromHead() {
+        return Node.print_toFromHead( this.getAndCalcHead() );
     }
 
-    public void print_fromTail() {
-        Node.print_toFromTail( this.getAndCalcTail() );
+    public String print_fromTail() {
+        return Node.print_toFromTail( this.getAndCalcTail() );
     }
 
     //Strings - Simple Standalone

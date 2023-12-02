@@ -41,6 +41,19 @@ public class Node {
         return this.next;
     }
 
+    //Network Size
+    public int networkSize(){
+        return Node.networkSize(this);
+    }
+
+    public static int networkSize(Node n){
+        String[] strings = strings_toFromHead( n );
+        if ( strings == null ) {
+            return -1;
+        }
+        return strings.length;
+    }
+
 
     //Print towardsFromComplete
     public String print_toFromHead() {
@@ -119,6 +132,9 @@ public class Node {
     public static String[] sbToStrings( StringBuilder stringBuilder ) {
         if ( stringBuilder == null ) {
             return null;
+        }
+        if ( stringBuilder.isEmpty() ) {
+            return new String[0];
         }
         return stringBuilder.toString().split( stringBuilderDivider );
     }
