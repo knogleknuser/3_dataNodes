@@ -39,6 +39,10 @@ public class NodeList {
         this.setNodeNetwork( someStrings );
     }
 
+    public NodeList( NodeList nodeList ) {
+        this.setNodeNetwork( nodeList.getAndCalcHead() );
+    }
+
 
     //Set NodeNetwork
     public boolean setNodeNetwork_fromHead() {
@@ -240,6 +244,123 @@ public class NodeList {
 
 
     //List Mergers
+    //Copy and Delete - Array
+    public boolean copyListAndDelete_headTail( NodeList[] copiedLists ) {
+        if ( copiedLists == null ) {
+            return false;
+        }
+
+        boolean isSuccesfull = false;
+        for ( int i = 0; i < copiedLists.length; i++ ) {
+            if (this.copyListAndDelete_headTail(  copiedLists[i])){
+                isSuccesfull = true;
+            }
+        }
+        return isSuccesfull;
+    }
+
+    public boolean copyListAndDelete_headHead( NodeList[] copiedLists ) {
+        if ( copiedLists == null ) {
+            return false;
+        }
+
+        boolean isSuccesfull = false;
+        for ( int i = 0; i < copiedLists.length; i++ ) {
+            if (this.copyListAndDelete_headHead(  copiedLists[i])){
+                isSuccesfull = true;
+            }
+        }
+        return isSuccesfull;
+    }
+
+    public boolean copyListAndDelete_tailHead( NodeList[] copiedLists ) {
+        if ( copiedLists == null ) {
+            return false;
+        }
+
+        boolean isSuccesfull = false;
+        for ( int i = 0; i < copiedLists.length; i++ ) {
+            if (this.copyListAndDelete_tailHead(  copiedLists[i])){
+                isSuccesfull = true;
+            }
+        }
+        return isSuccesfull;
+    }
+
+    public boolean copyListAndDelete_tailTail( NodeList[] copiedLists) {
+        if ( copiedLists == null ) {
+            return false;
+        }
+
+        boolean isSuccesfull = false;
+        for ( int i = 0; i < copiedLists.length; i++ ) {
+            if (this.copyListAndDelete_tailTail(  copiedLists[i])){
+                isSuccesfull = true;
+            }
+        }
+        return isSuccesfull;
+    }
+
+
+    //Copy - Array
+    public boolean copyList_headTail( NodeList[] copiedLists ) {
+        if ( copiedLists == null ) {
+            return false;
+        }
+
+        boolean isSuccesfull = false;
+        for ( int i = 0; i < copiedLists.length; i++ ) {
+            if (this.copyList_headTail(  copiedLists[i])){
+                isSuccesfull = true;
+            }
+        }
+        return isSuccesfull;
+    }
+
+    public boolean copyList_headHead( NodeList[] copiedLists) {
+        if ( copiedLists == null ) {
+            return false;
+        }
+
+        boolean isSuccesfull = false;
+        for ( int i = 0; i < copiedLists.length; i++ ) {
+            if (this.copyList_headHead(  copiedLists[i])){
+                isSuccesfull = true;
+            }
+        }
+        return isSuccesfull;
+    }
+
+    public boolean copyList_tailHead( NodeList[] copiedLists ) {
+        if ( copiedLists == null ) {
+            return false;
+        }
+
+        boolean isSuccesfull = false;
+        for ( int i = 0; i < copiedLists.length; i++ ) {
+            if (this.copyList_tailHead(  copiedLists[i])){
+                isSuccesfull = true;
+            }
+        }
+        return isSuccesfull;
+    }
+
+    public boolean copyList_tailTail( NodeList[] copiedLists ) {
+        if ( copiedLists == null ) {
+            return false;
+        }
+
+        boolean isSuccesfull = false;
+        for ( int i = 0; i < copiedLists.length; i++ ) {
+            if (this.copyList_tailTail(  copiedLists[i])){
+                isSuccesfull = true;
+            }
+        }
+        return isSuccesfull;
+    }
+
+
+
 
 
     //Copy and Delete
@@ -247,7 +368,8 @@ public class NodeList {
         if ( !this.copyList_headTail( copiedList ) ) {
             return false;
         }
-        copiedList = null;
+        copiedList.head = null;
+        copiedList.tail = null;
         return true;
     }
 
@@ -255,7 +377,8 @@ public class NodeList {
         if ( !this.copyList_headHead( copiedList ) ) {
             return false;
         }
-        copiedList = null;
+        copiedList.head = null;
+        copiedList.tail = null;
         return true;
     }
 
@@ -263,7 +386,8 @@ public class NodeList {
         if ( !this.copyList_tailHead( copiedList ) ) {
             return false;
         }
-        copiedList = null;
+        copiedList.head = null;
+        copiedList.tail = null;
         return true;
     }
 
@@ -271,7 +395,8 @@ public class NodeList {
         if ( !this.copyList_tailTail( copiedList ) ) {
             return false;
         }
-        copiedList = null;
+        copiedList.head = null;
+        copiedList.tail = null;
         return true;
     }
 
