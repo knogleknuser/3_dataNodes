@@ -238,14 +238,14 @@ public class NodeList {
 
     //Find
     private Node find_fromHeadNode( String data ) {
-        if ( this.getAndCalcHead() == null  ) {
+        if ( this.getAndCalcHead() == null ) {
             return null;
         }
         return Node.find_toTail( this.head, data );
     }
 
     private Node find_fromTailNode( String data ) {
-        if ( this.getAndCalcTail() == null  ) {
+        if ( this.getAndCalcTail() == null ) {
             return null;
         }
         return Node.find_toHead( this.tail, data );
@@ -446,7 +446,7 @@ public class NodeList {
 
     //FindAndReplace - Public
     public String findAndReplace_fromHead( String dataReplaceWith, String dataReplaced ) {
-        if ( dataReplaceWith == null || dataReplaced == null ) {
+        if ( dataReplaceWith == null ) {
             return null;
         }
         Node nodeReplaceWith = this.findAndReplace_fromHeadNode( dataReplaceWith, dataReplaced );
@@ -457,7 +457,7 @@ public class NodeList {
     }
 
     public String findAndReplace_fromTail( String dataReplaceWith, String dataReplaced ) {
-        if ( dataReplaceWith == null || dataReplaced == null ) {
+        if ( dataReplaceWith == null ) {
             return null;
         }
         Node nodeReplaceWith = this.findAndReplace_fromTailNode( dataReplaceWith, dataReplaced );
@@ -469,7 +469,7 @@ public class NodeList {
 
     //FindAndReplace
     private Node findAndReplace_fromHeadNode( String dataReplaceWith, String dataReplaced ) {
-        if ( dataReplaceWith == null || dataReplaced == null ) {
+        if ( dataReplaceWith == null ) {
             return null;
         }
         Node nodeReplaceWith = this.findAndInsertBefore_fromHeadNode( dataReplaceWith, dataReplaced );
@@ -483,7 +483,7 @@ public class NodeList {
     }
 
     private Node findAndReplace_fromTailNode( String dataReplaceWith, String dataReplaced ) {
-        if ( dataReplaceWith == null || dataReplaced == null ) {
+        if ( dataReplaceWith == null ) {
             return null;
         }
         Node nodeReplaceWith = this.findAndInsertAfter_fromTailNode( dataReplaceWith, dataReplaced );
@@ -497,12 +497,16 @@ public class NodeList {
     }
 
     //Remove - duplicates - public
-    public boolean findAndRemove_allDuplicates() {
+    public boolean findAndRemove_duplicates() {
         String[] strings = this.strings_fromHead();
         boolean thereWereDuplicates = false;
 
+        if ( this.findAndRemove_duplicates( "null" ) ) {
+            thereWereDuplicates = true;
+        }
+
         for ( int i = 0; i < strings.length; i++ ) {
-            if (this.findAndRemove_duplicates( strings[ i ] )){
+            if ( this.findAndRemove_duplicates( strings[ i ] ) ) {
                 thereWereDuplicates = true;
             }
         }
@@ -517,24 +521,31 @@ public class NodeList {
             return false;
         }
         Node foundFromTail = this.find_fromTailNode( data );
+        if ( foundFromTail == null ) {
+            System.out.println( "FIND AND REMOVE DUPLICATES COULDN'T FIND THE TAIL, BUT COULD HEAD, WTF!?!" );
+            return false;
+        }
 
-        boolean hasFoundAndRemoved = true;
         boolean thereWereDuplicates = false;
 
-        while ( hasFoundAndRemoved ) {
+        while ( true ) {
+
             if ( foundFromHead.equals( foundFromTail ) ) {
-                if ( foundFromHead.data == null ) {
+
+                if ( foundFromTail.data == null  ) {
+                    this.remove( foundFromTail );
                     this.remove( foundFromHead );
                     thereWereDuplicates = true;
                 }
-                hasFoundAndRemoved = false;
+
+                return thereWereDuplicates;
+
             } else {
                 this.remove( foundFromTail );
                 foundFromTail = this.find_fromTailNode( data );
                 thereWereDuplicates = true;
             }
         }
-        return thereWereDuplicates;
     }
 
     //FindAndRemove - Public
@@ -644,6 +655,9 @@ public class NodeList {
 
     //Insert Public
     public String insertHead( String data ) {
+        if ( data == null ) {
+            return null;
+        }
         Node insertedNode = this.insertHeadNode( new Node( data ) );
         if ( insertedNode == null ) {
             return null;
@@ -652,6 +666,9 @@ public class NodeList {
     }
 
     public String insertTail( String data ) {
+        if ( data == null ) {
+            return null;
+        }
         Node insertedNode = this.insertTailNode( new Node( data ) );
         if ( insertedNode == null ) {
             return null;

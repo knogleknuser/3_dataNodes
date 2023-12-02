@@ -645,4 +645,78 @@ class NodeListTest {
         }
 
     }
+
+    @Test
+    void removeDuplicates() {
+        System.out.println();
+        System.out.println( "-----------REMOVE ALL DUPLICATES-----------------" );
+
+        Node node5 = new Node( ( String ) null );
+        Node node6 = new Node( ( String ) null );
+        Node node7 = new Node( ( String ) null );
+        Node node8 = new Node( ( String ) null );
+
+        this.node4.next = node5;
+        node5.previous = this.node4;
+
+        node5.next = node6;
+        node6.previous = node5;
+
+        node6.next = node7;
+        node7.previous = node6;
+
+        node7.next = node8;
+        node8.previous = node7;
+
+        this.fyldtNodeList = new NodeList( this.node0 );
+
+        this.fyldtNodeList.insertHead( "2" );
+        this.fyldtNodeList.insertHead( "2" );
+        this.fyldtNodeList.insertHead( "2" );
+        this.fyldtNodeList.insertHead( "2" );
+        this.fyldtNodeList.insertHead( "2" );
+        this.fyldtNodeList.insertHead( "2" );
+        this.fyldtNodeList.insertHead( "2" );
+        this.fyldtNodeList.insertHead( "2" );
+        this.fyldtNodeList.insertHead( null );
+        this.fyldtNodeList.insertHead( null );
+        this.fyldtNodeList.insertHead( null );
+        this.fyldtNodeList.insertHead( null );
+        this.fyldtNodeList.insertHead( null );
+        this.fyldtNodeList.insertHead( null );
+        this.fyldtNodeList.insertHead( null );
+        this.fyldtNodeList.insertHead( null );
+        this.fyldtNodeList.insertHead( null );
+
+        this.fyldtNodeList.insertTail( "2" );
+        this.fyldtNodeList.insertTail( "2" );
+        this.fyldtNodeList.insertTail( "2" );
+        this.fyldtNodeList.insertTail( "2" );
+        this.fyldtNodeList.insertTail( "2" );
+        this.fyldtNodeList.insertTail( "2" );
+        this.fyldtNodeList.insertTail( "2" );
+        this.fyldtNodeList.insertTail( "2" );
+        this.fyldtNodeList.insertTail( null );
+        this.fyldtNodeList.insertTail( null );
+        this.fyldtNodeList.insertTail( null );
+        this.fyldtNodeList.insertTail( null );
+        this.fyldtNodeList.insertTail( null );
+        this.fyldtNodeList.insertTail( null );
+        this.fyldtNodeList.insertTail( null );
+        this.fyldtNodeList.insertTail( null );
+        this.fyldtNodeList.insertTail( null );
+
+        assertNotEquals(5, this.fyldtNodeList.networkSize()  );
+        this.fyldtNodeList.print_fromHead();
+        assertTrue( this.fyldtNodeList.findAndRemove_duplicates() );
+        this.fyldtNodeList.print_fromHead();
+        assertEquals( 5, this.fyldtNodeList.networkSize() );
+
+        for ( int i = 0; i < this.fyldtNodeList.networkSize(); i++ ) {
+            assertEquals(String.valueOf( i ), this.fyldtNodeList.find_fromHead( String.valueOf( i ) )  );
+        }
+
+
+
+    }
 }

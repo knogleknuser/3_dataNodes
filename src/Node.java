@@ -294,8 +294,10 @@ public class Node {
         Node node = n;
 
         while ( node != null ) {
-            stringBuilder.insert( 0, stringBuilderDivider );
-            stringBuilder.insert( 0, node.getData() ); //Code to divide by
+            if ( node.getData() != null ) {
+                stringBuilder.insert( 0, stringBuilderDivider );
+                stringBuilder.insert( 0, node.getData() ); //Code to divide by
+            }
 
             Node lastNode = node;
             node = node.previous;
@@ -330,8 +332,10 @@ public class Node {
         Node node = n;
 
         while ( node != null ) {
-            stringBuilder.insert( 0, stringBuilderDivider );
-            stringBuilder.insert( 0, node.getData() ); //Code to divide by
+            if ( node.getData() != null ) {
+                stringBuilder.insert( 0, stringBuilderDivider );
+                stringBuilder.insert( 0, node.getData() ); //Code to divide by
+            }
 
             Node lastNode = node;
             node = node.next;
@@ -368,8 +372,9 @@ public class Node {
         Node node = n;
 
         while ( node != null ) {
-            stringBuilder.append( node.getData() ).append( stringBuilderDivider ); //Code to divide by
-
+            if ( node.getData() != null ) {
+                stringBuilder.append( node.getData() ).append( stringBuilderDivider ); //Code to divide by
+            }
             Node lastNode = node;
             node = node.previous;
 
@@ -403,7 +408,9 @@ public class Node {
         Node node = n;
 
         while ( node != null ) {
-            stringBuilder.append( node.getData() ).append( stringBuilderDivider ); //Code to divide by
+            if ( node.getData() != null ) {
+                stringBuilder.append( node.getData() ).append( stringBuilderDivider ); //Code to divide by
+            }
 
             Node lastNode = node;
             node = node.next;
@@ -1001,7 +1008,10 @@ public class Node {
         Node node = n;
 
         while ( node != null ) {
-            if ( node.data.equals( data ) ) {
+            if ( data == null && node.data == null ) {
+                return node;
+            }
+            if ( node.data != null && node.data.equals( data ) ) {
                 return node;
             }
             Node lastNode = node;
@@ -1031,7 +1041,10 @@ public class Node {
         Node node = n;
 
         while ( node != null ) {
-            if ( node.data.equals( data ) ) {
+            if ( data == null && node.data == null ) {
+                return node;
+            }
+            if ( node.data != null && node.data.equals( data ) ) {
                 return node;
             }
             Node lastNode = node;
