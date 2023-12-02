@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class NodeList {
     //Head
     private Node head = null;
@@ -174,6 +176,32 @@ public class NodeList {
         return Node.print_toFromTail( this.getAndCalcTail() );
     }
 
+
+    //Reverse Network
+    public String[] reverseNetwork_fromHead() {
+        if ( this.getAndCalcHead() == null ) {
+            return null;
+        }
+        String[] stringsReversed = Node.sbToStrings( Node.sb_toTail_reverse( this.head, new StringBuilder() ) );
+
+        this.findAndRemove_fromHead( stringsReversed );
+        this.insertHead( stringsReversed );
+        return this.strings_fromHead();
+
+    }
+
+    public String[] reverseNetwork_fromTail() {
+        if ( this.getAndCalcHead() == null ) {
+            return null;
+        }
+        String[] stringsReversed = Node.sbToStrings( Node.sb_toHead_reverse( this.tail, new StringBuilder() ) );
+
+        this.findAndRemove_fromTail( stringsReversed );
+        this.insertTail( stringsReversed );
+        return this.strings_fromTail();
+
+    }
+
     //Strings - Simple Standalone
     public String[] strings_fromHead() {
         return Node.strings_toFromHead( this.getAndCalcHead(), new StringBuilder() );
@@ -208,6 +236,215 @@ public class NodeList {
 
     public StringBuilder sb_fromTail( StringBuilder stringBuilder ) {
         return Node.sb_toFromTail( this.getAndCalcTail(), stringBuilder );
+    }
+
+
+    //List Mergers
+
+
+    //Copy and Delete
+    public boolean copyListAndDelete_headTail( NodeList copiedList ) {
+        if ( !this.copyList_headTail( copiedList ) ) {
+            return false;
+        }
+        copiedList = null;
+        return true;
+    }
+
+    public boolean copyListAndDelete_headHead( NodeList copiedList ) {
+        if ( !this.copyList_headHead( copiedList ) ) {
+            return false;
+        }
+        copiedList = null;
+        return true;
+    }
+
+    public boolean copyListAndDelete_tailHead( NodeList copiedList ) {
+        if ( !this.copyList_tailHead( copiedList ) ) {
+            return false;
+        }
+        copiedList = null;
+        return true;
+    }
+
+    public boolean copyListAndDelete_tailTail( NodeList copiedList ) {
+        if ( !this.copyList_tailTail( copiedList ) ) {
+            return false;
+        }
+        copiedList = null;
+        return true;
+    }
+
+
+    //Copy
+    public boolean copyList_headTail( NodeList copiedList ) {
+        if ( copiedList == null ) {
+            return false;
+        }
+
+        String[] copiedStrings = copiedList.strings_fromTail();
+
+        return this.insertHead( copiedStrings );
+    }
+
+    public boolean copyList_headHead( NodeList copiedList ) {
+        if ( copiedList == null ) {
+            return false;
+        }
+
+        String[] copiedStrings = copiedList.strings_fromHead();
+
+        return this.insertHead( copiedStrings );
+    }
+
+    public boolean copyList_tailHead( NodeList copiedList ) {
+        if ( copiedList == null ) {
+            return false;
+        }
+
+        String[] copiedStrings = copiedList.strings_fromHead();
+
+        return this.insertTail( copiedStrings );
+    }
+
+    public boolean copyList_tailTail( NodeList copiedList ) {
+        if ( copiedList == null ) {
+            return false;
+        }
+
+        String[] copiedStrings = copiedList.strings_fromTail();
+
+        return this.insertTail( copiedStrings );
+    }
+
+
+    //List Transfers
+    public String move_findFromHead_insertAfterFromHead( String dataToMove, String insertAfterThis, NodeList recievingList ) {
+        if ( dataToMove == null || insertAfterThis == null || recievingList == null ) {
+            return null;
+        }
+        Node nodeToMove = this.findAndRemove_fromHeadNode( dataToMove );
+        if ( nodeToMove == null ) {
+            return null;
+        }
+
+        Node nodeMoved = recievingList.findAndInsertAfter_fromHeadNode( nodeToMove, insertAfterThis );
+        if ( nodeMoved == null ) {
+            return null;
+        }
+        return nodeMoved.getData();
+    }
+
+    public String move_findFromHead_insertBeforeFromHead( String dataToMove, String insertBeforeThis, NodeList recievingList ) {
+        if ( dataToMove == null || insertBeforeThis == null || recievingList == null ) {
+            return null;
+        }
+        Node nodeToMove = this.findAndRemove_fromHeadNode( dataToMove );
+        if ( nodeToMove == null ) {
+            return null;
+        }
+
+        Node nodeMoved = recievingList.findAndInsertBefore_fromHeadNode( nodeToMove, insertBeforeThis );
+        if ( nodeMoved == null ) {
+            return null;
+        }
+        return nodeMoved.getData();
+    }
+
+    public String move_findFromTail_insertAfterFromHead( String dataToMove, String insertAfterThis, NodeList recievingList ) {
+        if ( dataToMove == null || insertAfterThis == null || recievingList == null ) {
+            return null;
+        }
+        Node nodeToMove = this.findAndRemove_fromTailNode( dataToMove );
+        if ( nodeToMove == null ) {
+            return null;
+        }
+
+        Node nodeMoved = recievingList.findAndInsertAfter_fromHeadNode( nodeToMove, insertAfterThis );
+        if ( nodeMoved == null ) {
+            return null;
+        }
+        return nodeMoved.getData();
+    }
+
+    public String move_findFromTail_insertBeforeFromHead( String dataToMove, String insertBeforeThis, NodeList recievingList ) {
+        if ( dataToMove == null || insertBeforeThis == null || recievingList == null ) {
+            return null;
+        }
+        Node nodeToMove = this.findAndRemove_fromTailNode( dataToMove );
+        if ( nodeToMove == null ) {
+            return null;
+        }
+
+        Node nodeMoved = recievingList.findAndInsertBefore_fromHeadNode( nodeToMove, insertBeforeThis );
+        if ( nodeMoved == null ) {
+            return null;
+        }
+        return nodeMoved.getData();
+    }
+
+    public String move_findFromHead_insertAfterFromTail( String dataToMove, String insertAfterThis, NodeList recievingList ) {
+        if ( dataToMove == null || insertAfterThis == null || recievingList == null ) {
+            return null;
+        }
+        Node nodeToMove = this.findAndRemove_fromHeadNode( dataToMove );
+        if ( nodeToMove == null ) {
+            return null;
+        }
+
+        Node nodeMoved = recievingList.findAndInsertAfter_fromTailNode( nodeToMove, insertAfterThis );
+        if ( nodeMoved == null ) {
+            return null;
+        }
+        return nodeMoved.getData();
+    }
+
+    public String move_findFromHead_insertBeforeFromTail( String dataToMove, String insertBeforeThis, NodeList recievingList ) {
+        if ( dataToMove == null || insertBeforeThis == null || recievingList == null ) {
+            return null;
+        }
+        Node nodeToMove = this.findAndRemove_fromHeadNode( dataToMove );
+        if ( nodeToMove == null ) {
+            return null;
+        }
+
+        Node nodeMoved = recievingList.findAndInsertBefore_fromTailNode( nodeToMove, insertBeforeThis );
+        if ( nodeMoved == null ) {
+            return null;
+        }
+        return nodeMoved.getData();
+    }
+
+    public String move_findFromTail_insertAfterFromTail( String dataToMove, String insertAfterThis, NodeList recievingList ) {
+        if ( dataToMove == null || insertAfterThis == null || recievingList == null ) {
+            return null;
+        }
+        Node nodeToMove = this.findAndRemove_fromTailNode( dataToMove );
+        if ( nodeToMove == null ) {
+            return null;
+        }
+
+        Node nodeMoved = recievingList.findAndInsertAfter_fromTailNode( nodeToMove, insertAfterThis );
+        if ( nodeMoved == null ) {
+            return null;
+        }
+        return nodeMoved.getData();
+    }
+
+    public String move_findFromTail_insertBeforeFromTail( String dataToMove, String insertBeforeThis, NodeList recievingList ) {
+        if ( dataToMove == null || insertBeforeThis == null || recievingList == null ) {
+            return null;
+        }
+        Node nodeToMove = this.findAndRemove_fromTailNode( dataToMove );
+        if ( nodeToMove == null ) {
+            return null;
+        }
+
+        Node nodeMoved = recievingList.findAndInsertBefore_fromTailNode( nodeToMove, insertBeforeThis );
+        if ( nodeMoved == null ) {
+            return null;
+        }
+        return nodeMoved.getData();
     }
 
 
@@ -428,6 +665,76 @@ public class NodeList {
     }
 
     private Node findAndInsertBefore_fromTailNode( String dataInserted, String dataBeforeThis ) {
+        if ( dataInserted == null || dataBeforeThis == null ) {
+            return null;
+        }
+
+        if ( this.getAndCalcTail() == null ) {
+            return null;
+        }
+
+        Node nodeBeforeThis = this.find_fromTailNode( dataBeforeThis );
+        if ( nodeBeforeThis == null ) {
+            return null;
+        }
+        return this.insertBefore( new Node( dataInserted ), nodeBeforeThis );
+
+    }
+
+    //Node management version
+    private Node findAndInsertAfter_fromHeadNode( Node dataInserted, String dataAfterThis ) {
+        if ( dataInserted == null || dataAfterThis == null ) {
+            return null;
+        }
+
+        if ( this.getAndCalcHead() == null ) {
+            return null;
+        }
+
+        Node nodeAfterThis = this.find_fromHeadNode( dataAfterThis );
+        if ( nodeAfterThis == null ) {
+            return null;
+        }
+        return this.insertAfter( new Node( dataInserted ), nodeAfterThis );
+
+    }
+
+    private Node findAndInsertBefore_fromHeadNode( Node dataInserted, String dataBeforeThis ) {
+        if ( dataInserted == null || dataBeforeThis == null ) {
+            return null;
+        }
+
+        if ( this.getAndCalcHead() == null ) {
+            return null;
+        }
+
+        Node nodeBeforeThis = this.find_fromHeadNode( dataBeforeThis );
+        if ( nodeBeforeThis == null ) {
+            return null;
+        }
+        return this.insertBefore( new Node( dataInserted ), nodeBeforeThis );
+
+    }
+
+    private Node findAndInsertAfter_fromTailNode( Node dataInserted, String dataAfterThis ) {
+        if ( dataInserted == null || dataAfterThis == null ) {
+            return null;
+        }
+
+        if ( this.getAndCalcTail() == null ) {
+            return null;
+        }
+
+        Node nodeAfterThis = this.find_fromTailNode( dataAfterThis );
+        if ( nodeAfterThis == null ) {
+            return null;
+        }
+        return this.insertAfter( new Node( dataInserted ), nodeAfterThis );
+
+
+    }
+
+    private Node findAndInsertBefore_fromTailNode( Node dataInserted, String dataBeforeThis ) {
         if ( dataInserted == null || dataBeforeThis == null ) {
             return null;
         }
