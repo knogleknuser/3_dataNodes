@@ -548,6 +548,37 @@ public class NodeList {
         }
     }
 
+    //FindAndRemove - multiple - Public
+    public boolean findAndRemove_fromHead( String[] datas ) {
+        if ( datas == null ) {
+            return false;
+        }
+
+        boolean arrayHadValidDataThatWasRemoved = false;
+
+        for ( int i = ( datas.length - 1 ); i > -1; i-- ) {
+            if ( this.findAndRemove_fromHead( datas[ i ] ) != null ) {
+                arrayHadValidDataThatWasRemoved = true;
+            }
+        }
+        return arrayHadValidDataThatWasRemoved;
+    }
+
+    public boolean findAndRemove_fromTail( String[] datas ) {
+        if ( datas == null ) {
+            return false;
+        }
+
+        boolean arrayHadValidDataThatWasRemoved = false;
+
+        for ( int i = 0; i < datas.length; i++ ) {
+            if ( this.findAndRemove_fromTail( datas[ i ] ) != null ) {
+                arrayHadValidDataThatWasRemoved = true;
+            }
+        }
+        return arrayHadValidDataThatWasRemoved;
+    }
+
     //FindAndRemove - Public
     public String findAndRemove_fromHead( String data ) {
         Node nodeRemoved = this.findAndRemove_fromHeadNode( data );

@@ -827,4 +827,28 @@ class NodeListTest {
         assertEquals( 4, this.tomNodeList.networkSize() );
 
     }
+
+    @Test
+    void multipleWordsRemoval() {
+        System.out.println();
+        System.out.println( "-----------MULTIPLE WORDS REMOVAL-----------------" );
+
+        String[] resStrings = this.fyldtNodeList.strings_fromHead();
+
+        assertFalse( this.fyldtNodeList.findAndRemove_fromHead( ( String[] ) null ) );
+        assertEquals( 5, this.fyldtNodeList.networkSize() );
+        assertTrue( this.fyldtNodeList.findAndRemove_fromHead( resStrings ) );
+        assertEquals( 0, this.fyldtNodeList.networkSize() );
+        assertFalse( this.fyldtNodeList.findAndRemove_fromHead( resStrings ) );
+        assertFalse( this.fyldtNodeList.findAndRemove_fromHead( ( String[] ) null ) );
+
+        this.fyldtNodeList.insertHead( resStrings );
+
+        assertFalse( this.fyldtNodeList.findAndRemove_fromTail( ( String[] ) null ) );
+        assertEquals( 5, this.fyldtNodeList.networkSize() );
+        assertTrue( this.fyldtNodeList.findAndRemove_fromTail( resStrings ) );
+        assertEquals( 0, this.fyldtNodeList.networkSize() );
+        assertFalse( this.fyldtNodeList.findAndRemove_fromTail( resStrings ) );
+        assertFalse( this.fyldtNodeList.findAndRemove_fromTail( ( String[] ) null ) );
+    }
 }
