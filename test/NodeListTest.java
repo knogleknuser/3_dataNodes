@@ -2,6 +2,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Objects;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -1136,20 +1137,24 @@ class NodeListTest {
         System.out.println( "-----------MULTIPLE LISTS ARRAY: COPY AND DELETE-----------------" );
 
         NodeList fyldtNodeListBackup = new NodeList( this.fyldtNodeList );
+        NodeList fyldtNodeListBogBackup = new NodeList( this.fyldtNodeListBog );
         NodeList tomNodeListBackup = new NodeList( this.tomNodeList );
+        NodeList[] nodeLists;
 
         {
-            NodeList[] nodeLists = {
-                    new NodeList( this.fyldtNodeList ),
-                    new NodeList( this.fyldtNodeListBog ),
-                    new NodeList( this.fyldtNodeListBog ),
-                    new NodeList( this.fyldtNodeList ),
-                    new NodeList( this.fyldtNodeList ),
-                    new NodeList( this.fyldtNodeListBog ),
-                    new NodeList( this.fyldtNodeList ),
-                    new NodeList( this.fyldtNodeListBog ),
-                    new NodeList( this.fyldtNodeList )
+            nodeLists = new NodeList[]{
+                    new NodeList( fyldtNodeListBackup ),
+                    new NodeList( fyldtNodeListBogBackup ),
+                    new NodeList( fyldtNodeListBogBackup ),
+                    new NodeList( fyldtNodeListBackup ),
+                    new NodeList( fyldtNodeListBackup ),
+                    new NodeList( fyldtNodeListBogBackup ),
+                    new NodeList( fyldtNodeListBackup ),
+                    new NodeList( fyldtNodeListBogBackup ),
+                    new NodeList( fyldtNodeListBackup )
             };
+
+            assertEquals( 9, nodeLists.length );
 
             for ( int i = 0; i < nodeLists.length; i++ ) {
                 assertEquals( 5, nodeLists[ i ].networkSize() );
@@ -1170,17 +1175,24 @@ class NodeListTest {
             }
         }
         {
-            NodeList[] nodeLists = {
-                    new NodeList( this.fyldtNodeList ),
-                    new NodeList( this.fyldtNodeListBog ),
-                    new NodeList( this.fyldtNodeListBog ),
-                    new NodeList( this.fyldtNodeList ),
-                    new NodeList( this.fyldtNodeList ),
-                    new NodeList( this.fyldtNodeListBog ),
-                    new NodeList( this.fyldtNodeList ),
-                    new NodeList( this.fyldtNodeListBog ),
-                    new NodeList( this.fyldtNodeList )
+            nodeLists = new NodeList[]{
+                    new NodeList( fyldtNodeListBackup ),
+                    new NodeList( fyldtNodeListBogBackup ),
+                    new NodeList( fyldtNodeListBogBackup ),
+                    new NodeList( fyldtNodeListBackup ),
+                    new NodeList( fyldtNodeListBackup ),
+                    new NodeList( fyldtNodeListBogBackup ),
+                    new NodeList( fyldtNodeListBackup ),
+                    new NodeList( fyldtNodeListBogBackup ),
+                    new NodeList( fyldtNodeListBackup )
             };
+
+            assertEquals( 9, nodeLists.length );
+
+            for ( int i = 0; i < nodeLists.length; i++ ) {
+                assertEquals( 5, nodeLists[ i ].networkSize() );
+            }
+
             assertTrue( this.tomNodeList.copyListAndDelete_headTail( nodeLists ) );
             this.tomNodeList.print_fromHead();
             assertEquals( 45, this.tomNodeList.networkSize() );
@@ -1198,17 +1210,23 @@ class NodeListTest {
             }
         }
         {
-            NodeList[] nodeLists = {
-                    new NodeList( this.fyldtNodeList ),
-                    new NodeList( this.fyldtNodeListBog ),
-                    new NodeList( this.fyldtNodeListBog ),
-                    new NodeList( this.fyldtNodeList ),
-                    new NodeList( this.fyldtNodeList ),
-                    new NodeList( this.fyldtNodeListBog ),
-                    new NodeList( this.fyldtNodeList ),
-                    new NodeList( this.fyldtNodeListBog ),
-                    new NodeList( this.fyldtNodeList )
+            nodeLists = new NodeList[]{
+                    new NodeList( fyldtNodeListBackup ),
+                    new NodeList( fyldtNodeListBogBackup ),
+                    new NodeList( fyldtNodeListBogBackup ),
+                    new NodeList( fyldtNodeListBackup ),
+                    new NodeList( fyldtNodeListBackup ),
+                    new NodeList( fyldtNodeListBogBackup ),
+                    new NodeList( fyldtNodeListBackup ),
+                    new NodeList( fyldtNodeListBogBackup ),
+                    new NodeList( fyldtNodeListBackup )
             };
+
+            assertEquals( 9, nodeLists.length );
+
+            for ( int i = 0; i < nodeLists.length; i++ ) {
+                assertEquals( 5, nodeLists[ i ].networkSize() );
+            }
 
             assertTrue( this.fyldtNodeList.copyListAndDelete_headTail( nodeLists ) );
             assertEquals( 50, this.fyldtNodeList.networkSize() );
@@ -1221,17 +1239,23 @@ class NodeListTest {
             }
         }
         {
-            NodeList[] nodeLists = {
-                    new NodeList( this.fyldtNodeList ),
-                    new NodeList( this.fyldtNodeListBog ),
-                    new NodeList( this.fyldtNodeListBog ),
-                    new NodeList( this.fyldtNodeList ),
-                    new NodeList( this.fyldtNodeList ),
-                    new NodeList( this.fyldtNodeListBog ),
-                    new NodeList( this.fyldtNodeList ),
-                    new NodeList( this.fyldtNodeListBog ),
-                    new NodeList( this.fyldtNodeList )
+            nodeLists = new NodeList[]{
+                    new NodeList( fyldtNodeListBackup ),
+                    new NodeList( fyldtNodeListBogBackup ),
+                    new NodeList( fyldtNodeListBogBackup ),
+                    new NodeList( fyldtNodeListBackup ),
+                    new NodeList( fyldtNodeListBackup ),
+                    new NodeList( fyldtNodeListBogBackup ),
+                    new NodeList( fyldtNodeListBackup ),
+                    new NodeList( fyldtNodeListBogBackup ),
+                    new NodeList( fyldtNodeListBackup )
             };
+
+            assertEquals( 9, nodeLists.length );
+
+            for ( int i = 0; i < nodeLists.length; i++ ) {
+                assertEquals( 5, nodeLists[ i ].networkSize() );
+            }
             assertTrue( this.tomNodeList.copyListAndDelete_headTail( nodeLists ) );
             assertEquals( 45, this.tomNodeList.networkSize() );
             assertTrue( this.tomNodeList.findAndRemove_duplicates() );
@@ -1246,17 +1270,23 @@ class NodeListTest {
             }
         }
         {
-            NodeList[] nodeLists = {
-                    new NodeList( this.fyldtNodeList ),
-                    new NodeList( this.fyldtNodeListBog ),
-                    new NodeList( this.fyldtNodeListBog ),
-                    new NodeList( this.fyldtNodeList ),
-                    new NodeList( this.fyldtNodeList ),
-                    new NodeList( this.fyldtNodeListBog ),
-                    new NodeList( this.fyldtNodeList ),
-                    new NodeList( this.fyldtNodeListBog ),
-                    new NodeList( this.fyldtNodeList )
+            nodeLists = new NodeList[]{
+                    new NodeList( fyldtNodeListBackup ),
+                    new NodeList( fyldtNodeListBogBackup ),
+                    new NodeList( fyldtNodeListBogBackup ),
+                    new NodeList( fyldtNodeListBackup ),
+                    new NodeList( fyldtNodeListBackup ),
+                    new NodeList( fyldtNodeListBogBackup ),
+                    new NodeList( fyldtNodeListBackup ),
+                    new NodeList( fyldtNodeListBogBackup ),
+                    new NodeList( fyldtNodeListBackup )
             };
+
+            assertEquals( 9, nodeLists.length );
+
+            for ( int i = 0; i < nodeLists.length; i++ ) {
+                assertEquals( 5, nodeLists[ i ].networkSize() );
+            }
             assertTrue( this.fyldtNodeList.copyListAndDelete_headHead( nodeLists ) );
             assertEquals( 50, this.fyldtNodeList.networkSize() );
             assertTrue( this.fyldtNodeList.findAndRemove_duplicates() );
@@ -1268,17 +1298,23 @@ class NodeListTest {
             }
         }
         {
-            NodeList[] nodeLists = {
-                    new NodeList( this.fyldtNodeList ),
-                    new NodeList( this.fyldtNodeListBog ),
-                    new NodeList( this.fyldtNodeListBog ),
-                    new NodeList( this.fyldtNodeList ),
-                    new NodeList( this.fyldtNodeList ),
-                    new NodeList( this.fyldtNodeListBog ),
-                    new NodeList( this.fyldtNodeList ),
-                    new NodeList( this.fyldtNodeListBog ),
-                    new NodeList( this.fyldtNodeList )
+            nodeLists = new NodeList[]{
+                    new NodeList( fyldtNodeListBackup ),
+                    new NodeList( fyldtNodeListBogBackup ),
+                    new NodeList( fyldtNodeListBogBackup ),
+                    new NodeList( fyldtNodeListBackup ),
+                    new NodeList( fyldtNodeListBackup ),
+                    new NodeList( fyldtNodeListBogBackup ),
+                    new NodeList( fyldtNodeListBackup ),
+                    new NodeList( fyldtNodeListBogBackup ),
+                    new NodeList( fyldtNodeListBackup )
             };
+
+            assertEquals( 9, nodeLists.length );
+
+            for ( int i = 0; i < nodeLists.length; i++ ) {
+                assertEquals( 5, nodeLists[ i ].networkSize() );
+            }
             assertTrue( this.tomNodeList.copyListAndDelete_headHead( nodeLists ) );
             assertEquals( 45, this.tomNodeList.networkSize() );
             assertTrue( this.tomNodeList.findAndRemove_duplicates() );
@@ -1293,17 +1329,23 @@ class NodeListTest {
             }
         }
         {
-            NodeList[] nodeLists = {
-                    new NodeList( this.fyldtNodeList ),
-                    new NodeList( this.fyldtNodeListBog ),
-                    new NodeList( this.fyldtNodeListBog ),
-                    new NodeList( this.fyldtNodeList ),
-                    new NodeList( this.fyldtNodeList ),
-                    new NodeList( this.fyldtNodeListBog ),
-                    new NodeList( this.fyldtNodeList ),
-                    new NodeList( this.fyldtNodeListBog ),
-                    new NodeList( this.fyldtNodeList )
+            nodeLists = new NodeList[]{
+                    new NodeList( fyldtNodeListBackup ),
+                    new NodeList( fyldtNodeListBogBackup ),
+                    new NodeList( fyldtNodeListBogBackup ),
+                    new NodeList( fyldtNodeListBackup ),
+                    new NodeList( fyldtNodeListBackup ),
+                    new NodeList( fyldtNodeListBogBackup ),
+                    new NodeList( fyldtNodeListBackup ),
+                    new NodeList( fyldtNodeListBogBackup ),
+                    new NodeList( fyldtNodeListBackup )
             };
+
+            assertEquals( 9, nodeLists.length );
+
+            for ( int i = 0; i < nodeLists.length; i++ ) {
+                assertEquals( 5, nodeLists[ i ].networkSize() );
+            }
             assertTrue( this.fyldtNodeList.copyListAndDelete_tailHead( nodeLists ) );
             assertEquals( 50, this.fyldtNodeList.networkSize() );
             assertTrue( this.fyldtNodeList.findAndRemove_duplicates() );
@@ -1315,17 +1357,23 @@ class NodeListTest {
             }
         }
         {
-            NodeList[] nodeLists = {
-                    new NodeList( this.fyldtNodeList ),
-                    new NodeList( this.fyldtNodeListBog ),
-                    new NodeList( this.fyldtNodeListBog ),
-                    new NodeList( this.fyldtNodeList ),
-                    new NodeList( this.fyldtNodeList ),
-                    new NodeList( this.fyldtNodeListBog ),
-                    new NodeList( this.fyldtNodeList ),
-                    new NodeList( this.fyldtNodeListBog ),
-                    new NodeList( this.fyldtNodeList )
+            nodeLists = new NodeList[]{
+                    new NodeList( fyldtNodeListBackup ),
+                    new NodeList( fyldtNodeListBogBackup ),
+                    new NodeList( fyldtNodeListBogBackup ),
+                    new NodeList( fyldtNodeListBackup ),
+                    new NodeList( fyldtNodeListBackup ),
+                    new NodeList( fyldtNodeListBogBackup ),
+                    new NodeList( fyldtNodeListBackup ),
+                    new NodeList( fyldtNodeListBogBackup ),
+                    new NodeList( fyldtNodeListBackup )
             };
+
+            assertEquals( 9, nodeLists.length );
+
+            for ( int i = 0; i < nodeLists.length; i++ ) {
+                assertEquals( 5, nodeLists[ i ].networkSize() );
+            }
             assertTrue( this.tomNodeList.copyListAndDelete_tailHead( nodeLists ) );
             assertEquals( 45, this.tomNodeList.networkSize() );
             assertTrue( this.tomNodeList.findAndRemove_duplicates() );
@@ -1340,17 +1388,23 @@ class NodeListTest {
             }
         }
         {
-            NodeList[] nodeLists = {
-                    new NodeList( this.fyldtNodeList ),
-                    new NodeList( this.fyldtNodeListBog ),
-                    new NodeList( this.fyldtNodeListBog ),
-                    new NodeList( this.fyldtNodeList ),
-                    new NodeList( this.fyldtNodeList ),
-                    new NodeList( this.fyldtNodeListBog ),
-                    new NodeList( this.fyldtNodeList ),
-                    new NodeList( this.fyldtNodeListBog ),
-                    new NodeList( this.fyldtNodeList )
+            nodeLists = new NodeList[]{
+                    new NodeList( fyldtNodeListBackup ),
+                    new NodeList( fyldtNodeListBogBackup ),
+                    new NodeList( fyldtNodeListBogBackup ),
+                    new NodeList( fyldtNodeListBackup ),
+                    new NodeList( fyldtNodeListBackup ),
+                    new NodeList( fyldtNodeListBogBackup ),
+                    new NodeList( fyldtNodeListBackup ),
+                    new NodeList( fyldtNodeListBogBackup ),
+                    new NodeList( fyldtNodeListBackup )
             };
+            assertEquals( 9, nodeLists.length );
+
+            for ( int i = 0; i < nodeLists.length; i++ ) {
+                assertEquals( 5, nodeLists[ i ].networkSize() );
+            }
+
             assertTrue( this.fyldtNodeList.copyListAndDelete_tailTail( nodeLists ) );
             assertEquals( 50, this.fyldtNodeList.networkSize() );
             assertTrue( this.fyldtNodeList.findAndRemove_duplicates() );
@@ -1363,17 +1417,23 @@ class NodeListTest {
         }
 
         {
-            NodeList[] nodeLists = {
-                    new NodeList( this.fyldtNodeList ),
-                    new NodeList( this.fyldtNodeListBog ),
-                    new NodeList( this.fyldtNodeListBog ),
-                    new NodeList( this.fyldtNodeList ),
-                    new NodeList( this.fyldtNodeList ),
-                    new NodeList( this.fyldtNodeListBog ),
-                    new NodeList( this.fyldtNodeList ),
-                    new NodeList( this.fyldtNodeListBog ),
-                    new NodeList( this.fyldtNodeList )
+            nodeLists = new NodeList[]{
+                    new NodeList( fyldtNodeListBackup ),
+                    new NodeList( fyldtNodeListBogBackup ),
+                    new NodeList( fyldtNodeListBogBackup ),
+                    new NodeList( fyldtNodeListBackup ),
+                    new NodeList( fyldtNodeListBackup ),
+                    new NodeList( fyldtNodeListBogBackup ),
+                    new NodeList( fyldtNodeListBackup ),
+                    new NodeList( fyldtNodeListBogBackup ),
+                    new NodeList( fyldtNodeListBackup )
             };
+
+            assertEquals( 9, nodeLists.length );
+
+            for ( int i = 0; i < nodeLists.length; i++ ) {
+                assertEquals( 5, nodeLists[ i ].networkSize() );
+            }
             assertTrue( this.tomNodeList.copyListAndDelete_tailTail( nodeLists ) );
             assertEquals( 45, this.tomNodeList.networkSize() );
             assertTrue( this.tomNodeList.findAndRemove_duplicates() );
@@ -1388,11 +1448,89 @@ class NodeListTest {
     }
 
 
-        @Test
-        void reverseNetwork(){
-            System.out.println();
-            System.out.println( "-----------REVERSE NETWORK-----------------" );
+    @Test
+    void reverseNetwork() {
+        System.out.println();
+        System.out.println( "-----------REVERSE NETWORK-----------------" );
+
+        String[] strings = this.fyldtNodeList.strings_fromHead();
+
+        assertEquals( "0", strings[ 0 ] );
+        assertEquals( "1", strings[ 1 ] );
+        assertEquals( "2", strings[ 2 ] );
+        assertEquals( "3", strings[ 3 ] );
+        assertEquals( "4", strings[ 4 ] );
+
+        System.out.println( "TAL: Before 1st Rotation" );
+        this.fyldtNodeList.print_fromHead();
+        assertTrue( this.fyldtNodeList.reverseNetwork() );
+        System.out.println( "TAL: After 1st Rotation" );
+        this.fyldtNodeList.print_fromHead();
+        strings = this.fyldtNodeList.strings_fromHead();
+
+        assertEquals( "4", strings[ 0 ] );
+        assertEquals( "3", strings[ 1 ] );
+        assertEquals( "2", strings[ 2 ] );
+        assertEquals( "1", strings[ 3 ] );
+        assertEquals( "0", strings[ 4 ] );
+
+        System.out.println();
+
+        System.out.println( "TAL: Before 2nd Rotation" );
+        this.fyldtNodeList.print_fromHead();
+        assertTrue( this.fyldtNodeList.reverseNetwork() );
+        System.out.println( "TAL: After 2nd Rotation" );
+        this.fyldtNodeList.print_fromHead();
+        strings = this.fyldtNodeList.strings_fromHead();
+
+        assertEquals( "0", strings[ 0 ] );
+        assertEquals( "1", strings[ 1 ] );
+        assertEquals( "2", strings[ 2 ] );
+        assertEquals( "3", strings[ 3 ] );
+        assertEquals( "4", strings[ 4 ] );
 
 
-        }
+        //Bog bog bogb ogb ogb gobog bogb ogb gob
+        System.out.println();
+        System.out.println("---------");
+        System.out.println();
+
+        strings = this.fyldtNodeListBog.strings_fromHead();
+
+        assertEquals( "A", strings[ 0 ] );
+        assertEquals( "B", strings[ 1 ] );
+        assertEquals( "C", strings[ 2 ] );
+        assertEquals( "D", strings[ 3 ] );
+        assertEquals( "E", strings[ 4 ] );
+
+        System.out.println( "BOG: Before 1st Rotation" );
+        this.fyldtNodeListBog.print_fromHead();
+        assertTrue( this.fyldtNodeListBog.reverseNetwork() );
+        System.out.println( "BOG: After 1st Rotation" );
+        this.fyldtNodeListBog.print_fromHead();
+        strings = this.fyldtNodeListBog.strings_fromHead();
+
+        assertEquals( "E", strings[ 0 ] );
+        assertEquals( "D", strings[ 1 ] );
+        assertEquals( "C", strings[ 2 ] );
+        assertEquals( "B", strings[ 3 ] );
+        assertEquals( "A", strings[ 4 ] );
+
+        System.out.println();
+
+        System.out.println( "BOG: Before 2nd Rotation" );
+        this.fyldtNodeListBog.print_fromHead();
+        assertTrue( this.fyldtNodeListBog.reverseNetwork() );
+        System.out.println( "BOG: After 2nd Rotation" );
+        this.fyldtNodeListBog.print_fromHead();
+        strings = this.fyldtNodeListBog.strings_fromHead();
+
+        assertEquals( "A", strings[ 0 ] );
+        assertEquals( "B", strings[ 1 ] );
+        assertEquals( "C", strings[ 2 ] );
+        assertEquals( "D", strings[ 3 ] );
+        assertEquals( "E", strings[ 4 ] );
+
+
     }
+}
