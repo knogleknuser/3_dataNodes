@@ -544,16 +544,16 @@ class NodeListTest {
             assertNull( this.fyldtNodeList.insertTailUnique( String.valueOf( i ) ) );
         }
 
-        System.out.println("Big Loop 1");
+        System.out.println( "Big Loop 1" );
         for ( int j = 0; j < this.fyldtNodeList.networkSize(); j++ ) {
             for ( int i = 5; i < 10; i++ ) {
                 if ( j == 0 ) {
                     assertEquals( String.valueOf( i ), this.fyldtNodeList.findAndInsertAfter_fromHeadUnique( String.valueOf( i ), String.valueOf( j ) ) );
                 } else {
-                    assertNull( this.fyldtNodeList.findAndInsertAfter_fromHeadUnique( String.valueOf( i ), String.valueOf( j ) )  );
+                    assertNull( this.fyldtNodeList.findAndInsertAfter_fromHeadUnique( String.valueOf( i ), String.valueOf( j ) ) );
                 }
 
-                assertEquals( String.valueOf( i ), this.fyldtNodeList.find_fromHead(String.valueOf( i ) ) );
+                assertEquals( String.valueOf( i ), this.fyldtNodeList.find_fromHead( String.valueOf( i ) ) );
 
             }
             assertEquals( 10, this.fyldtNodeList.networkSize() );
@@ -564,16 +564,16 @@ class NodeListTest {
         }
 
 
-        System.out.println("Big Loop 2");
+        System.out.println( "Big Loop 2" );
         for ( int j = 0; j < this.fyldtNodeList.networkSize(); j++ ) {
             for ( int i = 5; i < 10; i++ ) {
                 if ( j == 0 ) {
                     assertEquals( String.valueOf( i ), this.fyldtNodeList.findAndInsertBefore_fromHeadUnique( String.valueOf( i ), String.valueOf( j ) ) );
                 } else {
-                    assertNull( this.fyldtNodeList.findAndInsertBefore_fromHeadUnique( String.valueOf( i ), String.valueOf( j ) )  );
+                    assertNull( this.fyldtNodeList.findAndInsertBefore_fromHeadUnique( String.valueOf( i ), String.valueOf( j ) ) );
                 }
 
-                assertEquals( String.valueOf( i ), this.fyldtNodeList.find_fromHead(String.valueOf( i ) ) );
+                assertEquals( String.valueOf( i ), this.fyldtNodeList.find_fromHead( String.valueOf( i ) ) );
 
             }
             assertEquals( 10, this.fyldtNodeList.networkSize() );
@@ -584,16 +584,16 @@ class NodeListTest {
         }
 
 
-        System.out.println("Big Loop 3");
+        System.out.println( "Big Loop 3" );
         for ( int j = 0; j < this.fyldtNodeList.networkSize(); j++ ) {
             for ( int i = 5; i < 10; i++ ) {
                 if ( j == 0 ) {
                     assertEquals( String.valueOf( i ), this.fyldtNodeList.findAndInsertAfter_fromTailUnique( String.valueOf( i ), String.valueOf( j ) ) );
                 } else {
-                    assertNull( this.fyldtNodeList.findAndInsertAfter_fromTailUnique( String.valueOf( i ), String.valueOf( j ) )  );
+                    assertNull( this.fyldtNodeList.findAndInsertAfter_fromTailUnique( String.valueOf( i ), String.valueOf( j ) ) );
                 }
 
-                assertEquals( String.valueOf( i ), this.fyldtNodeList.find_fromTail(String.valueOf( i ) ) );
+                assertEquals( String.valueOf( i ), this.fyldtNodeList.find_fromTail( String.valueOf( i ) ) );
 
             }
             assertEquals( 10, this.fyldtNodeList.networkSize() );
@@ -604,16 +604,16 @@ class NodeListTest {
         }
 
 
-        System.out.println("Big Loop 4");
+        System.out.println( "Big Loop 4" );
         for ( int j = 0; j < this.fyldtNodeList.networkSize(); j++ ) {
             for ( int i = 5; i < 10; i++ ) {
                 if ( j == 0 ) {
                     assertEquals( String.valueOf( i ), this.fyldtNodeList.findAndInsertBefore_fromTailUnique( String.valueOf( i ), String.valueOf( j ) ) );
                 } else {
-                    assertNull( this.fyldtNodeList.findAndInsertBefore_fromTailUnique( String.valueOf( i ), String.valueOf( j ) )  );
+                    assertNull( this.fyldtNodeList.findAndInsertBefore_fromTailUnique( String.valueOf( i ), String.valueOf( j ) ) );
                 }
 
-                assertEquals( String.valueOf( i ), this.fyldtNodeList.find_fromHead(String.valueOf( i ) ) );
+                assertEquals( String.valueOf( i ), this.fyldtNodeList.find_fromHead( String.valueOf( i ) ) );
 
             }
             assertEquals( 10, this.fyldtNodeList.networkSize() );
@@ -624,8 +624,7 @@ class NodeListTest {
         }
 
 
-
-        System.out.println("End Loop 1");
+        System.out.println( "End Loop 1" );
         for ( int i = 5; i < 10; i++ ) {
             assertEquals( String.valueOf( i ), this.fyldtNodeList.insertHeadUnique( String.valueOf( i ) ) );
 
@@ -634,7 +633,7 @@ class NodeListTest {
             assertEquals( String.valueOf( i ), this.fyldtNodeList.findAndRemove_fromHead( String.valueOf( i ) ) );
         }
 
-        System.out.println("End Loop 2");
+        System.out.println( "End Loop 2" );
         for ( int i = 5; i < 10; i++ ) {
             assertEquals( String.valueOf( i ), this.fyldtNodeList.insertTailUnique( String.valueOf( i ) ) );
 
@@ -678,15 +677,15 @@ class NodeListTest {
         this.fyldtNodeList.insertHead( "2" );
         this.fyldtNodeList.insertHead( "2" );
         this.fyldtNodeList.insertHead( "2" );
-        this.fyldtNodeList.insertHead( null );
-        this.fyldtNodeList.insertHead( null );
-        this.fyldtNodeList.insertHead( null );
-        this.fyldtNodeList.insertHead( null );
-        this.fyldtNodeList.insertHead( null );
-        this.fyldtNodeList.insertHead( null );
-        this.fyldtNodeList.insertHead( null );
-        this.fyldtNodeList.insertHead( null );
-        this.fyldtNodeList.insertHead( null );
+        this.fyldtNodeList.insertHead( ( String ) null );
+        this.fyldtNodeList.insertHead( ( String ) null );
+        this.fyldtNodeList.insertHead( ( String ) null );
+        this.fyldtNodeList.insertHead( ( String ) null );
+        this.fyldtNodeList.insertHead( ( String ) null );
+        this.fyldtNodeList.insertHead( ( String ) null );
+        this.fyldtNodeList.insertHead( ( String ) null );
+        this.fyldtNodeList.insertHead( ( String ) null );
+        this.fyldtNodeList.insertHead( ( String ) null );
 
         this.fyldtNodeList.insertTail( "2" );
         this.fyldtNodeList.insertTail( "2" );
@@ -696,27 +695,136 @@ class NodeListTest {
         this.fyldtNodeList.insertTail( "2" );
         this.fyldtNodeList.insertTail( "2" );
         this.fyldtNodeList.insertTail( "2" );
-        this.fyldtNodeList.insertTail( null );
-        this.fyldtNodeList.insertTail( null );
-        this.fyldtNodeList.insertTail( null );
-        this.fyldtNodeList.insertTail( null );
-        this.fyldtNodeList.insertTail( null );
-        this.fyldtNodeList.insertTail( null );
-        this.fyldtNodeList.insertTail( null );
-        this.fyldtNodeList.insertTail( null );
-        this.fyldtNodeList.insertTail( null );
+        this.fyldtNodeList.insertTail( ( String ) null );
+        this.fyldtNodeList.insertTail( ( String ) null );
+        this.fyldtNodeList.insertTail( ( String ) null );
+        this.fyldtNodeList.insertTail( ( String ) null );
+        this.fyldtNodeList.insertTail( ( String ) null );
+        this.fyldtNodeList.insertTail( ( String ) null );
+        this.fyldtNodeList.insertTail( ( String ) null );
+        this.fyldtNodeList.insertTail( ( String ) null );
+        this.fyldtNodeList.insertTail( ( String ) null );
 
-        assertNotEquals(5, this.fyldtNodeList.networkSize()  );
+        assertNotEquals( 5, this.fyldtNodeList.networkSize() );
         this.fyldtNodeList.print_fromHead();
         assertTrue( this.fyldtNodeList.findAndRemove_duplicates() );
         this.fyldtNodeList.print_fromHead();
         assertEquals( 5, this.fyldtNodeList.networkSize() );
 
         for ( int i = 0; i < this.fyldtNodeList.networkSize(); i++ ) {
-            assertEquals(String.valueOf( i ), this.fyldtNodeList.find_fromHead( String.valueOf( i ) )  );
+            assertEquals( String.valueOf( i ), this.fyldtNodeList.find_fromHead( String.valueOf( i ) ) );
         }
 
 
+    }
+
+    @Test
+    void multipleWordsInsertion() {
+        System.out.println();
+        System.out.println( "-----------MULTIPLE WORDS INSERTION-----------------" );
+
+        String[] words = {
+                "null",
+                null,
+                "torsdag",
+                "45"
+        };
+
+        String[] wordsInvalid = null;
+
+        //Full list
+        assertFalse( this.fyldtNodeList.insertHead( wordsInvalid  ));
+        assertEquals( 5, this.fyldtNodeList.networkSize() );
+
+        assertTrue( this.fyldtNodeList.insertHead( words ) );
+        assertEquals( "null", this.fyldtNodeList.strings_fromHead()[ 0 ] );
+        assertEquals( "torsdag", this.fyldtNodeList.strings_fromHead()[ 1 ] );
+        assertEquals( "45", this.fyldtNodeList.strings_fromHead()[ 2 ] );
+        assertEquals( 8, this.fyldtNodeList.networkSize() );
+
+
+
+
+        assertFalse( this.fyldtNodeList.insertTail( wordsInvalid  ));
+        assertEquals( 8, this.fyldtNodeList.networkSize() );
+
+        assertTrue( this.fyldtNodeList.insertTail( words ) );
+        assertEquals( "null", this.fyldtNodeList.strings_fromHead()[ 8 ] );
+        assertEquals( "torsdag", this.fyldtNodeList.strings_fromHead()[ 9 ] );
+        assertEquals( "45", this.fyldtNodeList.strings_fromHead()[ 10 ] );
+        assertEquals( 11, this.fyldtNodeList.networkSize() );
+
+
+
+
+        //Empty list
+        assertFalse( this.tomNodeList.insertHead( wordsInvalid  ));
+        assertEquals( 0, this.tomNodeList.networkSize() );
+
+        assertTrue( this.tomNodeList.insertHead( words ) );
+        assertEquals( "null", this.tomNodeList.strings_fromHead()[ 0 ] );
+        assertEquals( "torsdag", this.tomNodeList.strings_fromHead()[ 1 ] );
+        assertEquals( "45", this.tomNodeList.strings_fromHead()[ 2 ] );
+        assertEquals( 3, this.tomNodeList.networkSize() );
+
+
+
+        //Emptying the list
+        assertEquals( "null", this.tomNodeList.findAndRemove_fromHead("null"));
+        assertEquals( "torsdag", this.tomNodeList.findAndRemove_fromHead("torsdag") );
+        assertEquals( "45", this.tomNodeList.findAndRemove_fromHead("45") );
+        assertEquals( 0, this.tomNodeList.networkSize() );
+
+        //Tail
+        assertFalse( this.tomNodeList.insertTail( wordsInvalid  ));
+        assertEquals( 0, this.tomNodeList.networkSize() );
+
+        assertTrue( this.tomNodeList.insertTail( words ) );
+        assertEquals( "null", this.tomNodeList.strings_fromHead()[ 0 ] );
+        assertEquals( "torsdag", this.tomNodeList.strings_fromHead()[ 1 ] );
+        assertEquals( "45", this.tomNodeList.strings_fromHead()[ 2 ] );
+        assertEquals( 3, this.tomNodeList.networkSize() );
+
+
+
+
+
+        //Emptying the list to 1 node
+        assertEquals( 3, this.tomNodeList.networkSize() );
+        assertEquals( "null", this.tomNodeList.findAndRemove_fromHead("null"));
+        assertEquals( "torsdag", this.tomNodeList.findAndRemove_fromHead("torsdag") );
+        assertEquals( 1, this.tomNodeList.networkSize() );
+
+
+        //1 Node list
+        assertFalse( this.tomNodeList.insertHead( wordsInvalid  ));
+        assertEquals( 1, this.tomNodeList.networkSize() );
+
+        assertTrue( this.tomNodeList.insertHead( words ) );
+        assertEquals( "null", this.tomNodeList.strings_fromHead()[ 0 ] );
+        assertEquals( "torsdag", this.tomNodeList.strings_fromHead()[ 1 ] );
+        assertEquals( "45", this.tomNodeList.strings_fromHead()[ 2 ] );
+        assertEquals( "45", this.tomNodeList.strings_fromHead()[ 3 ] );
+        assertEquals( 4, this.tomNodeList.networkSize() );
+
+        //Emptying the list to 1 node
+        assertEquals( "null", this.tomNodeList.findAndRemove_fromHead("null"));
+        assertEquals( "torsdag", this.tomNodeList.findAndRemove_fromHead("torsdag") );
+        assertEquals( "45", this.tomNodeList.findAndRemove_fromHead("45") );
+        assertEquals( 1, this.tomNodeList.networkSize() );
+
+
+        //Tail
+        assertFalse( this.tomNodeList.insertTail( wordsInvalid  ));
+        assertEquals( 1, this.tomNodeList.networkSize() );
+
+        assertTrue( this.tomNodeList.insertTail( words ) );
+        assertEquals( "45", this.tomNodeList.strings_fromHead()[ 0 ] );
+        assertEquals( "null", this.tomNodeList.strings_fromHead()[ 1 ] );
+        assertEquals( "torsdag", this.tomNodeList.strings_fromHead()[ 2 ] );
+        assertEquals( "45", this.tomNodeList.strings_fromHead()[ 3 ] );
+
+        assertEquals( 4, this.tomNodeList.networkSize() );
 
     }
 }

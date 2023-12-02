@@ -532,7 +532,7 @@ public class NodeList {
 
             if ( foundFromHead.equals( foundFromTail ) ) {
 
-                if ( foundFromTail.data == null  ) {
+                if ( foundFromTail.data == null ) {
                     this.remove( foundFromTail );
                     this.remove( foundFromHead );
                     thereWereDuplicates = true;
@@ -651,6 +651,37 @@ public class NodeList {
         return nodeToRemove.remove();
 
 
+    }
+
+    //Insert Public
+    public boolean insertHead( String[] datas ) {
+        if ( datas == null ) {
+            return false;
+        }
+
+        boolean arrayHadValidDataThatWasInserted = false;
+
+        for ( int i = ( datas.length - 1 ); i > -1; i-- ) {
+            if ( this.insertHead( datas[ i ] ) != null ) {
+                arrayHadValidDataThatWasInserted = true;
+            }
+        }
+        return arrayHadValidDataThatWasInserted;
+    }
+
+    public boolean insertTail( String[] datas ) {
+        if ( datas == null ) {
+            return false;
+        }
+
+        boolean arrayHadValidDataThatWasInserted = false;
+
+        for ( int i = 0; i < datas.length; i++ ) {
+            if ( this.insertTail( datas[ i ] ) != null ) {
+                arrayHadValidDataThatWasInserted = true;
+            }
+        }
+        return arrayHadValidDataThatWasInserted;
     }
 
     //Insert Public
