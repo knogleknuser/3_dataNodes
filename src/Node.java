@@ -1,15 +1,22 @@
 import java.util.Arrays;
+import java.util.Objects;
 
 public class Node {
     //Code
     public static final String stringBuilderDivider = "\ngq37489Q02hfFwkUethg\n"; //Our code, hopefully, no data strings contain it, otherwise we need to improve it.
-    Node next = null;
-    Node previous = null;
+    protected Node next = null;
+    protected Node previous = null;
 
-    String data;
+    protected String data = null;
 
     public Node( String data ) {
         this.data = data;
+    }
+
+    public Node( Node node ) {
+        if ( node != null ) {
+            this.data = node.getData();
+        }
     }
 
     //Getters
@@ -1198,7 +1205,7 @@ public class Node {
     }
 
     public static Node insertAfter( String insertedString, Node afterThis ) {
-        return insertBefore( new Node( insertedString ), afterThis );
+        return insertAfter( new Node( insertedString ), afterThis );
     }
 
     //Insert beforeAfter - Static
@@ -1266,6 +1273,47 @@ public class Node {
         return inserted;
     }
 
+    //Network from Strings Array----------------------------------------------------------------------------
+    public static Node stringsToNetwork( String[] strings ) {
+        if ( strings == null ) {
+            return null;
+        }
+
+        if ( strings[ 0 ] != null && strings.length == 1 ) {
+            return new Node( strings[ 0 ] );
+        }
+
+        if ( strings.length == 1 ) {
+            return null;
+        }
+
+        Node newNetworkHead = null;
+        int afterNewHeadIndex = 0;
+
+        for ( int i = 0; i < strings.length; i++ ) {
+            if ( strings[ i ] != null ) {
+                newNetworkHead = new Node( strings[ i ] );
+                afterNewHeadIndex = i + 1;
+                if ( afterNewHeadIndex == strings.length ) {
+                    return newNetworkHead;
+                }
+                break;
+            }
+        }
+        if ( newNetworkHead == null ) {
+            return null;
+        }
+
+        Node temp = newNetworkHead;
+
+        for ( int i = afterNewHeadIndex; i < strings.length; i++ ) {
+            if ( strings[ i ] != null ) {
+                temp = Node.insertAfter( strings[ i ], temp );
+            }
+        }
+
+        return newNetworkHead;
+    }
 
     //Boolean Checks----------------------------------------------------------------------------
     public static boolean haveSameNetwork( Node node1, Node node2 ) { //Nodes Have

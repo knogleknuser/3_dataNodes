@@ -67,14 +67,14 @@ public class Main {
 
 
         Node nodeN1 = new Node( "-1" );
-        nodeList.insertHead( nodeN1 );
+        nodeList.insertHead( nodeN1.getData() );
 
         System.out.println();
         System.out.println( "Print from Head NodeList new Start Node" );
         nodeList.print_fromHead();
 
         Node node5 = new Node( "5" );
-        nodeList.insertTail( node5 );
+        nodeList.insertTail( node5.getData() );
 
         System.out.println();
         System.out.println( "Print from Head NodeList new Tail Node" );
