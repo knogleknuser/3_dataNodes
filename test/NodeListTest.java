@@ -504,4 +504,145 @@ class NodeListTest {
         assertEquals( 5, this.fyldtNodeList.networkSize() );
         assertEquals( 0, this.tomNodeList.networkSize() );
     }
+
+    @Test
+    void insertUnique() {
+        System.out.println();
+        System.out.println( "-----------INSERT UNIQUE-----------------" );
+
+        for ( int j = 0; j < this.fyldtNodeList.networkSize(); j++ ) {
+            for ( int i = 0; i < this.fyldtNodeList.networkSize(); i++ ) {
+                assertNull( this.fyldtNodeList.findAndInsertAfter_fromHeadUnique( String.valueOf( i ), String.valueOf( j ) ) );
+            }
+        }
+
+        for ( int j = 0; j < this.fyldtNodeList.networkSize(); j++ ) {
+            for ( int i = 0; i < this.fyldtNodeList.networkSize(); i++ ) {
+                assertNull( this.fyldtNodeList.findAndInsertBefore_fromHeadUnique( String.valueOf( i ), String.valueOf( j ) ) );
+            }
+        }
+
+        for ( int j = 0; j < this.fyldtNodeList.networkSize(); j++ ) {
+            for ( int i = 0; i < this.fyldtNodeList.networkSize(); i++ ) {
+                assertNull( this.fyldtNodeList.findAndInsertAfter_fromTailUnique( String.valueOf( i ), String.valueOf( j ) ) );
+            }
+        }
+
+        for ( int j = 0; j < this.fyldtNodeList.networkSize(); j++ ) {
+            for ( int i = 0; i < this.fyldtNodeList.networkSize(); i++ ) {
+                assertNull( this.fyldtNodeList.findAndInsertAfter_fromTailUnique( String.valueOf( i ), String.valueOf( j ) ) );
+            }
+        }
+
+
+        for ( int i = 0; i < this.fyldtNodeList.networkSize(); i++ ) {
+            assertNull( this.fyldtNodeList.insertHeadUnique( String.valueOf( i ) ) );
+        }
+
+
+        for ( int i = 0; i < this.fyldtNodeList.networkSize(); i++ ) {
+            assertNull( this.fyldtNodeList.insertTailUnique( String.valueOf( i ) ) );
+        }
+
+        System.out.println("Big Loop 1");
+        for ( int j = 0; j < this.fyldtNodeList.networkSize(); j++ ) {
+            for ( int i = 5; i < 10; i++ ) {
+                if ( j == 0 ) {
+                    assertEquals( String.valueOf( i ), this.fyldtNodeList.findAndInsertAfter_fromHeadUnique( String.valueOf( i ), String.valueOf( j ) ) );
+                } else {
+                    assertNull( this.fyldtNodeList.findAndInsertAfter_fromHeadUnique( String.valueOf( i ), String.valueOf( j ) )  );
+                }
+
+                assertEquals( String.valueOf( i ), this.fyldtNodeList.find_fromHead(String.valueOf( i ) ) );
+
+            }
+            assertEquals( 10, this.fyldtNodeList.networkSize() );
+        }
+        for ( int i = 5; i < 10; i++ ) {
+            assertEquals( String.valueOf( i ), this.fyldtNodeList.findAndRemove_fromHead( String.valueOf( i ) ) );
+
+        }
+
+
+        System.out.println("Big Loop 2");
+        for ( int j = 0; j < this.fyldtNodeList.networkSize(); j++ ) {
+            for ( int i = 5; i < 10; i++ ) {
+                if ( j == 0 ) {
+                    assertEquals( String.valueOf( i ), this.fyldtNodeList.findAndInsertBefore_fromHeadUnique( String.valueOf( i ), String.valueOf( j ) ) );
+                } else {
+                    assertNull( this.fyldtNodeList.findAndInsertBefore_fromHeadUnique( String.valueOf( i ), String.valueOf( j ) )  );
+                }
+
+                assertEquals( String.valueOf( i ), this.fyldtNodeList.find_fromHead(String.valueOf( i ) ) );
+
+            }
+            assertEquals( 10, this.fyldtNodeList.networkSize() );
+        }
+        for ( int i = 5; i < 10; i++ ) {
+            assertEquals( String.valueOf( i ), this.fyldtNodeList.findAndRemove_fromHead( String.valueOf( i ) ) );
+
+        }
+
+
+        System.out.println("Big Loop 3");
+        for ( int j = 0; j < this.fyldtNodeList.networkSize(); j++ ) {
+            for ( int i = 5; i < 10; i++ ) {
+                if ( j == 0 ) {
+                    assertEquals( String.valueOf( i ), this.fyldtNodeList.findAndInsertAfter_fromTailUnique( String.valueOf( i ), String.valueOf( j ) ) );
+                } else {
+                    assertNull( this.fyldtNodeList.findAndInsertAfter_fromTailUnique( String.valueOf( i ), String.valueOf( j ) )  );
+                }
+
+                assertEquals( String.valueOf( i ), this.fyldtNodeList.find_fromTail(String.valueOf( i ) ) );
+
+            }
+            assertEquals( 10, this.fyldtNodeList.networkSize() );
+        }
+        for ( int i = 5; i < 10; i++ ) {
+            assertEquals( String.valueOf( i ), this.fyldtNodeList.findAndRemove_fromTail( String.valueOf( i ) ) );
+
+        }
+
+
+        System.out.println("Big Loop 4");
+        for ( int j = 0; j < this.fyldtNodeList.networkSize(); j++ ) {
+            for ( int i = 5; i < 10; i++ ) {
+                if ( j == 0 ) {
+                    assertEquals( String.valueOf( i ), this.fyldtNodeList.findAndInsertBefore_fromTailUnique( String.valueOf( i ), String.valueOf( j ) ) );
+                } else {
+                    assertNull( this.fyldtNodeList.findAndInsertBefore_fromTailUnique( String.valueOf( i ), String.valueOf( j ) )  );
+                }
+
+                assertEquals( String.valueOf( i ), this.fyldtNodeList.find_fromHead(String.valueOf( i ) ) );
+
+            }
+            assertEquals( 10, this.fyldtNodeList.networkSize() );
+        }
+        for ( int i = 5; i < 10; i++ ) {
+            assertEquals( String.valueOf( i ), this.fyldtNodeList.findAndRemove_fromTail( String.valueOf( i ) ) );
+
+        }
+
+
+
+        System.out.println("End Loop 1");
+        for ( int i = 5; i < 10; i++ ) {
+            assertEquals( String.valueOf( i ), this.fyldtNodeList.insertHeadUnique( String.valueOf( i ) ) );
+
+        }
+        for ( int i = 5; i < 10; i++ ) {
+            assertEquals( String.valueOf( i ), this.fyldtNodeList.findAndRemove_fromHead( String.valueOf( i ) ) );
+        }
+
+        System.out.println("End Loop 2");
+        for ( int i = 5; i < 10; i++ ) {
+            assertEquals( String.valueOf( i ), this.fyldtNodeList.insertTailUnique( String.valueOf( i ) ) );
+
+        }
+        for ( int i = 5; i < 10; i++ ) {
+            assertEquals( String.valueOf( i ), this.fyldtNodeList.findAndRemove_fromTail( String.valueOf( i ) ) );
+
+        }
+
+    }
 }

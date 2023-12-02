@@ -1,6 +1,7 @@
 public class NodeList {
     //Head
     private Node head = null;
+
     public String getHead() {
         this.getAndCalcHead();
         if ( this.head == null ) {
@@ -11,6 +12,7 @@ public class NodeList {
 
     //Tail
     private Node tail = null;
+
     public String getTail() {
         this.getAndCalcTail();
         if ( this.tail == null ) {
@@ -34,17 +36,6 @@ public class NodeList {
     public NodeList( String[] someStrings ) {
         this.setNodeNetwork( someStrings );
     }
-
-
-
-
-
-
-
-
-
-
-
 
 
     //Set NodeNetwork
@@ -88,22 +79,14 @@ public class NodeList {
     }
 
 
-
-
-
-
     //Network Size
-    public int networkSize(){
+    public int networkSize() {
         int networkSizeRaw = Node.networkSize( this.getAndCalcHead() );
         if ( networkSizeRaw == -1 ) {
             return 0;
         }
         return networkSizeRaw;
     }
-
-
-
-
 
 
     //Calcs
@@ -266,6 +249,80 @@ public class NodeList {
             return null;
         }
         return Node.find_toHead( this.tail, data );
+    }
+
+    //FindAndInsert - unique - public
+    public String findAndInsertAfter_fromHeadUnique( String dataInserted, String dataAfterThis ) {
+        if ( dataInserted == null || dataAfterThis == null ) {
+            return null;
+        }
+
+        if ( this.find_fromHead( dataInserted ) == null ) {
+            return this.findAndInsertAfter_fromHead( dataInserted, dataAfterThis );
+        }
+
+        return null;
+    }
+
+    public String findAndInsertBefore_fromHeadUnique( String dataInserted, String dataBeforeThis ) {
+        if ( dataInserted == null || dataBeforeThis == null ) {
+            return null;
+        }
+
+        if ( this.find_fromHead( dataInserted ) == null ) {
+            return this.findAndInsertBefore_fromHead( dataInserted, dataBeforeThis );
+        }
+
+        return null;
+    }
+
+    public String findAndInsertAfter_fromTailUnique( String dataInserted, String dataAfterThis ) {
+        if ( dataInserted == null || dataAfterThis == null ) {
+            return null;
+        }
+
+        if ( this.find_fromTail( dataInserted ) == null ) {
+            return this.findAndInsertAfter_fromTail( dataInserted, dataAfterThis );
+        }
+
+        return null;
+    }
+
+    public String findAndInsertBefore_fromTailUnique( String dataInserted, String dataBeforeThis ) {
+        if ( dataInserted == null || dataBeforeThis == null ) {
+            return null;
+        }
+
+        if ( this.find_fromTail( dataInserted ) == null ) {
+            return this.findAndInsertBefore_fromTail( dataInserted, dataBeforeThis );
+        }
+
+        return null;
+    }
+
+    //Insert - unqiue - public
+    public String insertHeadUnique( String data ) {
+        if ( data == null ) {
+            return null;
+        }
+
+        if ( this.find_fromTail( data ) == null ) {
+            return this.insertHead( data );
+        }
+
+        return null;
+    }
+
+    public String insertTailUnique( String data ) {
+        if ( data == null ) {
+            return null;
+        }
+
+        if ( this.find_fromTail( data ) == null ) {
+            return this.insertTail( data );
+        }
+
+        return null;
     }
 
     //FindAndInsert - public
