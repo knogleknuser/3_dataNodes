@@ -238,17 +238,42 @@ public class NodeList {
 
     //Find
     private Node find_fromHeadNode( String data ) {
-        if ( this.getAndCalcHead() == null || data == null ) {
+        if ( this.getAndCalcHead() == null  ) {
             return null;
         }
         return Node.find_toTail( this.head, data );
     }
 
     private Node find_fromTailNode( String data ) {
-        if ( this.getAndCalcTail() == null || data == null ) {
+        if ( this.getAndCalcTail() == null  ) {
             return null;
         }
         return Node.find_toHead( this.tail, data );
+    }
+
+    //Insert - unqiue - public
+    public String insertHeadUnique( String data ) {
+        if ( data == null ) {
+            return null;
+        }
+
+        if ( this.find_fromTail( data ) == null ) {
+            return this.insertHead( data );
+        }
+
+        return null;
+    }
+
+    public String insertTailUnique( String data ) {
+        if ( data == null ) {
+            return null;
+        }
+
+        if ( this.find_fromTail( data ) == null ) {
+            return this.insertTail( data );
+        }
+
+        return null;
     }
 
     //FindAndInsert - unique - public
@@ -295,31 +320,6 @@ public class NodeList {
 
         if ( this.find_fromTail( dataInserted ) == null ) {
             return this.findAndInsertBefore_fromTail( dataInserted, dataBeforeThis );
-        }
-
-        return null;
-    }
-
-    //Insert - unqiue - public
-    public String insertHeadUnique( String data ) {
-        if ( data == null ) {
-            return null;
-        }
-
-        if ( this.find_fromTail( data ) == null ) {
-            return this.insertHead( data );
-        }
-
-        return null;
-    }
-
-    public String insertTailUnique( String data ) {
-        if ( data == null ) {
-            return null;
-        }
-
-        if ( this.find_fromTail( data ) == null ) {
-            return this.insertTail( data );
         }
 
         return null;
@@ -496,6 +496,47 @@ public class NodeList {
         return nodeReplaceWith;
     }
 
+    //Remove - duplicates - public
+    public boolean findAndRemove_allDuplicates() {
+        String[] strings = this.strings_fromHead();
+        boolean thereWereDuplicates = false;
+
+        for ( int i = 0; i < strings.length; i++ ) {
+            if (this.findAndRemove_duplicates( strings[ i ] )){
+                thereWereDuplicates = true;
+            }
+        }
+
+        return thereWereDuplicates;
+    }
+
+    public boolean findAndRemove_duplicates( String data ) {
+
+        Node foundFromHead = this.find_fromHeadNode( data );
+        if ( foundFromHead == null ) {
+            return false;
+        }
+        Node foundFromTail = this.find_fromTailNode( data );
+
+        boolean hasFoundAndRemoved = true;
+        boolean thereWereDuplicates = false;
+
+        while ( hasFoundAndRemoved ) {
+            if ( foundFromHead.equals( foundFromTail ) ) {
+                if ( foundFromHead.data == null ) {
+                    this.remove( foundFromHead );
+                    thereWereDuplicates = true;
+                }
+                hasFoundAndRemoved = false;
+            } else {
+                this.remove( foundFromTail );
+                foundFromTail = this.find_fromTailNode( data );
+                thereWereDuplicates = true;
+            }
+        }
+        return thereWereDuplicates;
+    }
+
     //FindAndRemove - Public
     public String findAndRemove_fromHead( String data ) {
         Node nodeRemoved = this.findAndRemove_fromHeadNode( data );
@@ -513,6 +554,17 @@ public class NodeList {
         return nodeRemoved.getData();
     }
 
+    //FindAndRemove - toFrom
+    private Node findAndRemove_fromHeadNode( String data ) {
+        Node nodeToRemove = this.find_fromHeadNode( data );
+        return this.remove( nodeToRemove );
+    }
+
+    private Node findAndRemove_fromTailNode( String data ) {
+        Node nodeToRemove = this.find_fromTailNode( data );
+        return this.remove( nodeToRemove );
+    }
+
     //Remove - public
     public String removeHead() {
         Node nodeRemoved = this.removeHeadNode();
@@ -528,18 +580,6 @@ public class NodeList {
             return null;
         }
         return nodeRemoved.getData();
-    }
-
-
-    //FindAndRemove - toFrom
-    private Node findAndRemove_fromHeadNode( String data ) {
-        Node nodeToRemove = this.find_fromHeadNode( data );
-        return this.remove( nodeToRemove );
-    }
-
-    private Node findAndRemove_fromTailNode( String data ) {
-        Node nodeToRemove = this.find_fromTailNode( data );
-        return this.remove( nodeToRemove );
     }
 
     //Remove
